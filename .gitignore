@@ -1,0 +1,11 @@
+node_modules/
+.next/
+studio/node_modules/
+studio/dist/
+.sanity/
+out/
+*.tsbuildinfo
+.env*
+!.env.example
+test-results/
+*.log
