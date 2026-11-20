@@ -9,3 +9,14 @@ out/
 !.env.example
 test-results/
 *.log
+.playwright-mcp/
+/*.png
+
+# Local visual comparison artifacts
+home-reference-check.png
+local-clone-check.png
+local-desktop.png
+reference-desktop.png
+reference-local-check.png
+
+codiant-reference-source.html

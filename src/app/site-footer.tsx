@@ -1,60 +1,22 @@
 import Link from "next/link";
-import {sanityClient} from "../sanity/lib/client";
+import styles from "./kodrise-footer.module.css";
+import BrandLogo from "./brand-logo";
 
-function FooterIcon({ type }: { type: "mail" | "phone" }) {
-  return (
-    <svg className="footer-contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true">
-      {type === "mail" ? <path d="M3 5.5h18v13H3zM3.5 6l8.5 7 8.5-7" /> : <path d="M7.2 3.5 4.8 5.9c-.8.8-.9 2-.4 3 2.8 5.7 5 7.9 10.7 10.7 1 .5 2.2.4 3-.4l2.4-2.4-3.6-3.6-2.1 1.4c-1.7-.8-3.2-2.3-4-4l1.4-2.1-3.6-3.6Z" />}
-    </svg>
-  );
-}
+const services=[["Generative AI Development","/services/generative-ai-development-company"],["AI Agent Development","/services/ai-agents-and-automation-solutions"],["AI App Development","/services/ai-app-development-company"],["AI Chatbot Development","/services/ai-chatbot-development-company"],["Machine Learning Development","/services/machine-learning"],["NLP Development","/services/nlp-development"],["RAG as a Service","/services/rag-as-a-service"],["AI Outsourcing","/services/outsourcing-ai-development"]];
 
-export default async function SiteFooter() {
-  const settings = await sanityClient.fetch<{contactEmail?: string; phone?: string; address?: string} | null>(`*[_type == "siteSettings"][0]{contactEmail, phone, address}`).catch(() => null);
-  const email = settings?.contactEmail || "apconsultancy36@gmail.com";
-  const phone = settings?.phone || "+91 63510 58011";
-  const address = settings?.address || "Ahmedabad, Gujarat, India";
-  return (
-    <footer className="footer">
-      <div className="container footer-shell">
-        <div className="footer-top">
-          <div className="footer-brand-block">
-            <Link href="/" className="brand" aria-label="Kodrise home">
-              <span className="footer-mark" aria-hidden="true">k↗</span>
-              kodrise<span className="brand-period">.</span>
-            </Link>
-            <p>People power possibilities.</p>
-          </div>
-          <div className="footer-cta">
-            <span>Have a team in mind?</span>
-            <Link href="/contact" className="button primary">Start a conversation <span aria-hidden="true">↗</span></Link>
-          </div>
-        </div>
-        <div className="footer-grid">
-          <address className="footer-contact">
-            <span className="footer-label">GET IN TOUCH</span>
-            <a href={`mailto:${email}`}><FooterIcon type="mail" />{email}</a>
-            <a href={`tel:${phone.replace(/[^\d+]/g, "")}`}><FooterIcon type="phone" />{phone}</a>
-            <span>{address}</span>
-          </address>
-          <nav className="footer-nav" aria-label="Explore">
-            <span className="footer-label">EXPLORE</span>
-            <Link href="/services">Services</Link>
-            <Link href="/case-studies">Case studies</Link>
-            <Link href="/about">About Us</Link>
-          </nav>
-          <nav className="footer-nav" aria-label="For talent">
-            <span className="footer-label">FOR TALENT</span>
-            <Link href="/devresources">Developer bench</Link>
-            <Link href="/careers">Careers</Link>
-            <Link href="/contact">Contact Us</Link>
-          </nav>
-        </div>
-        <div className="footer-bottom">
-          <span>© {new Date().getFullYear()} Kodrise. Built around people.</span>
-          <a href="#main" className="back-top">Back to top <span aria-hidden="true">↑</span></a>
-        </div>
+export default function SiteFooter() {
+  return <footer className={styles.footer}>
+      <div className={styles.contactBand}>
+        <div className={styles.contactPrompt}><div className={styles.contactHeading}><span>Do you have a project in mind?</span><h2>Talk to the experts.</h2></div><Link className={styles.contactCta} href="/contact">Tell us about your project <span aria-hidden="true">↗</span></Link></div>
+        <div className={styles.contactInfo}><h2>Get in Touch</h2><p>We’d love to resolve your queries with personalized assistance.</p><a href="mailto:hr@kodrise.com"><span>Chat with us</span><strong>hr@kodrise.com</strong></a><a href="tel:+919302752700"><span>Let’s discuss via call</span><strong>+91 9302752700</strong></a><a href="https://wa.me/919302752700"><span>Reach us on WhatsApp</span><strong>Chat with us ↗</strong></a></div>
       </div>
-    </footer>
-  );
+      <div className={styles.grid}>
+        <div className={styles.brandColumn}><Link href="/" aria-label="Kodrise home"><BrandLogo width={208} height={64} /></Link><p>Building digital products and engineering teams for what comes next.</p><a href="mailto:hr@kodrise.com">hr@kodrise.com</a><a href="tel:+919302752700">+91 9302752700</a></div>
+        <nav aria-label="AI services"><h3>AI Services</h3>{services.map(([label,href])=><Link key={label} href={href}>{label}</Link>)}</nav>
+        <nav aria-label="Quick links"><h3>Quick Links</h3><Link href="/portfolio">Portfolio</Link><Link href="/careers">Career / Current Openings</Link><Link href="/about">About Us</Link><Link href="/case-studies">Clientele</Link><Link href="/contact">Become a Partner</Link><Link href="/contact">Location</Link><Link href="/contact">Contact Us</Link></nav>
+        <div className={styles.newsletter}><h3>Kodrise Newsletter</h3><p>Get the latest insights and updates straight to your inbox.</p><form action="/contact"><label htmlFor="footer-email">Your email address</label><div><input id="footer-email" type="email" name="email" placeholder="name@company.com" required/><button type="submit" aria-label="Subscribe">↗</button></div></form><div className={styles.socials}><a href="https://www.linkedin.com/" aria-label="LinkedIn">in</a><a href="https://www.facebook.com/" aria-label="Facebook">f</a><a href="https://www.instagram.com/" aria-label="Instagram">◎</a></div></div>
+      </div>
+      <div className={styles.locations}><span>USA</span><span>Canada</span><span>UK</span><span>Australia</span><span>Saudi Arabia</span><span>UAE</span><span>India</span><span>Netherlands</span></div>
+      <div className={styles.bottom}><span>© {new Date().getFullYear()} Kodrise Pvt. Ltd. All Rights Reserved.</span><div><Link href="/contact">Terms of Use</Link><Link href="/contact">Privacy</Link><Link href="/sitemap.xml">Sitemap</Link><Link href="/contact">Beware of Scams</Link></div></div>
+  </footer>;
 }

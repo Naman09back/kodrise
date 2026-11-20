@@ -1,34 +1,50 @@
 import type { Metadata } from "next";
-import InteriorHero from "../interior-hero";
-import ContactSection from "../contact-section";
-import { getSitePage } from "../../sanity/lib/pages";
+import { getSitePage, getSitePageMetadata } from "@/sanity/lib/pages";
+import { sanityClient } from "@/sanity/lib/client";
+import { urlForImage } from "@/sanity/lib/image";
+import ContactExperience from "./contact-experience";
 
-export const metadata: Metadata = {
-  title: "Contact Us — Kodrise",
-  description: "Tell Kodrise about your team, technology requirements, and next project.",
+type ContactAsset = {
+  slot: string;
+  title?: string;
+  alt?: string;
+  image?: unknown;
 };
 
-export default async function ContactPage({
-  searchParams,
-}: {
-  searchParams: Promise<{ role?: string; developer?: string }>;
-}) {
-  const query = await searchParams;
-  const page = await getSitePage("contact");
-  const role = query.role ?? "";
-  const developer = query.developer ?? "";
-  return (
-    <main id="main" className="contact-page">
-      <InteriorHero
-        label="Contact Us"
-        title={page?.heroTitle || "Let’s build"}
-        accent={page?.heroAccent || "your next chapter."}
-        description={page?.heroDescription || "Tell us about your team, the technology you work with, and where you want to go. Start with what you know."}
-      />
-      <ContactSection
-        initialTechnology={role}
-        initialMessage={developer ? `Developer profile requested: ${developer}\n\nPlease share the project details and timeline for this role.` : ""}
-      />
-    </main>
+const CONTACT_ASSETS_QUERY = `
+  *[_type == "siteAsset" && slot in [
+    "about-testimonial-distri-logo",
+    "about-testimonial-autism-logo",
+    "about-testimonial-labayh-logo",
+    "about-testimonial-cosmetic-choice-logo",
+    "about-testimonial-clinical-trial-logo",
+    "about-testimonial-same-day-dispatch-logo"
+  ]]{slot, title, alt, image {asset->{_id, url}, crop, hotspot}}
+`;
+
+export const dynamic = "force-dynamic";
+
+export async function generateMetadata(): Promise<Metadata> {
+  return getSitePageMetadata("contact", "/contact");
+}
+
+export default async function ContactPage() {
+  const [page, assets] = await Promise.all([
+    getSitePage("contact"),
+    sanityClient.fetch<ContactAsset[]>(CONTACT_ASSETS_QUERY).catch(() => []),
+  ]);
+
+  const images = Object.fromEntries(
+    assets
+      .filter((asset) => asset.image)
+      .map((asset) => [
+        asset.slot,
+        {
+          src: urlForImage(asset.image).auto("format").fit("max").url(),
+          alt: asset.alt || asset.title || "Kodrise client",
+        },
+      ]),
   );
+
+  return <ContactExperience page={page} images={images} />;
 }

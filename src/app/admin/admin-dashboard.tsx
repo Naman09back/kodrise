@@ -5,31 +5,51 @@ import {signOut} from "next-auth/react";
 import SeoDashboard from "./seo-dashboard";
 
 type RecordItem = Record<string, unknown> & {_id: string; _type: string};
-type Content = {services: RecordItem[]; caseStudies: RecordItem[]; developers: RecordItem[]; jobs: RecordItem[]; pages: RecordItem[]; leads: RecordItem[]; applications: RecordItem[]; testimonials: RecordItem[]; settings: RecordItem[]};
+type Content = {services: RecordItem[]; industries: RecordItem[]; insights: RecordItem[]; resources: RecordItem[]; faqs: RecordItem[]; caseStudies: RecordItem[]; developers: RecordItem[]; jobs: RecordItem[]; pages: RecordItem[]; leads: RecordItem[]; applications: RecordItem[]; testimonials: RecordItem[]; settings: RecordItem[]; assets: RecordItem[]};
 type AccountUser = {_id: string; email: string; role: "admin" | "editor"; isActive?: boolean; createdAt?: string};
 
 const sections = [
-  ["services", "Services"],
-  ["caseStudies", "Case studies"],
+  ["pages", "Homepage & SEO"],
+  ["services", "AI & digital services"],
+  ["caseStudies", "Portfolio / case studies"],
+  ["industries", "Industries we serve"],
+  ["insights", "Insights & news"],
+  ["resources", "Resources / tools & guides"],
+  ["faqs", "Frequently asked questions"],
   ["developers", "Developer profiles"],
   ["jobs", "Careers / job openings"],
-  ["pages", "Website pages"],
+  ["assets", "Media library"],
   ["leads", "Contact enquiries"],
   ["applications", "Job applications"],
-  ["testimonials", "Testimonials"],
+  ["testimonials", "Client testimonials"],
   ["settings", "Contact details"],
 ] as const;
 
+const createContentTypes: Record<string, {type: string; label: string; fields: Array<{name: string; multiline?: boolean}>}> = {
+  services: {type: "service", label: "service", fields: [{name: "title"}]},
+  caseStudies: {type: "caseStudy", label: "case study", fields: [{name: "title"}, {name: "client"}]},
+  industries: {type: "industry", label: "industry", fields: [{name: "title"}]},
+  insights: {type: "insight", label: "article", fields: [{name: "title"}]},
+  resources: {type: "resource", label: "resource", fields: [{name: "title"}, {name: "excerpt", multiline: true}, {name: "url"}]},
+  faqs: {type: "faq", label: "FAQ", fields: [{name: "question"}, {name: "answer", multiline: true}]},
+  developers: {type: "developer", label: "developer profile", fields: [{name: "profileId"}, {name: "role"}, {name: "name"}]},
+};
+
 const editableFields: Record<string, string[]> = {
-  service: ["title", "eyebrow", "lead", "overview", "skills", "useCases", "benefits"],
-  caseStudy: ["client", "title", "stack", "outcome"],
-  developer: ["profileId", "name", "role", "experience", "skills", "availability", "engagement"],
+  service: ["title", "eyebrow", "lead", "overview", "skills", "useCases", "benefits", "isPublished", "imageFile"],
+  caseStudy: ["client", "title", "slug", "stack", "outcome", "description", "challenge", "solution", "technologies", "isFeatured", "isPublished", "imageFile"],
+  industry: ["title", "description", "isFeatured", "imageFile"],
+  insight: ["title", "slug", "category", "excerpt", "body", "author", "publishedAt", "url", "isPublished", "isFeatured", "imageFile"],
+  resource: ["title", "category", "excerpt", "url", "isPublished", "order", "imageFile"],
+  faq: ["question", "answer", "order", "isPublished"],
+  developer: ["profileId", "name", "role", "experience", "skills", "availability", "engagement", "isPublished"],
   job: ["title", "location", "employmentType", "summary", "skills", "isOpen"],
-  sitePage: ["title", "heroTitle", "heroAccent", "heroDescription", "announcement", "primaryCta", "secondaryCta", "careerIntroTitle", "careerIntroDescription", "careerDisciplineOneTitle", "careerDisciplineOneDescription", "careerDisciplineTwoTitle", "careerDisciplineTwoDescription", "careerDisciplineThreeTitle", "careerDisciplineThreeDescription", "careerDisciplineFourTitle", "careerDisciplineFourDescription", "seoTitle", "seoDescription", "seoNoIndex", "seoImageFile"],
+  sitePage: ["title", "family", "isPublished", "contentHtml", "heroTitle", "heroAccent", "heroDescription", "heroImageFile", "announcement", "primaryCta", "primaryCtaUrl", "secondaryCta", "secondaryCtaUrl", "careerIntroTitle", "careerIntroDescription", "careerDisciplineOneTitle", "careerDisciplineOneDescription", "careerDisciplineTwoTitle", "careerDisciplineTwoDescription", "careerDisciplineThreeTitle", "careerDisciplineThreeDescription", "careerDisciplineFourTitle", "careerDisciplineFourDescription", "detailSolutionsHeading", "detailSolutionsIntro", "detailSolutionsItems", "detailCapabilitiesHeading", "detailCapabilitiesIntro", "detailCapabilityItems", "detailIndustriesIntro", "detailIndustryItems", "detailWhyIntro", "detailWhyItems", "detailCreativeHeading", "detailCreativeIntro", "detailCreativeItems", "detailTechnologyIntro", "detailTechnologyItems", "detailCaseStudiesIntro", "detailFaqItems", "seoTitle", "seoDescription", "seoNoIndex", "seoImageFile"],
   lead: ["status"],
   jobApplication: ["status"],
   testimonial: ["name", "role", "company", "quote", "rating", "status", "featured"],
   siteSettings: ["siteName", "tagline", "contactEmail", "phone", "address", "linkedin", "x", "instagram"],
+  siteAsset: ["slot", "title", "alt", "sourcePath", "imageFile"],
 };
 
 function labelFor(field: string) {
@@ -38,12 +58,22 @@ function labelFor(field: string) {
 
 function editorField(record: RecordItem, field: string) {
   const value = valueFor(record[field]);
-  if (["isOpen", "seoNoIndex", "featured"].includes(field)) return <label className="admin-check" key={field}><input defaultChecked={Boolean(value)} name={field} type="checkbox" /> {field === "isOpen" ? "Open for applications" : field === "featured" ? "Feature on the website" : "No index"}</label>;
-  if (field === "seoImageFile") return <label key={field}>Social sharing image<input name={field} type="file" accept="image/png,image/jpeg,image/webp" /><small>PNG, JPG or WebP up to 5 MB.</small></label>;
+  if (field === "imageFile" || field === "heroImageFile" || field === "seoImageFile") {
+    const imageField = field === "heroImageFile" ? "heroImage" : field === "seoImageFile" ? "seoImage" : "image";
+    const image = record[imageField] as Record<string, unknown> | undefined;
+    const asset = image?.asset as Record<string, unknown> | undefined;
+    return <label key={field}>{field === "heroImageFile" ? "Hero image" : field === "seoImageFile" ? "Social sharing image" : "Replace image"}<input name={field} type="file" accept="image/png,image/jpeg,image/webp" /><small>PNG, JPG or WebP up to 5 MB.</small>{asset?.url ? <img className="admin-image-preview" src={String(asset.url)} alt={String(record.alt || "Current image")} /> : null}</label>;
+  }
+  if (["isOpen", "isFeatured", "seoNoIndex", "featured", "isPublished"].includes(field)) {
+    const missing = record[field] === undefined;
+    const enabledByDefault = missing && ["isOpen", "isFeatured", "isPublished"].includes(field);
+    return <label className="admin-check" key={field}><input defaultChecked={missing ? enabledByDefault : Boolean(value)} name={field} type="checkbox" /> {field === "isOpen" ? "Open for applications" : field === "featured" || field === "isFeatured" ? "Feature on the website" : field === "isPublished" ? "Show on the website" : "No index"}</label>;
+  }
   if (field === "status") return <label key={field}>{labelFor(field)}<select defaultValue={String(value || "pending")} name={field}><option value="pending">Pending review</option><option value="approved">Approved</option><option value="rejected">Rejected</option></select></label>;
   if (field === "rating") return <label key={field}>{labelFor(field)}<select defaultValue={String(value || 5)} name={field}><option value="5">★★★★★</option><option value="4">★★★★☆</option><option value="3">★★★☆☆</option><option value="2">★★☆☆☆</option><option value="1">★☆☆☆☆</option></select></label>;
   const cleanLabel = field === "seoTitle" ? "Title" : field === "seoDescription" ? "Description" : labelFor(field);
-  return <label key={field}>{cleanLabel}{["skills", "useCases", "benefits", "heroDescription", "seoDescription"].includes(field) ? <textarea defaultValue={String(value)} name={field} rows={4} /> : <input defaultValue={String(value)} name={field} />}</label>;
+  const multiLineFields = ["skills", "useCases", "benefits", "heroDescription", "seoDescription", "description", "challenge", "solution", "excerpt", "contentHtml", "detailSolutionsIntro", "detailSolutionsItems", "detailCapabilitiesIntro", "detailCapabilityItems", "detailIndustriesIntro", "detailIndustryItems", "detailWhyIntro", "detailWhyItems", "detailCreativeIntro", "detailCreativeItems", "detailTechnologyIntro", "detailTechnologyItems", "detailCaseStudiesIntro", "detailFaqItems"];
+  return <label key={field}>{cleanLabel}{multiLineFields.includes(field) ? <textarea defaultValue={String(value)} name={field} rows={field === "contentHtml" ? 24 : field.endsWith("Items") ? 9 : 4} spellCheck={field !== "contentHtml"} /> : <input defaultValue={String(value)} name={field} />}</label>;
 }
 
 function valueFor(value: unknown) {
@@ -88,6 +118,10 @@ export default function AdminDashboard({initialContent, isAdmin, sessionEmail}: 
   const [accountMessage, setAccountMessage] = useState("");
   const [testimonialFormOpen, setTestimonialFormOpen] = useState(false);
   const [jobFormOpen, setJobFormOpen] = useState(false);
+  const [assetFormOpen, setAssetFormOpen] = useState(false);
+  const [contentFormOpen, setContentFormOpen] = useState(false);
+  const [pageHtmlCache, setPageHtmlCache] = useState<Record<string, string>>({});
+  const [pageSearch, setPageSearch] = useState("");
 
   useEffect(() => {
     if (activeSection !== "account" || !isAdmin) return;
@@ -126,14 +160,35 @@ export default function AdminDashboard({initialContent, isAdmin, sessionEmail}: 
   }
 
   const records = content[activeSection as keyof Content] || [];
+  const pageQuery = pageSearch.trim().toLowerCase();
+  const visibleRecords = activeSection !== "pages" ? records : pageQuery
+    ? records.filter((record) => `${record.title || ""} ${record.path || ""} ${record.family || ""}`.toLowerCase().includes(pageQuery)).slice(0, 100)
+    : records.slice(0, 50);
   const active = records.find((record) => record._id === activeId);
+
+  function toggleRecord(record: RecordItem, open: boolean) {
+    setActiveId(open ? null : record._id);
+    setMessage("");
+    setSaveState("idle");
+    if (open || record._type !== "sitePage" || Object.hasOwn(pageHtmlCache, record._id)) return;
+    setSaveState("saving");
+    setMessage("Loading page content…");
+    fetch(`/api/admin/content?id=${encodeURIComponent(record._id)}`)
+      .then((response) => response.ok ? response.json() : Promise.reject(new Error("Unable to load page HTML.")))
+      .then((result) => {
+        setPageHtmlCache((current) => ({...current, [record._id]: String(result.item?.contentHtml || "")}));
+        setSaveState("idle");
+        setMessage("Editing the selected page");
+      })
+      .catch((error: Error) => {setSaveState("error"); setMessage(error.message);});
+  }
 
   async function save(record: RecordItem, formData: FormData) {
     const patch: Record<string, unknown> = {};
     for (const field of editableFields[record._type] || []) {
-      if (field === "seoImageFile") continue;
+      if (field === "seoImageFile" || field === "imageFile") continue;
       const raw = formData.get(field);
-      patch[field] = ["isOpen", "seoNoIndex", "featured"].includes(field) ? raw === "on" : field === "rating" ? Number(raw || 5) : ["skills", "useCases", "benefits"].includes(field) ? String(raw || "").split("\n").map((item) => item.trim()).filter(Boolean) : raw;
+      patch[field] = ["isOpen", "isFeatured", "seoNoIndex", "featured", "isPublished"].includes(field) ? raw === "on" : field === "rating" ? Number(raw || 5) : ["skills", "useCases", "benefits", "technologies"].includes(field) ? String(raw || "").split("\n").map((item) => item.trim()).filter(Boolean) : raw;
     }
     const imageFile = formData.get("seoImageFile");
     if (record._type === "sitePage" && imageFile instanceof File && imageFile.size > 0) {
@@ -144,6 +199,24 @@ export default function AdminDashboard({initialContent, isAdmin, sessionEmail}: 
       if (!uploadResponse.ok) { setMessage(uploadResult.error || "Image upload failed."); return; }
       patch.seoImage = {_type: "image", asset: {_type: "reference", _ref: uploadResult.assetId}};
     }
+    const heroImageFile = formData.get("heroImageFile");
+    if (record._type === "sitePage" && heroImageFile instanceof File && heroImageFile.size > 0) {
+      const uploadData = new FormData();
+      uploadData.append("file", heroImageFile);
+      const uploadResponse = await fetch("/api/admin/upload", {method: "POST", body: uploadData});
+      const uploadResult = await uploadResponse.json().catch(() => ({}));
+      if (!uploadResponse.ok) { setMessage(uploadResult.error || "Image upload failed."); return; }
+      patch.heroImage = {_type: "image", asset: {_type: "reference", _ref: uploadResult.assetId}};
+    }
+    const siteImageFile = formData.get("imageFile");
+    if (["service", "caseStudy", "industry", "insight", "resource", "siteAsset"].includes(record._type) && siteImageFile instanceof File && siteImageFile.size > 0) {
+      const uploadData = new FormData();
+      uploadData.append("file", siteImageFile);
+      const uploadResponse = await fetch("/api/admin/upload", {method: "POST", body: uploadData});
+      const uploadResult = await uploadResponse.json().catch(() => ({}));
+      if (!uploadResponse.ok) { setMessage(uploadResult.error || "Image upload failed."); return; }
+      patch.image = {_type: "image", asset: {_type: "reference", _ref: uploadResult.assetId}};
+    }
     setSaveState("saving");
     setMessage("Saving changes…");
     const response = await fetch("/api/admin/update", {method: "POST", headers: {"Content-Type": "application/json"}, body: JSON.stringify({_id: record._id, _type: record._type, patch})});
@@ -153,6 +226,7 @@ export default function AdminDashboard({initialContent, isAdmin, sessionEmail}: 
       setMessage(result.error || "Save failed. Add SANITY_API_WRITE_TOKEN to .env.local.");
       return;
     }
+    if (record._type === "sitePage" && typeof patch.contentHtml === "string") setPageHtmlCache((current) => ({...current, [record._id]: patch.contentHtml as string}));
     setContent((current) => ({...current, [activeSection]: current[activeSection as keyof Content].map((item) => {
       if (item._id !== record._id) return item;
       const updated = {...item, ...patch};
@@ -224,6 +298,45 @@ export default function AdminDashboard({initialContent, isAdmin, sessionEmail}: 
     setMessage("Job opening published");
   }
 
+  async function addAsset(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    const form = event.currentTarget;
+    setMessage("Uploading imageâ€¦");
+    const response = await fetch("/api/admin/assets", {method: "POST", body: new FormData(form)});
+    const result = await response.json().catch(() => ({}));
+    if (!response.ok) { setMessage(result.error || "Unable to upload image."); return; }
+    setContent((current) => ({...current, assets: [result.asset, ...current.assets]}));
+    form.reset();
+    setAssetFormOpen(false);
+    setMessage("Image added to the media library");
+  }
+
+  async function addContent(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    const definition = createContentTypes[activeSection];
+    if (!definition) return;
+    const fields = Object.fromEntries(new FormData(event.currentTarget).entries());
+    setMessage(`Creating ${definition.label}…`);
+    const response = await fetch("/api/admin/content", {method: "POST", headers: {"Content-Type": "application/json"}, body: JSON.stringify({type: definition.type, fields})});
+    const result = await response.json().catch(() => ({}));
+    if (!response.ok) { setMessage(result.error || `Unable to create ${definition.label}.`); return; }
+    setContent((current) => ({...current, [activeSection]: [result.item as RecordItem, ...(current[activeSection as keyof Content] as RecordItem[])]}));
+    setActiveId(String(result.item._id));
+    setContentFormOpen(false);
+    setMessage(`${labelFor(definition.label)} created as a draft`);
+  }
+
+  async function deleteContent(record: RecordItem) {
+    const title = String(record.title || record.question || record.role || "this content");
+    if (!window.confirm(`Delete “${title}” permanently? This cannot be undone.`)) return;
+    const response = await fetch("/api/admin/content", {method: "DELETE", headers: {"Content-Type": "application/json"}, body: JSON.stringify({id: record._id})});
+    const result = await response.json().catch(() => ({}));
+    if (!response.ok) { setMessage(result.error || "Unable to delete this content."); return; }
+    setContent((current) => ({...current, [activeSection]: (current[activeSection as keyof Content] as RecordItem[]).filter((item) => item._id !== record._id)}));
+    setActiveId(null);
+    setMessage(`${labelFor(record._type)} deleted`);
+  }
+
   function openContentRecord(id?: string) {
     setActiveSection("pages");
     setActiveId(id || null);
@@ -246,7 +359,7 @@ export default function AdminDashboard({initialContent, isAdmin, sessionEmail}: 
         <p>Update website content without opening Sanity’s multi-pane editor.</p>
         <nav aria-label="Content sections">
           {sections.map(([key, label]) => (
-            <button className={activeSection === key ? "active" : ""} key={key} onClick={() => {setActiveSection(key); setActiveId(null); setMessage("");}} type="button">
+            <button className={activeSection === key ? "active" : ""} key={key} onClick={() => {setActiveSection(key); setActiveId(null); setMessage(""); setContentFormOpen(false);}} type="button">
               <span>{label}</span><small>{content[key as keyof Content].length}</small>
             </button>
           ))}
@@ -283,13 +396,16 @@ export default function AdminDashboard({initialContent, isAdmin, sessionEmail}: 
           </section>}
           {accountMessage && <p className="admin-account-message" role="status">{accountMessage}</p>}
         </section> : <div className="admin-records">
+          {activeSection === "pages" && <div className="admin-page-search"><label htmlFor="admin-page-search">Find a page by title, route, or family</label><input id="admin-page-search" type="search" value={pageSearch} onChange={(event) => setPageSearch(event.target.value)} placeholder="/resources/blogs or AI Services" /><small>Showing {visibleRecords.length} of {records.length} pages{!pageQuery && records.length > visibleRecords.length ? " · search to find another page" : ""}</small></div>}
+          {createContentTypes[activeSection] && <section className="admin-add-testimonial"><div><span className="admin-kicker">SANITY CONTENT</span><h3>Add {createContentTypes[activeSection].label}</h3><p>New items stay unpublished until you switch on their website visibility.</p></div>{contentFormOpen ? <form className="admin-testimonial-form" onSubmit={addContent}>{createContentTypes[activeSection].fields.map((field) => <label key={field.name}>{labelFor(field.name)}{field.multiline ? <textarea name={field.name} required rows={4} /> : <input name={field.name} type={field.name === "url" ? "url" : "text"} required />}</label>)}<div className="admin-save-row"><button className="button primary" type="submit">Create draft</button><button className="admin-cancel" type="button" onClick={() => setContentFormOpen(false)}>Cancel</button></div></form> : <button className="button secondary" type="button" onClick={() => setContentFormOpen(true)}>+ Add {createContentTypes[activeSection].label}</button>}</section>}
           {activeSection === "testimonials" && <section className="admin-add-testimonial"><div><span className="admin-kicker">DASHBOARD ONLY</span><h3>Add a testimonial</h3><p>Create a review here; it will stay pending until you approve it.</p></div>{testimonialFormOpen ? <form className="admin-testimonial-form" onSubmit={addTestimonial}><label>Name<input name="name" required minLength={2} /></label><label>Role<input name="role" /></label><label>Company<input name="company" /></label><label>Rating<select name="rating" defaultValue="5"><option value="5">★★★★★</option><option value="4">★★★★☆</option><option value="3">★★★☆☆</option><option value="2">★★☆☆☆</option><option value="1">★☆☆☆☆</option></select></label><label className="admin-testimonial-quote">Review<textarea name="quote" required rows={4} /></label><label>Status<select name="status" defaultValue="pending"><option value="pending">Pending review</option><option value="approved">Approved</option></select></label><label className="admin-check"><input name="featured" type="checkbox" /> Feature on the website</label><div className="admin-save-row"><button className="button primary" type="submit">Add review</button><button className="admin-cancel" type="button" onClick={() => setTestimonialFormOpen(false)}>Cancel</button></div></form> : <button className="button secondary" type="button" onClick={() => setTestimonialFormOpen(true)}>+ Add testimonial</button>}</section>}
           {activeSection === "jobs" && <section className="admin-add-testimonial"><div><span className="admin-kicker">CAREERS</span><h3>Post a job opening</h3><p>Published openings appear on the Careers page immediately.</p></div>{jobFormOpen ? <form className="admin-testimonial-form" onSubmit={addJob}><label>Job title<input name="title" required placeholder="e.g. Senior React Engineer" /></label><label>Location<input name="location" placeholder="Remote / New Delhi" /></label><label>Employment type<select name="employmentType" defaultValue="Full-time"><option>Full-time</option><option>Part-time</option><option>Contract</option><option>Internship</option></select></label><label className="admin-check"><input name="isOpen" type="checkbox" defaultChecked /> Publish opening</label><label className="admin-testimonial-quote">Summary<textarea name="summary" required rows={4} placeholder="What will this person work on?" /></label><label className="admin-testimonial-quote">Skills, one per line<textarea name="skills" rows={3} placeholder="React&#10;TypeScript&#10;Next.js" /></label><div className="admin-save-row"><button className="button primary" type="submit">Publish job</button><button className="admin-cancel" type="button" onClick={() => setJobFormOpen(false)}>Cancel</button></div></form> : <button className="button secondary" type="button" onClick={() => setJobFormOpen(true)}>+ Post a job opening</button>}</section>}
-          {records.map((record) => {
+          {activeSection === "assets" && <section className="admin-add-testimonial"><div><span className="admin-kicker">MEDIA LIBRARY</span><h3>Manage website images</h3><p>Upload or replace images used across the website. Use a stable key for each image.</p></div>{assetFormOpen ? <form className="admin-testimonial-form" onSubmit={addAsset} encType="multipart/form-data"><label>Image key<input name="slot" required pattern="[a-z0-9][a-z0-9-]{0,119}" placeholder="homepage-hero" /></label><label>Internal title<input name="title" required placeholder="Homepage hero" /></label><label>Alternative text<input name="alt" required placeholder="Describe the image" /></label><label>Source URL or path<input name="sourcePath" placeholder="Optional image URL to replace on mirrored pages" /></label><label>Image file<input name="file" type="file" accept="image/png,image/jpeg,image/webp" required /></label><div className="admin-save-row"><button className="button primary" type="submit">Upload image</button><button className="admin-cancel" type="button" onClick={() => setAssetFormOpen(false)}>Cancel</button></div></form> : <button className="button secondary" type="button" onClick={() => setAssetFormOpen(true)}>+ Add homepage image</button>}</section>}
+          {visibleRecords.map((record) => {
             const open = record._id === activeId;
             return <article className={`admin-record ${open ? "open" : ""}`} key={record._id}>
-              <button className="admin-record-trigger" type="button" onClick={() => {setActiveId(open ? null : record._id); setMessage(""); setSaveState("idle");}}>
-                <span><strong>{String(record.title || record.name || record.client || record.role || record.profileId || record.siteName || record.contactEmail || "Contact details")}</strong><small>{String(record.eyebrow || record.stack || record.experience || record.location || record.contactEmail || record._type)}</small></span>
+              <button className="admin-record-trigger" type="button" onClick={() => toggleRecord(record, open)}>
+                <span><strong>{String(record.title || record.name || record.client || record.role || record.profileId || record.siteName || record.contactEmail || "Contact details")}</strong><small>{String(record.path || record.eyebrow || record.stack || record.experience || record.location || record.contactEmail || record._type)}{record.family ? ` · ${String(record.family)}` : ""}</small></span>
                 <span className="admin-record-actions">
                   {activeSection === "pages" && <small className={`seo-score seo-score-${seoScore(record) >= 75 ? "good" : seoScore(record) >= 50 ? "mid" : "low"}`}>SEO {seoScore(record)}/100</small>}
                   <b>{open ? "−" : "+"}</b>
@@ -312,10 +428,11 @@ export default function AdminDashboard({initialContent, isAdmin, sessionEmail}: 
                   </div>
                   {editableFields[record._type].map((field) => editorField(record, field))}
                 </> : record._type === "sitePage" ? <>
-                  <div className="admin-editor-group"><span className="admin-editor-group-title">Page content</span>{editableFields[record._type].filter((field) => !field.startsWith("seo") && field !== "seoImageFile" && (!field.startsWith("career") || record.pageKey === "careers")).map((field) => editorField(record, field))}</div>
+                  <div className="admin-editor-group"><span className="admin-editor-group-title">Page content</span>{editableFields[record._type].filter((field) => !field.startsWith("seo") && field !== "seoImageFile" && (!field.startsWith("career") || record.pageKey === "careers") && !(record.path === "/services/generative-ai-development-company" && field === "contentHtml")).map((field) => editorField(field === "contentHtml" && pageHtmlCache[record._id] !== undefined ? {...record, contentHtml: pageHtmlCache[record._id]} : record, field))}</div>
+                  {record.path === "/services/generative-ai-development-company" && <div className="admin-editor-group"><span className="admin-editor-group-title">Generative AI page sections</span>{editableFields.sitePage.filter((field) => field.startsWith("detail")).map((field) => editorField(record, field))}</div>}
                   <div className="admin-editor-group admin-seo-group"><span className="admin-editor-group-title">SEO</span>{["seoTitle", "seoDescription", "seoNoIndex", "seoImageFile"].map((field) => editorField(record, field))}<div className="admin-seo-assessments"><div className="admin-seo-assessments-heading"><strong>SEO analysis</strong><b className={`seo-score seo-score-${seoScore(record) >= 75 ? "good" : seoScore(record) >= 50 ? "mid" : "low"}`}>{seoScore(record)}/100</b></div>{seoChecks(record).map((check) => <div className="admin-seo-check" key={check.label}><span className={`admin-seo-light ${check.status}`} aria-label={check.status} /><span><strong>{check.label}</strong><small>{check.detail}</small></span></div>)}</div></div>
                 </> : editableFields[record._type].map((field) => editorField(record, field))}
-                <div className="admin-save-row"><button className="button primary admin-save" type="submit" disabled={saveState === "saving"}>{saveState === "saving" ? "Saving…" : saveState === "saved" ? "Changes saved" : "Save changes →"}</button>{record._type === "testimonial" && <button className="admin-delete" type="button" onClick={(event) => {event.preventDefault(); event.stopPropagation(); void deleteTestimonial(record);}}>Delete review</button>}{record._type === "jobApplication" && <button className="admin-delete" type="button" onClick={(event) => {event.preventDefault(); event.stopPropagation(); void deleteApplication(record);}}>Delete application</button>}{record._type === "job" && <button className="admin-delete" type="button" onClick={(event) => {event.preventDefault(); event.stopPropagation(); void deleteJob(record);}}>Delete job opening</button>}{saveState === "error" && <span className="admin-save-status error" role="status">Save failed</span>}{saveState === "saved" && <span className="admin-save-status success" role="status">Published to the website</span>}</div>
+                <div className="admin-save-row"><button className="button primary admin-save" type="submit" disabled={saveState === "saving"}>{saveState === "saving" ? "Saving…" : saveState === "saved" ? "Changes saved" : "Save changes →"}</button>{record._type === "testimonial" && <button className="admin-delete" type="button" onClick={(event) => {event.preventDefault(); event.stopPropagation(); void deleteTestimonial(record);}}>Delete review</button>}{record._type === "jobApplication" && <button className="admin-delete" type="button" onClick={(event) => {event.preventDefault(); event.stopPropagation(); void deleteApplication(record);}}>Delete application</button>}{record._type === "job" && <button className="admin-delete" type="button" onClick={(event) => {event.preventDefault(); event.stopPropagation(); void deleteJob(record);}}>Delete job opening</button>}{["service", "caseStudy", "industry", "insight", "resource", "faq", "developer", "siteAsset"].includes(record._type) && <button className="admin-delete" type="button" onClick={(event) => {event.preventDefault(); event.stopPropagation(); void deleteContent(record);}}>Delete content</button>}{saveState === "error" && <span className="admin-save-status error" role="status">Save failed</span>}{saveState === "saved" && <span className="admin-save-status success" role="status">Published to the website</span>}</div>
               </form>}
             </article>;
           })}

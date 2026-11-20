@@ -10,6 +10,25 @@
   -webkit-backdrop-filter: blur(18px) saturate(150%);
   transition: background 0.35s ease, border-color 0.35s ease;
 }
+.header[data-services-page="true"] { position: sticky; height: 68px; padding-top: 0; background: #292934 !important; border-bottom-color: transparent; backdrop-filter: none; -webkit-backdrop-filter: none; }
+.header[data-services-page="true"] .inner { width: 100%; max-width: none; height: 68px; padding-inline: 12px; background: #292934 !important; border: 0; border-radius: 0; box-shadow: none; transform: none; }
+.header[data-services-page="true"] .brand, .header[data-services-page="true"] .brand svg { color: #fff; }
+.header[data-services-page="true"] .brand > span { color: #ed3e43; }
+.header[data-services-page="true"] .groupTrigger { color: #fff; font-size: 14px; }
+.header[data-services-page="true"] .contact { border: 0; border-radius: 0; background: #ed3e43; box-shadow: none; }
+.header[data-services-page="true"] .navigation { flex: 1; justify-content: flex-end; gap: clamp(2px, 1vw, 16px); }
+.header[data-services-page="true"] .servicesNavLink { min-width: 0; padding: 10px clamp(5px, .8vw, 15px); color: #fff; white-space: nowrap; background: transparent; font-size: clamp(11px, .9vw, 16px); }
+.header[data-services-page="true"] .servicesNavLink span { display: none; }
+.header[data-services-page="true"] .servicesNavLink:hover { color: #fff; background: transparent; }
+.header[data-services-page="true"] .brand { font-size: 32px; }
+.header[data-services-page="true"] .brand svg { display: none; }
+.header[data-services-page="true"] .contact { flex: 0 0 auto; margin-left: 12px; padding: 0; font-size: 16px; background: transparent; display: flex; flex-direction: row; gap: 14px; }
+.trialLabel { padding: 14px 16px; color: #ffda00; border: 2px solid #654e84; font-weight: 700; white-space: nowrap; }
+.header[data-services-page="true"] .contact > span:last-child { padding: 18px 24px; background: #ee3e43; white-space: nowrap; }
+.header[data-services-page="true"] .navigation { display: flex !important; visibility: visible; opacity: 1; position: static; flex-direction: row; align-items: center; background: transparent; border: 0; box-shadow: none; }
+.header[data-services-page="true"] .servicesNavLink { display: inline-flex; align-items: center; }
+@media (max-width: 1100px) { .header[data-services-page="true"] .trialLabel { display: none; } .header[data-services-page="true"] .servicesNavLink { padding-inline: 5px; } }
+.header[data-services-page="true"][data-scrolled="true"] { background: #292934; }
 .header:not(.adminHeader)[data-scrolled="true"] {
   background: transparent;
   border-bottom-color: transparent;
@@ -89,6 +108,43 @@
   align-items: center;
   gap: 8px;
 }
+.navGroup { position: relative; }
+.groupTrigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  border: 0;
+  padding: 12px 17px;
+  background: transparent;
+  color: #32343d;
+  font: inherit;
+  font-size: 12px;
+  cursor: pointer;
+}
+.groupTrigger span { color: #eb3f43; font-size: 13px; transition: transform .2s; }
+.navGroup:hover .groupTrigger span,
+.groupTrigger[aria-expanded="true"] span { transform: rotate(180deg); }
+.dropdown {
+  position: absolute;
+  top: calc(100% + 12px);
+  left: 0;
+  display: grid;
+  min-width: 210px;
+  padding: 10px;
+  border: 1px solid #e6e6e6;
+  background: #fff;
+  box-shadow: 0 18px 38px #00103d18;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-6px);
+  transition: opacity .2s, transform .2s;
+}
+.dropdown::before { content: ""; position: absolute; top: -13px; left: 0; right: 0; height: 13px; }
+.navGroup:hover .dropdown,
+.dropdown[data-open="true"] { opacity: 1; pointer-events: auto; transform: translateY(0); }
+.dropdownLink { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 12px 11px; color: #32343d; font-size: 12px; }
+.dropdownLink:hover { background: #eb3f430d; color: #eb3f43; }
+.dropdownLink > span:last-child { color: #eb3f43; }
 .link {
   position: relative;
   padding: 12px 17px;
@@ -254,6 +310,12 @@
     border-radius: 14px;
     box-shadow: 0 18px 25px #1917140d;
   }
+  .navGroup { width: 100%; }
+  .groupTrigger { justify-content: space-between; width: 100%; padding: 14px 13px; font-size: 14px; text-align: left; }
+  .dropdown { position: static; display: none; min-width: 0; padding: 0 8px 5px 22px; border: 0; box-shadow: none; opacity: 1; transform: none; }
+  .dropdown::before { display: none; }
+  .dropdown[data-open="true"] { display: grid; pointer-events: auto; }
+  .dropdownLink { padding: 10px 13px; }
   .navigation[data-open="true"] {
     display: flex;
   }
@@ -293,4 +355,41 @@
   .menuIcon i {
     transition: none;
   }
+}
+
+/* Reference-inspired Kodrise navigation: clean white header, navy wordmark,
+   and a red consultation action. */
+.header:not(.adminHeader) {
+  height: 78px;
+  padding-top: 0;
+  background: #fff;
+  border-bottom: 1px solid #e6e6e6;
+  backdrop-filter: none;
+}
+.header:not(.adminHeader) .inner,
+.header:not(.adminHeader)[data-scrolled="true"] .inner {
+  height: 78px;
+  transform: none;
+  background: #fff;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+.header:not(.adminHeader) .brand { color: #00103d; font-size: 27px; letter-spacing: -1.4px; }
+.header:not(.adminHeader) .brand svg { color: #eb3f43; }
+.header:not(.adminHeader) .brand > span { color: #eb3f43; }
+.header:not(.adminHeader) .link { border-radius: 0; color: #32343d; font-size: 12px; }
+.header:not(.adminHeader) .link:hover,
+.header:not(.adminHeader) .link[aria-current="page"] { color: #eb3f43; background: transparent; }
+.header:not(.adminHeader) .link::after { background: #eb3f43; }
+.header:not(.adminHeader) .contact { margin-left: 18px; border: 0; border-radius: 0; background: #eb3f43; box-shadow: none; }
+.header:not(.adminHeader) .contact:hover,
+.header:not(.adminHeader) .contact[aria-current="page"] { background: #c92f35; }
+
+@media (max-width: 800px) {
+  .header:not(.adminHeader) { height: 72px; }
+  .header:not(.adminHeader) .inner { height: 72px; }
+  .header:not(.adminHeader) .toggle { border-color: #d7dbe2; border-radius: 0; background: #fff; color: #00103d; }
+  .header:not(.adminHeader) .navigation { background: #fff; border-color: #e6e6e6; border-radius: 0; }
+  .header:not(.adminHeader) .contact { background: #eb3f43; }
 }

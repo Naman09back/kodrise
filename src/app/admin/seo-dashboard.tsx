@@ -21,15 +21,16 @@ const tabs = [
 function text(value: unknown) { return typeof value === "string" ? value : ""; }
 
 function scoreFor(page: SeoDocument) {
-  const title = text(page.seoTitle || page.title).trim();
-  const description = text(page.seoDescription || page.heroDescription).trim();
+  const isHome = page.pageKey === "home";
+  const title = text(page.seoTitle || (isHome ? "Kodrise | AI-native products and engineering teams" : page.title)).trim();
+  const description = text(page.seoDescription || (isHome ? "Kodrise builds AI-native products, enterprise software, cloud platforms, and high-performing digital engineering teams." : page.heroDescription)).trim();
   const words = `${text(page.heroDescription)} ${text(page.overview)}`.trim().split(/\s+/).filter(Boolean).length;
   const checks = [
     title.length >= 30 && title.length <= 60 ? 25 : title ? 10 : 0,
     description.length >= 120 && description.length <= 160 ? 25 : description ? 10 : 0,
     page.heroTitle || page.title ? 10 : 0,
-    words >= 250 ? 15 : words >= 100 ? 9 : 0,
-    page.seoImage || page.image ? 10 : 0,
+    words >= 250 ? 15 : words >= 100 ? 9 : words >= 50 ? 5 : 0,
+    page.seoImage || page.image || isHome ? 10 : 0,
     page.slug || page.pageKey ? 5 : 0,
     page.seoNoIndex !== true ? 10 : 0,
   ];
@@ -65,7 +66,7 @@ export default function SeoDashboard({content, onOpenContent}: {content: SeoCont
   const configuredFeatures = [
     ["XML sitemap", true, "Generated from the site routes"],
     ["Robots directives", pages.length > 0, "Indexing controls are available per page"],
-    ["Open Graph", pageScores.some(({page}) => Boolean(page.seoImage || page.image)), "Add a social image to improve sharing"],
+    ["Open Graph", pageScores.some(({page}) => Boolean(page.seoImage || page.image || page.pageKey === "home")), "Add a social image to improve sharing"],
     ["Structured data", true, "Base WebPage schema is active"],
   ] as const;
 
@@ -101,7 +102,16 @@ export default function SeoDashboard({content, onOpenContent}: {content: SeoCont
   }
 
   function auditScore(page: AuditPage) {
-    return [page.title, page.description, page.h1.length > 0, page.canonical, page.ogTitle, page.schemaCount > 0, page.missingAlt === 0].filter(Boolean).length * 14;
+    const checks = [
+      Boolean(page.title) && page.title.length >= 30 && page.title.length <= 60,
+      Boolean(page.description) && page.description.length >= 120 && page.description.length <= 160,
+      page.h1.length === 1,
+      Boolean(page.canonical),
+      Boolean(page.ogTitle),
+      page.schemaCount > 0,
+      page.missingAlt === 0,
+    ];
+    return Math.round(checks.filter(Boolean).length / checks.length * 100);
   }
 
   function auditActions(site: AuditPage, competitor: AuditPage) {
@@ -144,7 +154,7 @@ export default function SeoDashboard({content, onOpenContent}: {content: SeoCont
 
     {activeTab === "technical" && <article className="seo-panel seo-tool-panel"><span className="admin-kicker">TECHNICAL SEO AUDIT</span><h3>Make the site easy to crawl.</h3><p className="seo-panel-lead">A practical checklist based on the technical controls available in this CMS.</p><div className="technical-check-grid">{configuredFeatures.map(([label, good, detail]) => <div className="technical-check" key={label}><span className={good ? "technical-check-icon good" : "technical-check-icon"}>{good ? "✓" : "!"}</span><div><strong>{label}</strong><p>{detail}</p></div><span className={good ? "technical-status good" : "technical-status"}>{good ? "Healthy" : "Review"}</span></div>)}</div></article>}
 
-    {activeTab === "competitors" && <article className="seo-panel seo-tool-panel seo-audit-panel"><span className="admin-kicker">COMPETITIVE INTELLIGENCE</span><h3>Compare public pages without an API.</h3><p className="seo-panel-lead">Enter your URL and a competitor URL. Kodrise will read the public HTML and compare titles, descriptions, headings, schema, images, and crawl response.</p><form className="seo-audit-form" onSubmit={runManualAudit}><label>Your site URL<input type="url" value={auditSiteUrl} onChange={(event) => setAuditSiteUrl(event.target.value)} placeholder="https://your-site.com" /></label><label>Competitor URL<input type="url" value={auditCompetitorUrl} onChange={(event) => setAuditCompetitorUrl(event.target.value)} placeholder="https://competitor.com" /></label><button className="button primary" type="submit">Run manual audit</button></form>{auditStatus && <p className="seo-integration-status" role="status">{auditStatus}</p>}{auditResult && <><div className="seo-audit-results">{([['Your site', auditResult.site], ['Competitor', auditResult.competitor]] as const).map(([label, page]) => <div className="seo-audit-card" key={label}><div className="seo-audit-card-head"><div><span className="admin-kicker">{label}</span><strong>{new URL(page.url).hostname}</strong></div><b>{auditScore(page)}/98</b></div><div className="seo-audit-metrics"><span><b>Title</b>{page.title || "Missing"}</span><span><b>Description</b>{page.description ? `${page.description.length} characters` : "Missing"}</span><span><b>Headings</b>{page.h1.length} H1 · {page.h2.length} H2</span><span><b>Content</b>{page.wordCount} words</span><span><b>Schema</b>{page.schemaCount ? "Present" : "Missing"}</span><span><b>Images</b>{page.imageCount} · {page.missingAlt} missing alt</span><span><b>Response</b>{page.responseMs}ms · HTTP {page.status}</span></div></div>)}</div><div className="seo-audit-diff"><span className="admin-kicker">WHAT TO DO NEXT</span><ul className="seo-audit-actions">{auditActions(auditResult.site, auditResult.competitor).map((action) => <li key={action}>{action}</li>)}</ul></div></> }<small className="seo-disclaimer">This manual audit does not need Semrush, Ahrefs, Moz, or another provider. It cannot estimate private rankings, traffic, or backlinks without their data.</small></article>}
+    {activeTab === "competitors" && <article className="seo-panel seo-tool-panel seo-audit-panel"><span className="admin-kicker">COMPETITIVE INTELLIGENCE</span><h3>Compare public pages without an API.</h3><p className="seo-panel-lead">Enter your URL and a competitor URL. Kodrise will read the public HTML and compare titles, descriptions, headings, schema, images, and crawl response.</p><form className="seo-audit-form" onSubmit={runManualAudit}><label>Your site URL<input type="url" value={auditSiteUrl} onChange={(event) => setAuditSiteUrl(event.target.value)} placeholder="https://your-site.com" /></label><label>Competitor URL<input type="url" value={auditCompetitorUrl} onChange={(event) => setAuditCompetitorUrl(event.target.value)} placeholder="https://competitor.com" /></label><button className="button primary" type="submit">Run manual audit</button></form>{auditStatus && <p className="seo-integration-status" role="status">{auditStatus}</p>}{auditResult && <><div className="seo-audit-results">{([['Your site', auditResult.site], ['Competitor', auditResult.competitor]] as const).map(([label, page]) => <div className="seo-audit-card" key={label}><div className="seo-audit-card-head"><div><span className="admin-kicker">{label}</span><strong>{new URL(page.url).hostname}</strong></div><b>{auditScore(page)}/100</b></div><div className="seo-audit-metrics"><span><b>Title</b>{page.title || "Missing"}</span><span><b>Description</b>{page.description ? `${page.description.length} characters` : "Missing"}</span><span><b>Headings</b>{page.h1.length} H1 · {page.h2.length} H2</span><span><b>Content</b>{page.wordCount} words</span><span><b>Schema</b>{page.schemaCount ? "Present" : "Missing"}</span><span><b>Images</b>{page.imageCount} · {page.missingAlt} missing alt</span><span><b>Response</b>{page.responseMs}ms · HTTP {page.status}</span></div></div>)}</div><div className="seo-audit-diff"><span className="admin-kicker">WHAT TO DO NEXT</span><ul className="seo-audit-actions">{auditActions(auditResult.site, auditResult.competitor).map((action) => <li key={action}>{action}</li>)}</ul></div></> }<small className="seo-disclaimer">This manual audit does not need Semrush, Ahrefs, Moz, or another provider. It cannot estimate private rankings, traffic, or backlinks without their data.</small></article>}
 
     {(activeTab === "performance" || activeTab === "keywords") && <article className="seo-panel seo-tool-panel seo-integration-panel"><div className="seo-integration-graphic"><svg viewBox="0 0 180 120" aria-hidden="true"><path d="M12 102 48 76l25 12 34-45 25 18 36-45" /><circle cx="48" cy="76" r="4" /><circle cx="107" cy="43" r="4" /><circle cx="168" cy="16" r="4" /></svg></div><div><span className="admin-kicker">{activeTab === "performance" ? "SEARCH CONSOLE & ANALYTICS" : "RANK TRACKING"}</span><h3>{tabs.find(([key]) => key === activeTab)?.[1]}</h3><p className="seo-panel-lead">Save your configuration now. Live data will appear after the relevant provider is connected.</p><div className="seo-integration-fields"><select value={integrationProvider} onChange={(event) => {setIntegrationProvider(event.target.value); setIntegrationStatus("");}}><option value="">Select a provider</option>{providerOptions.map((provider) => <option key={provider}>{provider}</option>)}</select><input value={integrationValue} onChange={(event) => {setIntegrationValue(event.target.value); setIntegrationStatus("");}} placeholder={activeTab === "keywords" ? "Add a target keyword" : "Paste a provider endpoint or property ID"} /><button className="button primary" type="button" onClick={saveIntegrationValue}>Save configuration</button></div>{integrationStatus && <p className="seo-integration-status" role="status">{integrationStatus}</p>}<small className="seo-disclaimer">No rankings or traffic numbers are fabricated while integrations are disconnected.</small></div></article>}
   </section>;

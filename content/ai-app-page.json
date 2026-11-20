@@ -1,0 +1,89 @@
+{
+  "hero": {
+    "eyebrow": "AUTOMATING THE FUTURE",
+    "title": "AI App Development Company",
+    "accent": "Intelligent apps, built for everyday impact.",
+    "description": "Design and build custom AI applications that automate workflows, improve decisions, personalize user experiences, and fit your existing systems.",
+    "cta": "Let's Start",
+    "ctaUrl": "/contact?service=ai-app-development"
+  },
+  "solutions": {
+    "heading": "Our AI-powered Mobile Apps Development Services",
+    "intro": "Kodrise builds practical AI applications that make daily work easier, support users, and fit naturally into the tools and workflows your business already uses.",
+    "items": [
+      {"title":"Custom AI-powered Mobile App Development","description":"Build tailored AI applications that automate business processes, improve decisions, and solve industry-specific operational challenges."},
+      {"title":"Computer Vision App Development","description":"Create vision apps for image recognition, object detection, visual inspection, document scanning, and real-time video intelligence."},
+      {"title":"AI-powered Mobile App Development","description":"Add personalization, recommendations, smart search, image recognition, and conversational support to iOS and Android experiences."},
+      {"title":"AI Recommendation Engine Development","description":"Personalize products, content, services, and user journeys based on behavior, preferences, and real-time signals."},
+      {"title":"AI App Modernization & Upgrade Services","description":"Upgrade existing applications with AI capabilities, automation, analytics, intelligent search, and more useful user experiences."},
+      {"title":"AI App Maintenance & Optimization","description":"Monitor, improve, secure, and optimize AI applications to maintain accuracy, speed, reliability, and long-term value."},
+      {"title":"Generative AI App Development","description":"Create GenAI apps for content generation, document workflows, customer support, knowledge search, and personalized digital experiences."},
+      {"title":"AI Chatbot & Virtual Assistant Apps","description":"Develop assistants that answer questions, qualify leads, support users, and automate conversations across channels."},
+      {"title":"Machine Learning App Development","description":"Build applications that learn from data, detect patterns, forecast outcomes, and improve business workflows over time."}
+    ]
+  },
+  "capabilities": {
+    "heading": "Our AI App Development Process",
+    "intro": "We deliver reliable AI applications through a clear process that connects product goals, user experience, data, and the right AI technology.",
+    "items": [
+      {"title":"Discovery Workshop","description":"Understand your product vision and user needs, define the use case, and identify the AI capabilities that support your roadmap.","image":"ai-app-discovery"},
+      {"title":"Business Analytics","description":"Explore the market, user behavior, business data, and existing systems to shape a valuable, feasible application plan.","image":"ai-app-analytics"},
+      {"title":"UI/UX Design","description":"Turn user stories and requirements into intuitive journeys, wireframes, and visual designs for the AI experience.","image":"ai-app-ux"},
+      {"title":"Application Development","description":"Build the product and integrate selected AI models, data workflows, APIs, and platform capabilities through iterative delivery.","image":"ai-app-development"},
+      {"title":"Testing & Deployment","description":"Validate usability, security, model quality, performance, and reliability, then launch to the right cloud and mobile environments.","image":"ai-app-testing"},
+      {"title":"Training, Support & Maintenance","description":"Keep the application current with user training, ongoing updates, performance monitoring, and continuous optimization.","image":"ai-app-support"}
+    ]
+  },
+  "industries": {
+    "intro": "AI applications help teams improve decisions, automate routine work, and create more personal digital experiences. We tailor each product to its industry and users.",
+    "items": [
+      {"title":"Finance","description":"Support fraud detection, risk analysis, customer service, forecasting, and compliant financial workflows."},
+      {"title":"eCommerce","description":"Personalize discovery, recommendations, service, inventory decisions, and digital shopping experiences."},
+      {"title":"Media & Entertainment","description":"Improve content discovery, audience insights, metadata, creative workflows, and user engagement."},
+      {"title":"Healthcare","description":"Assist care teams with documentation, patient communication, diagnostics support, and administrative workflows."},
+      {"title":"Logistics & Supply Chain","description":"Support demand forecasting, shipment visibility, fleet operations, and exception management."},
+      {"title":"Real Estate","description":"Improve property search, client support, document handling, portfolio insights, and operations."}
+    ]
+  },
+  "why": {
+    "intro": "We build AI applications with scalable architecture, thoughtful product design, and practical integrations so teams can turn an idea into a dependable digital product.",
+    "items": [
+      {"title":"Modern AI technology stack","description":"Choose current AI frameworks, cloud infrastructure, APIs, and mobile technologies for each product’s needs."},
+      {"title":"Global development support","description":"Collaborate with an experienced team through clear communication, steady delivery, and ongoing assistance."},
+      {"title":"Agile delivery process","description":"Build through focused iterations, testing, reviews, and refinements that lower delivery risk."},
+      {"title":"Custom application solutions","description":"Shape the application around real users, business workflows, operational goals, and enterprise systems."}
+    ]
+  },
+  "caseStudiesIntro": "Explore Kodrise projects showing how intelligent applications can solve business challenges, automate workflows, and create better user experiences.",
+  "creative": {
+    "heading": "Expert AI Application Development for Scalable Mobile Solutions",
+    "intro": "We connect AI technologies with mobile and web products to make useful information, automation, and personalized experiences available to users wherever they work.",
+    "items": [
+      {"title":"Predictive analytics apps","description":"Use business data and machine learning to forecast trends, customer behavior, risks, demand, and operational performance."},
+      {"title":"IoT-based app development","description":"Connect AI and IoT to analyze device data, automate operations, and create responsive connected experiences."},
+      {"title":"Virtual assistants and chatbots","description":"Support users with conversational experiences that streamline operations and deliver timely, personalized help."},
+      {"title":"Computer vision and recognition","description":"Interpret images and video for scanning, classification, visual inspection, and real-time product features."}
+    ]
+  },
+  "technology": {
+    "intro": "We select technologies based on your application, data, devices, integration needs, and long-term product goals.",
+    "groups": [
+      {"title":"Deep Learning Frameworks","items":["PyTorch","TensorFlow","Keras","Caffe2","Chainer"]},
+      {"title":"AI & Machine Learning","items":["Core ML","OpenAI","Hugging Face","scikit-learn","XGBoost"]},
+      {"title":"Mobile Development","items":["iOS","Android","Flutter","React Native","Kotlin"]},
+      {"title":"Cloud & Integration","items":["AWS","Google Cloud","Microsoft Azure","REST APIs","Docker"]}
+    ]
+  },
+  "faqs": [
+    {"question":"What is AI app development?","answer":"AI app development is the process of building software that uses artificial intelligence to interpret data, recognize patterns, make predictions, understand language, or personalize an experience."},
+    {"question":"What kinds of AI applications can you build?","answer":"We build AI-powered mobile and web applications, virtual assistants, recommendation systems, predictive analytics tools, computer vision products, and AI features integrated into existing apps."},
+    {"question":"How do AI applications work?","answer":"AI applications process data using selected models and algorithms, then use the results to power features such as predictions, search, recommendations, automation, and natural language interactions."},
+    {"question":"Can you add AI features to an existing mobile application?","answer":"Yes. We can assess your application and integrate suitable AI features while preserving the existing product experience and systems."},
+    {"question":"How do you choose the AI technology for an app?","answer":"We consider the product use case, available data, response quality, privacy, latency, device requirements, integration effort, and operating cost before recommending an approach."},
+    {"question":"Can AI apps integrate with cloud services?","answer":"Yes. AI applications can use AWS, Google Cloud, Azure, or hybrid infrastructure depending on your security, scalability, and deployment requirements."},
+    {"question":"How long does it take to build an AI app?","answer":"A focused MVP may take several weeks, while a production application with custom models, integrations, and platform requirements can take several months. Scope and data readiness determine the schedule."},
+    {"question":"How much does an AI application cost?","answer":"Cost depends on product scope, data, model requirements, integrations, platforms, and compliance needs. We define an estimate after reviewing your goals and requirements."},
+    {"question":"How do you test AI application quality?","answer":"We evaluate the application against real user scenarios, checking model quality, usability, security, performance, reliability, and the behavior of integrations."},
+    {"question":"Do you provide support after an AI app launches?","answer":"Yes. Ongoing support can include monitoring, updates, model and data improvements, security maintenance, and optimization based on product usage."}
+  ]
+}

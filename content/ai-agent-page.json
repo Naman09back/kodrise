@@ -1,0 +1,88 @@
+{
+  "hero": {
+    "eyebrow": "BUILD AUTONOMOUS WORKFLOWS WITH AI AGENTS",
+    "title": "AI Agent Development Company",
+    "accent": "AI agents that move work forward.",
+    "description": "Design, build, and deploy AI agents that understand goals, use approved tools, and complete real business workflows with the right human oversight.",
+    "cta": "Talk to an AI Agent Expert",
+    "ctaUrl": "/contact?service=ai-agent-development"
+  },
+  "solutions": {
+    "heading": "Our AI Agent & Automation Service Offerings",
+    "intro": "From a focused assistant to a coordinated multi-agent system, Kodrise builds dependable agents around your processes, data, and security requirements.",
+    "items": [
+      {"title":"AI Agent Consulting","description":"Identify high-value workflows, assess readiness, and define a practical roadmap with success measures and clear boundaries for agent autonomy."},
+      {"title":"Custom AI Agent Development","description":"Build agents that reason through tasks, use approved tools, and work with your business data to resolve specific operational needs."},
+      {"title":"Autonomous AI Agent Development","description":"Automate multi-step processes with agents that plan actions, respond to changing context, and request human review when needed."},
+      {"title":"Multi-Agent System Development","description":"Coordinate specialized agents that share context, delegate subtasks, and work together under a controlled orchestration layer."},
+      {"title":"AI Workflow Automation","description":"Connect agent intelligence to everyday workflows, from document handling and service requests to research and internal operations."},
+      {"title":"Enterprise AI Agent Development","description":"Deliver production-ready agent systems with access controls, observability, governance, and integrations designed for enterprise use."},
+      {"title":"Conversational AI Agent Development","description":"Create natural language assistants that understand intent, retain useful context, and complete tasks across digital channels."},
+      {"title":"AI Copilot Development","description":"Give teams a context-aware copilot that can retrieve trusted information and assist with the work they already do."},
+      {"title":"Voice AI Agent Development","description":"Build voice experiences for customer service and operations, with natural conversations and reliable escalation to people."},
+      {"title":"AI Agent Integration Services","description":"Connect agents to APIs, CRMs, ERPs, knowledge bases, and other business systems with secure, auditable tool access."},
+      {"title":"Retrieval-Augmented AI Agents","description":"Ground agent decisions in current, permission-aware business knowledge with retrieval and citations from trusted sources."},
+      {"title":"AI Agent Testing, Deployment & Monitoring","description":"Evaluate task success, safety, latency, and cost, then deploy with monitoring and continuous quality improvements."}
+    ]
+  },
+  "capabilities": {
+    "heading": "AI Agent Development Process We Follow",
+    "intro": "A structured path helps move an agent from an idea to a dependable part of your business. We validate each stage with your users and stakeholders.",
+    "items": [
+      {"title":"Strategy and Use-Case Discovery","description":"Map the current workflow, user needs, data sources, risks, and measurable outcomes. Select a clear use case that is valuable and feasible.","image":"ai-agent-discovery"},
+      {"title":"Architecture and Workflow Design","description":"Define agent responsibilities, tools, memory, handoffs, human approval points, and the orchestration pattern for the workflow.","image":"ai-agent-architecture"},
+      {"title":"Model Selection and Prompt Engineering","description":"Choose models and design instructions, tool schemas, and evaluation criteria that balance quality, speed, privacy, and cost.","image":"ai-agent-models"},
+      {"title":"Integration, Testing and Deployment","description":"Connect approved systems, test real scenarios and edge cases, then deploy with monitoring, access controls, and an improvement plan.","image":"ai-agent-deployment"}
+    ]
+  },
+  "industries": {
+    "intro": "Agents can take repetitive coordination off people’s plates while keeping teams informed and in control. We adapt their tools, knowledge, and approval steps to each industry.",
+    "items": [
+      {"title":"Healthcare","description":"Assist with scheduling, documentation, patient communication, and administrative coordination while respecting privacy and clinical review."},
+      {"title":"Banking, Finance & Insurance","description":"Support document review, service requests, compliance research, claims workflows, and internal knowledge retrieval with auditable controls."},
+      {"title":"Retail & eCommerce","description":"Help customers find products, support order questions, coordinate catalog operations, and assist merchandising teams."},
+      {"title":"Education","description":"Assist learners and staff with course information, student services, knowledge search, and routine administrative tasks."},
+      {"title":"Logistics & Supply Chain","description":"Coordinate shipment updates, exception handling, vendor communication, and information across operational systems."},
+      {"title":"Real Estate","description":"Qualify inquiries, retrieve property details, schedule viewings, and support documentation workflows for agents and clients."}
+    ]
+  },
+  "why": {
+    "intro": "AI agents need more than a capable model. We bring product design and engineering together to make agents useful, predictable, secure, and maintainable in real operating environments.",
+    "items": [
+      {"title":"Built for a defined job","description":"We start with a clear workflow and measurable outcome so the agent has a useful scope and a way to evaluate success."},
+      {"title":"People stay in control","description":"Approval gates, escalation paths, and permission limits keep teams involved when decisions need review."},
+      {"title":"Connected to your systems","description":"Secure integrations let agents work with the tools and knowledge your business already relies on."},
+      {"title":"Ready for ongoing improvement","description":"Monitoring and evaluation help teams understand performance and improve the agent as workflows change."}
+    ]
+  },
+  "caseStudiesIntro": "Explore selected Kodrise work across AI-enabled products and automation. We shape each engagement around its users, operational needs, and desired outcomes.",
+  "creative": {
+    "heading": "Core Capabilities of Our AI Agent Solutions",
+    "intro": "A production agent combines language understanding with dependable tools, trusted context, safeguards, and clear visibility into what it is doing.",
+    "items": [
+      {"title":"Natural language understanding","description":"Interpret user requests and identify intent, entities, constraints, and the next useful action."},
+      {"title":"Context-aware responses","description":"Use conversation history and permission-aware business knowledge to respond with relevant information."},
+      {"title":"Task automation and tool use","description":"Call approved APIs and business tools to complete multi-step tasks within defined permissions."},
+      {"title":"Human escalation and evaluation","description":"Hand off uncertain or sensitive requests and use monitoring to continuously assess quality and outcomes."}
+    ]
+  },
+  "technology": {
+    "intro": "We choose the models and engineering tools that fit your data, infrastructure, security needs, and agent workflows.",
+    "groups": [
+      {"title":"Foundation Models","items":["OpenAI GPT","Google Gemini","Anthropic Claude","Meta Llama","Mistral"]},
+      {"title":"Agent Frameworks","items":["LangGraph","LlamaIndex","Semantic Kernel","AutoGen","CrewAI"]},
+      {"title":"Data & Retrieval","items":["PostgreSQL","Pinecone","Weaviate","Redis","Elasticsearch"]},
+      {"title":"Cloud & Integration","items":["AWS","Microsoft Azure","Google Cloud","REST APIs","Kubernetes"]}
+    ]
+  },
+  "faqs": [
+    {"question":"What is an AI agent?","answer":"An AI agent is a software system that can interpret a goal, use tools or data, and take a sequence of actions to complete a task, within boundaries set by its designers."},
+    {"question":"How is an AI agent different from a chatbot?","answer":"A chatbot primarily responds in conversation. An agent can also plan and take actions through approved tools, such as retrieving records, updating systems, or coordinating workflow steps."},
+    {"question":"Can AI agents work with our existing software?","answer":"Yes. Agents can connect to systems such as CRMs, ERPs, ticketing tools, databases, and internal APIs, subject to access controls and integration readiness."},
+    {"question":"How do you keep AI agents safe and reliable?","answer":"We define limited permissions, validate tool inputs and outputs, add approval steps for sensitive actions, test edge cases, and monitor agent behavior after deployment."},
+    {"question":"Can an agent hand work to a person?","answer":"Yes. Human review and escalation can be built into the workflow when the agent is uncertain, encounters a sensitive request, or reaches a decision that needs approval."},
+    {"question":"How long does AI agent development take?","answer":"A focused proof of concept can take a few weeks. A production system with multiple integrations, governance, and thorough evaluation typically takes longer depending on scope and data readiness."},
+    {"question":"What does an AI agent need to access our business knowledge?","answer":"It can use permission-aware search and retrieval over approved documents, databases, or knowledge platforms, so responses and actions are grounded in relevant business context."},
+    {"question":"How do you measure an AI agent’s performance?","answer":"We define task-specific measures such as completion rate, accuracy, escalation rate, response time, user satisfaction, safety, and operating cost."}
+  ]
+}

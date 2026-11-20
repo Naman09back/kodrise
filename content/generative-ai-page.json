@@ -1,0 +1,94 @@
+{
+  "hero": {
+    "eyebrow": "DON'T WAIT, JUST CREATE — WITH GENERATIVE AI",
+    "title": "Generative AI Development Company",
+    "accent": "Build secure AI that gets real work done.",
+    "description": "Build secure generative AI solutions that automate workflows, generate more useful responses, and turn business data into actionable insight for startups and enterprises.",
+    "cta": "Book Your Free Consultation!",
+    "ctaUrl": "/contact?service=generative-ai"
+  },
+  "solutions": {
+    "heading": "Our Comprehensive Suite of Generative AI Development Solutions",
+    "intro": "Generative AI helps businesses create content, access knowledge, automate workflows, and improve decisions. Kodrise combines large language models, retrieval, multimodal AI, and enterprise integrations to build secure solutions around your data and operations.",
+    "items": [
+      {"title":"Generative AI Consulting","description":"Identify valuable use cases, assess feasibility and data readiness, and define a practical implementation roadmap aligned with your goals, security needs, and measures of success."},
+      {"title":"Custom Generative AI Applications","description":"Build purpose-designed applications for research, customer support, knowledge management, document processing, content creation, and operational assistance."},
+      {"title":"LLM Development and Integration","description":"Integrate commercial or open-source language models into your products and enterprise systems while balancing response quality, performance, privacy, and operating cost."},
+      {"title":"Retrieval-Augmented Generation","description":"Connect language models to verified documents, databases, and knowledge repositories so responses can be relevant, contextual, and grounded in trusted information."},
+      {"title":"Generative AI Chatbots","description":"Create assistants that answer questions, find business information, support customers, qualify leads, and handle conversations across web, mobile, and workplace channels."},
+      {"title":"AI Copilot Development","description":"Give employees, sales teams, developers, and service professionals an AI assistant tailored to the research, writing, analysis, and tasks they handle every day."},
+      {"title":"AI Agent Development","description":"Build agents that interpret requests, plan actions, use approved tools, and complete multi-step workflows within defined permissions and human approval controls."},
+      {"title":"Multimodal AI Development","description":"Create solutions that work across text, images, audio, video, and documents for visual analysis, voice experiences, content generation, and multimodal search."},
+      {"title":"Generative AI Model Fine-Tuning","description":"Adapt existing models with domain-specific examples and instructions to improve relevance, terminology, output consistency, and performance for specialist tasks."},
+      {"title":"Enterprise Knowledge Management","description":"Turn scattered company information into searchable AI knowledge systems that help people find policies, procedures, research, and operational answers."},
+      {"title":"Generative AI System Integration","description":"Connect AI capabilities with CRM, ERP, HR, commerce, cloud, and legacy systems through secure APIs and data connectors that fit existing workflows."},
+      {"title":"AI Testing, Deployment, and Monitoring","description":"Evaluate accuracy, safety, latency, and reliability, then deploy with ongoing monitoring for quality, cost, security, and model performance."}
+    ]
+  },
+  "capabilities": {
+    "heading": "End-to-End Generative AI Development Capabilities",
+    "intro": "Move from an early idea to a useful production system with a plan shaped around your business. Kodrise focuses on practical innovation, measurable outcomes, and solutions that can adapt as your needs change.",
+    "items": [
+      {"title":"Generative AI Discovery","description":"Find valuable opportunities by evaluating processes, user needs, available data, feasibility, risks, and expected outcomes. Focused proofs of concept test key assumptions early and support informed investment decisions.","image":"generative-ai-discovery"},
+      {"title":"GenAI Launchpad","description":"Compare and validate potential use cases through value assessment, rapid prototyping, model testing, and proof-of-concept development. Move promising ideas toward production with greater confidence.","image":"generative-ai-launchpad"},
+      {"title":"Generative AI Adoption","description":"Prepare your organization with implementation roadmaps, governance, data strategy, workforce enablement, and change management. Build readiness and scale successful use cases responsibly.","image":"generative-ai-adoption"},
+      {"title":"GenAI Enterprise Reinvention","description":"Rework business processes and customer experiences with AI strategy, opportunity mapping, solution design, system integration, and operational rollout for scalable outcomes.","image":"generative-ai-reinvention"}
+    ]
+  },
+  "industries": {
+    "intro": "Generative AI can support knowledge-intensive work, improve decisions, and create more personal digital experiences. We shape each solution around the data, workflows, and controls of its industry.",
+    "items": [
+      {"title":"Healthcare","description":"Support clinical documentation, medical summaries, patient communication, appointment assistance, and administrative workflows with privacy, accuracy, and human review in mind."},
+      {"title":"Banking, Finance & Insurance","description":"Help teams analyze documents, summarize policies, prepare reports, serve customers, and review potential fraud with security, governance, and auditability built in."},
+      {"title":"Retail & eCommerce","description":"Improve product descriptions, recommendations, customer support, merchandising content, campaign creation, and shopping assistance across commerce channels."},
+      {"title":"Manufacturing","description":"Make technical documentation, equipment knowledge, maintenance guidance, quality reporting, and production information easier for teams to use."},
+      {"title":"Logistics & Supply Chain","description":"Assist with shipment communication, vendor coordination, demand summaries, document processing, and exception management across complex operations."},
+      {"title":"Education & eLearning","description":"Enable learning assistants, lesson and assessment creation, student support, content summaries, and administrative automation for educators and learners."},
+      {"title":"Travel & Hospitality","description":"Improve itinerary planning, booking assistance, multilingual communication, guest services, review analysis, and personalized recommendations."},
+      {"title":"Real Estate","description":"Create property content, summarize documents, qualify leads, assist clients, and make property information easier to understand and act on."},
+      {"title":"Oil & Gas","description":"Support technical reporting, compliance documentation, operational knowledge retrieval, field assistance, safety summaries, and analysis."},
+      {"title":"Media & Entertainment","description":"Help creative teams with ideation, scripts, campaign content, audience analysis, metadata, and production workflows while keeping people in control."}
+    ]
+  },
+  "why": {
+    "intro": "Turn complex information into useful products and workflows. Kodrise brings product thinking and engineering together to help teams adopt generative AI with a clear purpose and a dependable path to production.",
+    "items": [
+      {"title":"GenAI industry expertise","description":"Our engineers pair current AI experience with practical problem-solving to design systems around your data, users, and business goals."},
+      {"title":"Clear collaboration","description":"Regular check-ins, shared decisions, and transparent delivery keep stakeholders aligned from discovery through launch."},
+      {"title":"Solutions built to scale","description":"We choose models and architectures to fit the use case, with a focus on security, maintainability, and long-term business value."},
+      {"title":"Ongoing improvement","description":"After launch, we can monitor quality, optimize performance, update knowledge, and adapt the solution as your needs evolve."}
+    ]
+  },
+  "caseStudiesIntro": "See how Kodrise teams apply intelligent technology to solve business challenges, improve user experiences, and deliver measurable value.",
+  "creative": {
+    "heading": "Generative AI Solutions for Modern Business",
+    "intro": "Generative AI can create and transform many kinds of content. We connect the right models to a specific business need, with people and quality controls in the loop.",
+    "items": [
+      {"title":"Text Generation","description":"Create useful conversations, summaries, and on-brand content with systems that account for context, tone, and intent."},
+      {"title":"Image Generation","description":"Explore visual concepts and produce brand-aligned imagery for marketing, design, and digital storytelling."},
+      {"title":"Video and Speech Generation","description":"Build engaging video content and natural voice experiences for communication, learning, and interactive media."},
+      {"title":"Data Augmentation","description":"Expand and enrich datasets to support model training, improve coverage, and help teams evaluate AI systems more effectively."}
+    ]
+  },
+  "technology": {
+    "intro": "We select proven tools and frameworks around the performance, privacy, scale, and integration needs of your solution.",
+    "groups": [
+      {"title":"Deep Learning Frameworks","items":["TensorFlow","PyTorch","Keras","Caffe","MXNet","Chainer","Theano","Torch","CNTK"]},
+      {"title":"Generative AI Models","items":["GPT","DALL·E","VQ-VAE","VAE","CycleGAN","Pix2Pix","DeepArt"]},
+      {"title":"Modules & Toolkits","items":["OpenAI","Fast.ai","TensorFlow","AllenNLP","NVIDIA","DeepMind Sonnet","Hugging Face Transformers"]},
+      {"title":"Neural Networks","items":["RNN","CNN","GAN","VAE","LSTM","Autoencoders","RBM","DBN"]}
+    ]
+  },
+  "faqs": [
+    {"question":"What are Generative AI development services?","answer":"They cover the design, development, integration, deployment, and monitoring of AI applications that create content, retrieve business knowledge, automate workflows, and support decisions."},
+    {"question":"What types of Generative AI solutions can businesses build?","answer":"Common solutions include chatbots, copilots, knowledge systems, document tools, content platforms, recommendation engines, multimodal applications, and agents for workflow automation."},
+    {"question":"How is a custom Generative AI solution different from an off-the-shelf tool?","answer":"A custom solution is built around your workflows, data, integrations, security requirements, and users. An off-the-shelf tool offers more standardized capabilities with less control."},
+    {"question":"What is retrieval-augmented generation?","answer":"RAG connects a language model to trusted documents and data so it can produce more contextual answers grounded in your organization's information."},
+    {"question":"Can Generative AI integrate with existing systems?","answer":"Yes. AI applications can connect with CRM, ERP, HR, commerce, cloud, and legacy systems through APIs, middleware, and secure data connectors."},
+    {"question":"How long does it take to develop a Generative AI application?","answer":"A proof of concept may take a few weeks, while a production-ready application can take several months. The schedule depends on scope, data readiness, integrations, testing, and security needs."},
+    {"question":"Which industries can use Generative AI?","answer":"Healthcare, finance, retail, manufacturing, logistics, education, travel, real estate, energy, and media can use generative AI for content, analysis, knowledge retrieval, and automation."},
+    {"question":"How do teams reduce inaccurate AI responses?","answer":"Use verified knowledge sources, RAG, structured prompts, output validation, confidence thresholds, human review, model evaluation, and continuous monitoring."},
+    {"question":"What happens after an AI solution is deployed?","answer":"Ongoing work can include performance monitoring, prompt improvements, knowledge updates, security reviews, cost tracking, evaluation, and user feedback analysis."},
+    {"question":"Why choose Kodrise for generative AI development?","answer":"Kodrise combines product design and engineering to build secure, scalable AI around real business needs, supporting discovery, development, integration, deployment, and ongoing improvement."}
+  ]
+}

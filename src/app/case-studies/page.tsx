@@ -1,1 +1,1 @@
-export {default, metadata} from "../portfolio/page";
+export {default, generateMetadata} from "../portfolio/page";

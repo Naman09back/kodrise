@@ -1180,6 +1180,7 @@ body { font-size: 16px; }
   opacity: 1 !important;
   pointer-events: auto !important;
 }
+body:has([data-cookie-consent-banner="true"]) .contact-floats { bottom: 96px; z-index: 1200; }
 .whatsapp-float,
 .teams-float {
   display: inline-flex !important;
@@ -1221,6 +1222,7 @@ body { font-size: 16px; }
 .teams-float:focus-visible { outline: 2px solid #1f1e24; outline-offset: 4px; }
 @media (max-width: 640px) {
   .contact-floats { right: 14px; bottom: 14px; gap: 8px; }
+  body:has([data-cookie-consent-banner="true"]) .contact-floats { bottom: 145px; }
   .whatsapp-float,
   .teams-float { width: 50px; height: 50px; min-height: 50px; padding: 0; justify-content: center; }
   .whatsapp-float span,

@@ -1,10 +1,17 @@
 "use client";
 
 import {useEffect} from "react";
+import {usePathname} from "next/navigation";
 import Lenis from "lenis";
 
 export default function SmoothScroll() {
+  const pathname = usePathname();
+
   useEffect(() => {
+    // The reference homepage owns a full-page iframe and already has its own
+    // scroll/interaction behavior. A second Lenis loop here causes visible
+    // jitter while the iframe is resizing and does not match the source site.
+    if (pathname?.startsWith("/admin") || pathname === "/" || pathname === "/overview" || pathname === "/reference" || pathname === "/resources") return;
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
     if (reducedMotion.matches) return;
     const lenis = new Lenis({duration: 1.05, smoothWheel: true, syncTouch: false});
@@ -32,6 +39,6 @@ export default function SmoothScroll() {
       window.cancelAnimationFrame(frame);
       lenis.destroy();
     };
-  }, []);
+  }, [pathname]);
   return null;
 }

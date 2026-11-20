@@ -1,0 +1,4 @@
+.frame { position: relative; display: block; flex: 0 0 var(--brand-logo-width, 163px); width: var(--brand-logo-width, 163px); height: var(--brand-logo-height, 50px); overflow: hidden; }
+.image { position: absolute; top: 50%; left: -5%; display: block; width: 110%; max-width: none; height: auto; aspect-ratio: 1; object-fit: contain; transform: translateY(-50%); }
+.light { mix-blend-mode: screen; }
+.dark { mix-blend-mode: multiply; }
