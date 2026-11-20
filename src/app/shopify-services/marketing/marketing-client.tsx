@@ -63,7 +63,7 @@ export default function ShopifyMarketingPage() {
 
     <section className={styles.retention} id="email-marketing">
       <div className={styles.retentionHeading}><div><span className={styles.kicker}>MORE WAYS TO REACH & RETAIN</span><h2>Keep Customers Coming Back</h2></div><p>We also help brands turn attention into ongoing customer relationships through targeted retention and engagement channels.</p></div>
-      <article className={styles.emailCard}><div className={styles.emailIcon} aria-hidden="true"><svg viewBox="0 0 64 64"><rect x="7" y="18" width="50" height="37" rx="3"/><path d="m9 21 23 18 23-18M20 18v-7h24v14"/></svg></div><div><span className={styles.cardIndex}>RETENTION MARKETING</span><h3>Email Marketing</h3><p>Turn your customer database into a growth channel with lifecycle campaigns, automations, promotions, and retention-focused email marketing.</p></div><ContactLink service="Email Marketing">Explore Email Marketing</ContactLink></article>
+      <article className={styles.emailCard}><div className={styles.emailIcon} aria-hidden="true"><svg viewBox="0 0 64 64"><rect x="7" y="18" width="50" height="37" rx="3"/><path d="m9 21 23 18 23-18M20 18v-7h24v14"/></svg></div><div><span className={styles.cardIndex}>RETENTION MARKETING</span><h3>Email Marketing</h3><p>Turn your customer database into a growth channel with lifecycle campaigns, automations, promotions, and retention-focused email marketing.</p></div><Link href="/shopify-services/email-marketing" className={styles.textLink}>Explore Email Marketing <span aria-hidden="true">{"\u2197"}</span></Link></article>
     </section>
 
     <section className={styles.capabilities} aria-labelledby="lifecycle-title">

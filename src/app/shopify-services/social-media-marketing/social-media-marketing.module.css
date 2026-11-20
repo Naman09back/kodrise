@@ -1,0 +1,14 @@
+.page{--red:#ed3f47}
+.page section[id]{scroll-margin-top:90px}
+.partnerBadge{position:absolute;right:3%;bottom:32px;display:flex;align-items:center;gap:12px;padding:13px 17px;background:#fff;color:#24242b;font-size:12px;line-height:1.35;box-shadow:0 8px 28px #0003}
+.partnerBadge img{display:block;width:108px;height:auto;object-fit:contain}
+.partnerBadge b{font-size:14px}
+.approach{padding-top:82px;padding-bottom:91px}
+.approachLink{display:inline-flex;align-items:center;gap:12px;margin-top:20px;color:#23242a;font-size:13px;font-weight:600;text-decoration:none}
+.approachLink span{color:var(--red);transition:transform .2s}
+.approachLink:hover span{transform:translate(3px,-3px)}
+.approachNote{margin-top:8px!important;font-size:15px!important}
+.strengthGrid{grid-template-columns:repeat(4,minmax(0,1fr))}
+.strengthGrid article{min-height:190px}
+@media(max-width:900px){.strengthGrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:700px){.partnerBadge{right:21px;bottom:18px;padding:9px 12px}.partnerBadge img{width:78px}.partnerBadge span{font-size:10px}.partnerBadge b{font-size:12px}.approach{padding-top:66px;padding-bottom:74px}.strengthGrid{grid-template-columns:1fr}.strengthGrid article{min-height:0}}

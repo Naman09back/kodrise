@@ -6,8 +6,8 @@ const routes: Record<string, string> = {
   SEO: "/shopify-services/seo",
   PPC: "/shopify-services/ppc",
   "Content Marketing": "/shopify-services/content-marketing",
-  "Social Media Marketing": "/shopify-services/marketing#social-media-marketing",
-  "Email Marketing": "/shopify-services/marketing#email-marketing",
+  "Social Media Marketing": "/shopify-services/social-media-marketing",
+  "Email Marketing": "/shopify-services/email-marketing",
 };
 
 const defaultChannels = ["Shopify Marketing", "SEO", "PPC", "Content Marketing", "Social Media Marketing", "Email Marketing"];

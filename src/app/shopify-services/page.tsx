@@ -30,9 +30,8 @@ const groups = [
       ["SEO", "/shopify-services/seo"],
       ["PPC", "/shopify-services/ppc"],
       ["Content Marketing", "/shopify-services/content-marketing"],
-      ["Social Media Marketing", "/shopify-services/marketing#social-media-marketing"],
-      ["Email Marketing", "/shopify-services/marketing#email-marketing"],
-      ["Abandoned Checkout Recovery", "/shopify-services/abandoned-checkout-recovery"],
+      ["Social Media Marketing", "/shopify-services/social-media-marketing"],
+      ["Email Marketing", "/shopify-services/email-marketing"],
     ],
   },
   {
