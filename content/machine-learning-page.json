@@ -1,0 +1,90 @@
+{
+  "hero": {
+    "eyebrow": "AI-POWERED AND DATA-DRIVEN",
+    "title": "Machine Learning Development Company",
+    "accent": "Turn your data into better decisions.",
+    "description": "Build custom machine learning systems that find patterns, predict outcomes, personalize experiences, and support decisions across your business.",
+    "cta": "Request a Call",
+    "ctaUrl": "/contact?service=machine-learning"
+  },
+  "solutions": {
+    "heading": "Our Custom Machine Learning Consulting Services",
+    "intro": "From early opportunity discovery to model operations, Kodrise helps teams plan, develop, integrate, and maintain practical machine learning solutions around their data and goals.",
+    "items": [
+      {"title":"Machine Learning Consulting","description":"Assess business opportunities, data readiness, and technical feasibility, then plan a roadmap with clear outcomes and delivery priorities."},
+      {"title":"Machine Learning Development","description":"Prepare data, engineer features, train models, and validate them against real business requirements and performance measures."},
+      {"title":"Custom ML Model Development","description":"Build models for forecasting, classification, recommendations, anomaly detection, and other problems specific to your business."},
+      {"title":"Neural Network Development","description":"Design and train neural networks for complex prediction, image, language, and time-series use cases."},
+      {"title":"Machine Learning Engineering","description":"Create reliable data pipelines, model services, feature stores, and deployment workflows that support production ML."},
+      {"title":"Machine Learning Implementation","description":"Move validated models into production through integration planning, benchmarking, acceptance testing, and a managed rollout."},
+      {"title":"ML Integration & Deployment","description":"Connect models with your applications, CRMs, ERPs, APIs, and cloud platforms with attention to reliability, security, and latency."},
+      {"title":"MLOps","description":"Manage model versioning, automated training, drift monitoring, evaluation, and retraining throughout the machine learning lifecycle."},
+      {"title":"Machine Learning as a Service","description":"Use managed models and hosted ML capabilities to validate ideas, access intelligence on demand, and scale with less infrastructure overhead."},
+      {"title":"Predictive Analytics","description":"Forecast demand, risk, customer behavior, equipment needs, and operational outcomes using business data."},
+      {"title":"Computer Vision Solutions","description":"Analyze images and video for recognition, inspection, classification, and visual search use cases."},
+      {"title":"Recommendation Systems","description":"Personalize products, content, and next steps using user behavior, preferences, and contextual data."}
+    ]
+  },
+  "capabilities": {
+    "heading": "Machine Learning Solutions on Leading Cloud Platforms",
+    "intro": "Build, train, and deploy machine learning solutions on the cloud platform that fits your data, team, security needs, and existing technology landscape.",
+    "items": [
+      {"title":"Amazon Web Services","description":"Use managed AWS services and scalable infrastructure for model training, inference, computer vision, and production ML workflows.","image":"ml-aws"},
+      {"title":"Google Cloud Platform","description":"Develop models and data pipelines with Google Cloud tools for machine learning, analytics, AutoML, and managed model delivery.","image":"ml-google-cloud"},
+      {"title":"Microsoft Azure","description":"Build and operate enterprise machine learning systems with Azure services for training, deployment, data, and governance.","image":"ml-azure"}
+    ]
+  },
+  "industries": {
+    "intro": "We build domain-aware machine learning solutions that account for real data, regulatory needs, user workflows, and operational constraints.",
+    "items": [
+      {"title":"Financial Services","description":"Detect unusual activity, improve risk analysis, forecast customer needs, and support lending and compliance workflows."},
+      {"title":"Healthcare","description":"Support imaging analysis, patient risk prediction, clinical documentation, and resource planning with privacy-aware data practices."},
+      {"title":"eCommerce","description":"Personalize discovery, forecast demand, optimize offers, and identify customer behavior patterns across the shopping journey."},
+      {"title":"Education","description":"Adapt learning experiences, identify support needs, and improve content discovery using learner and course data."},
+      {"title":"Manufacturing","description":"Predict equipment maintenance, identify quality issues, improve production planning, and reduce process waste."},
+      {"title":"Retail","description":"Forecast inventory and footfall, improve assortment planning, personalize experiences, and understand customer behavior."},
+      {"title":"Real Estate","description":"Support property valuation, lead scoring, investment analysis, and market trend forecasting with property data."}
+    ]
+  },
+  "why": {
+    "intro": "Machine learning delivers value when the model fits the business process and can be trusted in day-to-day use. We focus on measurable goals, sound engineering, and sustainable operations.",
+    "items": [
+      {"title":"Business-first model choices","description":"Choose use cases and algorithms based on value, data readiness, explainability, and the decisions the model will support."},
+      {"title":"Production-minded engineering","description":"Plan for reliable pipelines, integration, monitoring, performance, and maintenance from the start."},
+      {"title":"Responsible use of data","description":"Build with attention to privacy, access, data quality, model evaluation, and appropriate human review."},
+      {"title":"Continuous model improvement","description":"Track real-world behavior and update models as data, processes, and business requirements change."}
+    ]
+  },
+  "caseStudiesIntro": "See how Kodrise applies data and intelligent technology to practical product and business challenges.",
+  "creative": {
+    "heading": "A Disciplined Approach to Machine Learning Delivery",
+    "intro": "Move from a promising idea to a production model through clear stages, measurable evaluation, and collaboration with your domain experts.",
+    "items": [
+      {"title":"Define Strategy","description":"Understand business goals, review data and infrastructure, prioritize use cases, and agree on success measures and constraints."},
+      {"title":"Prepare Data & Build Models","description":"Create dependable datasets, engineer useful features, compare suitable algorithms, and document model behavior."},
+      {"title":"Deploy Models","description":"Integrate the validated model into an application or workflow with appropriate performance, security, and reliability controls."},
+      {"title":"Monitor & Improve","description":"Track quality, data drift, latency, and business results, then retrain or update models as the operating environment changes."}
+    ]
+  },
+  "technology": {
+    "intro": "Select a machine learning stack that suits your data, deployment environment, team skills, and operational requirements.",
+    "groups": [
+      {"title":"ML & Deep Learning","items":["PyTorch","TensorFlow","scikit-learn","Keras","XGBoost"]},
+      {"title":"Model Operations","items":["MLflow","Kubeflow","Azure ML","Vertex AI","SageMaker"]},
+      {"title":"Data Engineering","items":["Apache Spark","Databricks","Airflow","Kafka","dbt"]},
+      {"title":"Cloud & Deployment","items":["AWS","Google Cloud","Microsoft Azure","Docker","Kubernetes"]}
+    ]
+  },
+  "faqs": [
+    {"question":"What are machine learning development services?","answer":"They include identifying use cases, preparing data, developing and evaluating models, integrating them into applications, and monitoring them after deployment."},
+    {"question":"What types of machine learning models can you build?","answer":"Depending on the use case, we develop forecasting, classification, recommendation, anomaly detection, computer vision, natural language, and deep learning models."},
+    {"question":"How do you determine if our business is ready for machine learning?","answer":"We review your business goals, available data, data quality, current systems, user workflows, and the value of possible use cases before recommending a plan."},
+    {"question":"What data is needed to develop an ML model?","answer":"The right data depends on the problem. It should be relevant, sufficiently representative, and available with appropriate permissions. Data assessment helps identify gaps and preparation needs."},
+    {"question":"Can machine learning models integrate with our existing systems?","answer":"Yes. Models can be exposed through APIs or integrated with applications, CRMs, ERPs, data platforms, and cloud services based on your architecture."},
+    {"question":"How do you evaluate machine learning model performance?","answer":"We select measures that fit the use case, validate models against representative data, check for bias and failure modes, and monitor production performance."},
+    {"question":"What is MLOps?","answer":"MLOps applies engineering practices to the machine learning lifecycle, including data and model versioning, deployment, monitoring, retraining, and governance."},
+    {"question":"How long does machine learning development take?","answer":"A proof of concept may take a few weeks. Production work can take longer depending on data readiness, model complexity, integrations, validation needs, and compliance requirements."},
+    {"question":"How do you keep machine learning systems reliable over time?","answer":"We monitor model quality, data drift, system performance, and business outcomes, then update models and pipelines as conditions change."},
+    {"question":"Can you modernize or improve an existing ML model?","answer":"Yes. We can evaluate an existing model and its data and deployment setup, then recommend improvements to accuracy, latency, reliability, maintainability, or cost."}
+  ]
+}

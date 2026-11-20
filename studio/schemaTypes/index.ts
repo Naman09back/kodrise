@@ -154,6 +154,15 @@ const sitePage = defineType({name: 'sitePage', title: 'Site pages', type: 'docum
   defineField({name: 'detailTechnologyItems', title: 'Detail page: technology groups (one per line: group :: item, item, item)', type: 'text', rows: 8}),
   defineField({name: 'detailCaseStudiesIntro', title: 'Detail page: case studies introduction', type: 'text', rows: 3}),
   defineField({name: 'detailFaqItems', title: 'Detail page: FAQs (one per line: question :: answer)', type: 'text', rows: 12}),
+  defineField({name: 'shopifySeoIntroHeading', title: 'Shopify SEO: introduction heading', type: 'string'}),
+  defineField({name: 'shopifySeoIntroCopy', title: 'Shopify SEO: introduction copy', type: 'text', rows: 5}),
+  defineField({name: 'shopifySeoTrustLabel', title: 'Shopify SEO: partner badge label', type: 'string'}),
+  defineField({name: 'shopifySeoCtaHeading', title: 'Shopify SEO: call to action heading', type: 'string'}),
+  defineField({name: 'shopifySeoCtaCopy', title: 'Shopify SEO: call to action copy', type: 'text', rows: 3}),
+  defineField({name: 'shopifySeoCtaLabel', title: 'Shopify SEO: call to action button', type: 'string'}),
+  defineField({name: 'shopifySeoCtaUrl', title: 'Shopify SEO: call to action link', type: 'string'}),
+  defineField({name: 'shopifySeoRelatedHeading', title: 'Shopify SEO: related services heading', type: 'string'}),
+  defineField({name: 'shopifySeoRelatedItems', title: 'Shopify SEO: related service links (one per line)', type: 'text', rows: 4}),
   defineField({name: 'seo', type: 'seo'}),
 ]})
 

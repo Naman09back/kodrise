@@ -1,0 +1,85 @@
+{
+  "hero": {
+    "eyebrow": "AI STRATEGY & IMPLEMENTATION",
+    "title": "AI That Moves Business Forward",
+    "accent": "Turn your AI ideas into action.",
+    "description": "Make AI a practical business capability with guidance shaped around your operations, data, users, and growth priorities.",
+    "cta": "Book Your AI Consultation",
+    "ctaUrl": "/contact?service=ai-consulting"
+  },
+  "solutions": {
+    "heading": "AI Expertise Across Every Stage",
+    "intro": "Get clear direction, practical implementation support, and a technology roadmap designed around your business needs.",
+    "items": [
+      {"title":"AI Consulting Services","description":"Identify high-value use cases, assess readiness, and define a practical roadmap that connects AI opportunities to business goals."},
+      {"title":"AI Security & Private AI","description":"Plan privacy-focused AI systems with stronger control over sensitive data, models, access, deployment, and compliance requirements."},
+      {"title":"Custom AI Development","description":"Design and build AI applications, agents, and intelligent workflows that fit your products and integrate with existing systems."},
+      {"title":"AI Automation Agents","description":"Automate repetitive work and coordinate multi-step business processes with agents connected to your tools and workflows."}
+    ]
+  },
+  "capabilities": {
+    "heading": "Build Smarter. Grow Faster with AI.",
+    "intro": "From automation and predictive insights to generative AI, find where intelligence can create measurable value across your products and operations.",
+    "items": [
+      {"title":"AI Strategy & Technology Innovation","description":"Turn business challenges into prioritized AI opportunities, a clear roadmap, and a plan for responsible implementation.","image":"consulting-strategy"},
+      {"title":"Secure, Private AI","description":"Make informed architecture and governance choices to protect sensitive data and keep AI use aligned with your policies.","image":"consulting-private-ai"},
+      {"title":"AI Products & Workflow Automation","description":"Create useful AI experiences, agents, and automation that integrate with the way your teams already work.","image":"consulting-automation"}
+    ]
+  },
+  "industries": {
+    "intro": "Our advisors help connect AI opportunities with the unique needs, risks, and operating context of your organization.",
+    "items": [
+      {"title":"AI opportunity mapping","description":"Review business priorities, processes, and constraints to find practical places where AI can make a difference."},
+      {"title":"Readiness & data assessment","description":"Understand your data, systems, people, and governance needs before selecting an implementation path."},
+      {"title":"Use case prioritization","description":"Compare opportunities by expected value, feasibility, risk, and time to impact."},
+      {"title":"AI architecture & vendor guidance","description":"Evaluate models, platforms, integration options, and deployment patterns against your needs."},
+      {"title":"Private AI & governance","description":"Plan data protections, access policies, responsible use, and oversight for AI systems."},
+      {"title":"Product & experience strategy","description":"Shape AI features around user needs, workflows, adoption, and measurable product outcomes."},
+      {"title":"AI team & capability planning","description":"Identify the roles, skills, and partners needed to develop and operate your AI roadmap."},
+      {"title":"Implementation roadmap","description":"Translate strategy into phased work, milestones, ownership, dependencies, and success measures."}
+    ]
+  },
+  "why": {
+    "intro": "Kodrise brings together product, data, and engineering perspectives so your AI strategy stays grounded in the work your organization needs to do.",
+    "items": [
+      {"title":"Business-first recommendations","description":"Start with your goals and constraints, then choose AI opportunities that fit your organization."},
+      {"title":"Practical roadmaps","description":"Leave with clear priorities, technology choices, dependencies, and measurable next steps."},
+      {"title":"Security considered early","description":"Bring privacy, governance, and data protection into planning from the beginning."},
+      {"title":"Support from strategy to build","description":"Move from discovery and architecture into implementation with aligned product and engineering teams."}
+    ]
+  },
+  "caseStudiesIntro": "Explore how Kodrise applies AI and product engineering to practical business workflows and customer experiences.",
+  "creative": {
+    "heading": "A Clear Path from Strategy to Implementation",
+    "intro": "Our consulting process gives your team a practical way to evaluate opportunities and move toward the right implementation with confidence.",
+    "items": [
+      {"title":"Understand the business","description":"Align on objectives, users, challenges, current processes, and constraints with key stakeholders."},
+      {"title":"Assess readiness","description":"Review data, platforms, skills, security, and operating practices that affect AI adoption."},
+      {"title":"Identify opportunities","description":"Map use cases and assess expected value, feasibility, risk, and strategic fit."},
+      {"title":"Set the architecture","description":"Recommend suitable models, tools, integrations, hosting, and governance patterns."},
+      {"title":"Plan the roadmap","description":"Define phases, team needs, milestones, dependencies, and outcome measures."},
+      {"title":"Support implementation","description":"Guide delivery, evaluation, rollout, and continuous improvement as your solution evolves."}
+    ]
+  },
+  "technology": {
+    "intro": "We recommend technologies based on your goals, data, systems, operating requirements, and existing investments.",
+    "groups": [
+      {"title":"Cloud & Private AI","items":["AWS","Microsoft Azure","Google Cloud","Kubernetes","Docker"]},
+      {"title":"Generative AI & Models","items":["OpenAI","Anthropic","Google Gemini","Llama","Hugging Face"]},
+      {"title":"Machine Learning","items":["Python","PyTorch","TensorFlow","scikit-learn","MLflow"]},
+      {"title":"Data & Integration","items":["Databricks","PostgreSQL","Apache Spark","FastAPI","REST APIs"]}
+    ]
+  },
+  "faqs": [
+    {"question":"What does an AI consultant do?","answer":"An AI consultant helps assess opportunities, readiness, data, risks, and technology choices, then develops a roadmap for applying AI to business needs."},
+    {"question":"What kinds of AI consulting do you offer?","answer":"Our work can include AI strategy, use case discovery, readiness assessment, data and architecture guidance, private AI planning, product strategy, and implementation support."},
+    {"question":"How do we know where AI can help our business?","answer":"We review your goals and workflows with stakeholders, identify friction or opportunity, and assess candidate use cases by value, feasibility, risk, and readiness."},
+    {"question":"Can you help assess our AI readiness?","answer":"Yes. A readiness review can cover data availability and quality, technology, skills, governance, security, and organizational needs."},
+    {"question":"Do you provide AI security and private AI consulting?","answer":"Yes. We can advise on data protection, access controls, model choices, deployment options, and governance practices for sensitive AI use cases."},
+    {"question":"Will we receive a practical AI roadmap?","answer":"The outcome can include prioritized use cases, recommended architecture, delivery phases, resource needs, key dependencies, and measures of success."},
+    {"question":"Can Kodrise also build the recommended AI solution?","answer":"Yes. Consulting can continue into product design, engineering, integration, deployment, and ongoing support, depending on your needs."},
+    {"question":"How long does an AI consulting engagement take?","answer":"A focused strategy or readiness assessment may take a few weeks. Broader roadmaps and implementation planning depend on the number of systems, teams, and use cases involved."},
+    {"question":"What should we prepare before an AI consultation?","answer":"Bring your business goals, examples of current workflows, known data sources, constraints, and questions. We can help identify the rest during discovery."},
+    {"question":"Which industries do you advise?","answer":"We work across sectors such as healthcare, finance, retail, logistics, manufacturing, education, real estate, and media, adapting recommendations to each organization."}
+  ]
+}

@@ -1,0 +1,96 @@
+{
+  "hero": {
+    "eyebrow": "YOUR RELIABLE AI PARTNER",
+    "title": "AI Development Outsourcing Company",
+    "accent": "Build and scale intelligent systems.",
+    "description": "Extend your capabilities with AI engineers, data scientists, and delivery teams who can take your ideas from strategy through production and ongoing improvement.",
+    "cta": "Talk to Our AI Experts",
+    "ctaUrl": "/contact?service=ai-outsourcing"
+  },
+  "solutions": {
+    "heading": "Our AI Development Outsourcing Services",
+    "intro": "From a single specialist to full-cycle product delivery, our AI teams help you design, build, integrate, and maintain intelligent systems around measurable business needs.",
+    "items": [
+      {"title":"Custom AI Software Development","description":"Build AI-powered products and workflows shaped around your users, systems, and business objectives."},
+      {"title":"Machine Learning Model Development","description":"Develop and improve models for prediction, classification, recommendations, and operational insight."},
+      {"title":"Natural Language Processing","description":"Extract meaning from documents and conversations with search, summarization, classification, and conversational AI."},
+      {"title":"Computer Vision Development","description":"Apply image and video intelligence to inspection, object detection, visual search, and workflow automation."},
+      {"title":"AI Strategy & Consulting","description":"Assess opportunities and data readiness, prioritize use cases, and plan a practical roadmap for AI adoption."},
+      {"title":"AI Model Optimization","description":"Improve model quality and efficiency through evaluation, retraining, tuning, and production monitoring."},
+      {"title":"AI System Integration","description":"Connect AI services to your applications, APIs, cloud platforms, CRM, ERP, and existing workflows."},
+      {"title":"AI Data Processing & Analytics","description":"Build pipelines that prepare, analyze, and transform business data into timely and actionable insight."},
+      {"title":"Generative AI Development","description":"Deliver LLM-powered assistants, grounded knowledge search, and content workflows for real production use."},
+      {"title":"AI Quality Assurance & Testing","description":"Evaluate reliability, fairness, security, and edge cases before and after your AI systems launch."}
+    ]
+  },
+  "capabilities": {
+    "heading": "Flexible AI Outsourcing for Modern Teams",
+    "intro": "Bring the right expertise into your delivery model, from targeted engineering support to an accountable partner for end-to-end AI product development.",
+    "items": [
+      {"title":"AI Outsourcing 4.0","description":"Coordinate data, models, deployment, and ongoing optimization as a unified service with clear ownership and outcomes.","image":"outsourcing-trend"},
+      {"title":"Prompt Engineering Expertise","description":"Improve model responses through structured prompts, testing, and refinement aligned with your workflows and quality standards.","image":"outsourcing-prompts"},
+      {"title":"GenAI in Production","description":"Move beyond pilots with integrated, observable generative AI features designed for your users and operating environment.","image":"outsourcing-genai"}
+    ]
+  },
+  "industries": {
+    "intro": "We bring domain awareness to AI delivery, tailoring the team, technical approach, and safeguards to your industry and users.",
+    "items": [
+      {"title":"Healthcare & Life Sciences","description":"Build responsible AI workflows for clinical information, patient engagement, medical operations, and research."},
+      {"title":"Banking & Financial Services","description":"Apply AI to customer support, document processing, risk insights, compliance workflows, and financial operations."},
+      {"title":"Retail & eCommerce","description":"Improve discovery, personalization, forecasting, customer support, and inventory decision-making."},
+      {"title":"Logistics & Transportation","description":"Use AI to support planning, operational visibility, demand prediction, and process automation."},
+      {"title":"Manufacturing","description":"Build inspection, predictive maintenance, production planning, and knowledge support capabilities."},
+      {"title":"Education","description":"Create learning support, content discovery, administrative automation, and accessible digital experiences."},
+      {"title":"Real Estate","description":"Support property search, customer engagement, document workflows, and market analysis with AI."},
+      {"title":"Media & Entertainment","description":"Help teams organize, discover, moderate, and create content with intelligent tools."},
+      {"title":"Travel & Hospitality","description":"Improve guest support, personalization, service workflows, and operational planning."},
+      {"title":"Energy & Utilities","description":"Apply AI to field operations, asset monitoring, forecasting, and enterprise knowledge access."}
+    ]
+  },
+  "why": {
+    "intro": "The right outsourcing model combines experienced people, clear communication, and delivery practices that keep business outcomes in focus.",
+    "items": [
+      {"title":"On-Demand AI Talent","description":"Add experienced AI and ML specialists when you need them, without a long internal hiring cycle."},
+      {"title":"Domain-Focused Delivery","description":"Shape the solution around your users, data, industry context, and operational requirements."},
+      {"title":"Outcome-First Approach","description":"Define success measures early and connect delivery decisions to the value your business needs."},
+      {"title":"Built-In Generative AI","description":"Use modern language models and generative workflows where they fit the product and delivery goals."},
+      {"title":"Enterprise-Grade Security","description":"Plan for access control, data handling, secure integrations, and deployment requirements from the start."},
+      {"title":"Scalable AI Framework","description":"Choose an engagement and architecture that can grow as usage, data, and product needs expand."}
+    ]
+  },
+  "caseStudiesIntro": "Explore Kodrise AI products and project work that apply intelligent technology to real product and workflow challenges.",
+  "creative": {
+    "heading": "Our AI Development Outsourcing Process",
+    "intro": "A transparent, iterative process connects your business objectives to reliable AI delivery and continued support.",
+    "items": [
+      {"title":"Strategy & Use Case Discovery","description":"Understand goals, pain points, data maturity, and opportunities, then agree priorities and success metrics."},
+      {"title":"Data Collection & Preparation","description":"Source, clean, label, and version data with quality, privacy, and governance in mind."},
+      {"title":"Model & Experience Design","description":"Select a suitable architecture and shape how AI outputs fit into the user experience and workflows."},
+      {"title":"AI Development & Training","description":"Build, train, integrate, and refine the system through structured development and evaluation cycles."},
+      {"title":"Quality Assurance & MLOps","description":"Validate accuracy and edge cases, automate release practices, and monitor production performance."},
+      {"title":"Deployment & Ongoing Support","description":"Roll out safely, support your team, and improve models and infrastructure as requirements evolve."}
+    ]
+  },
+  "technology": {
+    "intro": "Our teams select practical tools for your models, data, infrastructure, and monitoring needs, integrating with your existing technology where possible.",
+    "groups": [
+      {"title":"Cloud & Infrastructure","items":["AWS","Microsoft Azure","Google Cloud","Docker","Kubernetes","Oracle Cloud"]},
+      {"title":"Data Processing","items":["Apache Spark","Databricks","Pandas","ETL","Kafka"]},
+      {"title":"Machine Learning & AI","items":["Python","TensorFlow","PyTorch","scikit-learn","OpenCV","Hugging Face"]},
+      {"title":"Visualization & Monitoring","items":["Grafana","Tableau","MLflow","Prometheus","Evidently AI"]},
+      {"title":"APIs & Integration","items":["FastAPI","REST APIs","GraphQL","LangChain","LlamaIndex"]}
+    ]
+  },
+  "faqs": [
+    {"question":"What is AI outsourcing?","answer":"AI outsourcing is partnering with an external team to plan, build, integrate, or maintain AI systems. It gives organizations access to specialist skills and delivery capacity without building every capability in-house."},
+    {"question":"What AI roles can I add to my team?","answer":"Depending on the work, you can bring in AI architects, data scientists, machine learning engineers, generative AI developers, MLOps specialists, and product or quality assurance expertise."},
+    {"question":"Can I hire a dedicated AI development team?","answer":"Yes. A dedicated team can align to your product roadmap, tools, and delivery practices, with a scope and team mix tailored to your project."},
+    {"question":"Can you take responsibility for a full AI project?","answer":"Yes. Engagements can cover discovery, architecture, data preparation, development, integration, deployment, and ongoing support."},
+    {"question":"How do you protect our data and intellectual property?","answer":"We define data access, confidentiality, security controls, and ownership expectations for the engagement, based on your legal and technical requirements."},
+    {"question":"Which industries do you serve?","answer":"AI capabilities can support healthcare, finance, retail, logistics, manufacturing, education, real estate, media, travel, and other sectors. The delivery approach is adapted to each domain."},
+    {"question":"Can the team work with our existing systems?","answer":"Yes. We can integrate AI capabilities with your existing applications, APIs, cloud services, data platforms, and business systems."},
+    {"question":"How do you measure project success?","answer":"We agree measurable goals with you, such as task quality, processing time, adoption, reliability, or operating cost, and review progress against those goals."},
+    {"question":"How quickly can an AI outsourcing team start?","answer":"Timing depends on team availability, scope, access requirements, and onboarding. A focused discovery phase can clarify the team and delivery plan."},
+    {"question":"Do you provide ongoing maintenance after launch?","answer":"Yes. Support can include monitoring, model and data updates, infrastructure maintenance, quality reviews, and continuous improvements."}
+  ]
+}

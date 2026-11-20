@@ -81,7 +81,7 @@ export default function AiAgentExperience({page, images, heroImage}: {
 
     <nav className={styles.breadcrumb} aria-label="Breadcrumb"><div><Link href="/">Home</Link><span>/</span><Link href="/ai-services">AI Services</Link><span>/</span><span aria-current="page">AI Agent Development</span></div></nav>
 
-    <section className={styles.solutions} id="solutions">
+    <section className={`${styles.solutions} ${styles.darkSolutions}`} id="solutions">
       <div className={styles.sectionHead}>
         <span className={styles.kicker}>OUR SERVICES</span>
         <h2>{page?.detailSolutionsHeading || fallback.solutions.heading}</h2>
@@ -93,7 +93,7 @@ export default function AiAgentExperience({page, images, heroImage}: {
       </article>)}</div>
     </section>
 
-    <section className={styles.capabilities} id="capabilities">
+    <section className={`${styles.capabilities} ${styles.lightCapabilities}`} id="capabilities">
       <div className={styles.capabilitiesInner}>
         <div className={styles.sectionHeadLight}>
           <span className={styles.kicker}>A CLEAR PATH TO PRODUCTION</span>

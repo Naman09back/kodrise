@@ -1,0 +1,93 @@
+{
+  "hero": {
+    "eyebrow": "UNDERSTAND AND RESPOND INTELLIGENTLY",
+    "title": "Retrieval-Augmented Generation (RAG) Development Company",
+    "accent": "Ground AI answers in your knowledge.",
+    "description": "Build reliable AI assistants that retrieve the right information from your business content and generate relevant, source-grounded responses.",
+    "cta": "Talk to Our RAG Experts",
+    "ctaUrl": "/contact?service=rag-as-a-service"
+  },
+  "solutions": {
+    "heading": "Our RAG as a Service Offerings",
+    "intro": "We build retrieval-augmented generation systems that connect language models to your approved data, helping people find useful answers with relevant context and traceable sources.",
+    "items": [
+      {"title":"Context-Aware Chatbots","description":"Answer customer questions using relevant product information, policies, help articles, and other approved knowledge sources."},
+      {"title":"Enterprise Knowledge Assistants","description":"Help employees search company knowledge, procedures, handbooks, and project information through a conversational interface."},
+      {"title":"Customer Support Copilots","description":"Give support teams faster access to accurate answers drawn from helpdesk content and product documentation."},
+      {"title":"Legal & Compliance Assistants","description":"Retrieve relevant clauses, policies, and regulatory material to support document review and internal research."},
+      {"title":"Sales & CRM Knowledge Agents","description":"Bring product details, pricing guidance, and approved customer context into sales workflows."},
+      {"title":"Healthcare Information Retrieval","description":"Make approved clinical and research knowledge easier to locate with access controls and source references."},
+      {"title":"Grounded Content Workflows","description":"Create drafts and summaries informed by trusted brand, product, and editorial sources."},
+      {"title":"Research & Document Assistants","description":"Search reports and large document collections, then summarize findings with links back to source material."},
+      {"title":"Multilingual Knowledge Systems","description":"Retrieve and present information across supported languages and regional content collections."},
+      {"title":"RAG Integration & Optimization","description":"Connect retrieval pipelines to your applications and tune relevance, answer quality, latency, and cost."}
+    ]
+  },
+  "capabilities": {
+    "heading": "Our Expertise in RAG Systems Development",
+    "intro": "Combine a well-designed knowledge layer, effective retrieval, and carefully evaluated generation to deliver answers with useful context and clear sources.",
+    "items": [
+      {"title":"Custom Retriever Pipelines","description":"Tune retrieval strategies to your content and use case so the model receives relevant, focused context for each question.","image":"rag-retriever"},
+      {"title":"Vector Store Optimization","description":"Design embedding and vector search workflows that balance relevance, scale, response speed, and operational needs.","image":"rag-vector-store"},
+      {"title":"Metadata, Chunking & Ranking","description":"Structure documents with effective chunking, metadata filters, and reranking to improve the quality of retrieved context.","image":"rag-chunking"}
+    ]
+  },
+  "industries": {
+    "intro": "We adapt RAG systems to your domain language, source material, permissions, and the decisions your users need to make.",
+    "items": [
+      {"title":"Healthcare","description":"Retrieve approved clinical guidance, research, and internal protocols with careful attention to permissions and source traceability."},
+      {"title":"Banking & Finance","description":"Search policies, product information, and regulatory documents to support consistent, well-sourced financial workflows."},
+      {"title":"eCommerce & Retail","description":"Answer product and order questions from current catalog, inventory, returns, and customer support information."},
+      {"title":"Education","description":"Help learners and staff navigate course materials, institutional guidance, and research collections."},
+      {"title":"Logistics","description":"Make operating procedures, shipment details, and service information easier for teams to retrieve."},
+      {"title":"Legal","description":"Search contracts, case files, and policy libraries to locate relevant passages and supporting sources."},
+      {"title":"Travel & Hospitality","description":"Provide context-aware assistance using booking details, property information, and current travel guidance."},
+      {"title":"Real Estate","description":"Retrieve property listings, transaction documents, and market information for agents and customers."},
+      {"title":"Media & Entertainment","description":"Connect editorial and media libraries to discovery, research, and content support workflows."},
+      {"title":"Energy & Utilities","description":"Surface field procedures, equipment documentation, and safety information for operational teams."}
+    ]
+  },
+  "why": {
+    "intro": "Useful RAG depends on the complete information flow, from source permissions and document preparation to retrieval quality and answer evaluation.",
+    "items": [
+      {"title":"Grounded in your sources","description":"Connect responses to the knowledge your organization approves and keep source context available to users."},
+      {"title":"Retrieval tuned to the task","description":"Choose indexing, chunking, filtering, and ranking methods that match your content and user questions."},
+      {"title":"Designed for your environment","description":"Plan for data permissions, privacy requirements, integrations, reliability, and the scale of your workloads."},
+      {"title":"Evaluated and improved","description":"Measure retrieval and answer quality with representative questions, expert review, and ongoing monitoring."}
+    ]
+  },
+  "caseStudiesIntro": "Explore Kodrise AI products and project work that apply intelligent technology to real product and workflow challenges.",
+  "creative": {
+    "heading": "RAG Development Process We Focus On",
+    "intro": "We build each RAG workflow around the users, source data, and quality measures that matter to your organization.",
+    "items": [
+      {"title":"Use Case Discovery & Scoping","description":"Identify users, questions, data sources, success measures, and the boundaries of the assistant."},
+      {"title":"Data Collection & Indexing","description":"Prepare approved content, define access rules, and build an index that can stay in step with source updates."},
+      {"title":"Retriever & Model Integration","description":"Connect retrieval and generation components, then tune prompts and context assembly for the task."},
+      {"title":"Testing & Evaluation","description":"Evaluate retrieval relevance, answer grounding, citations, safety, latency, and user experience."},
+      {"title":"Deployment & API Integration","description":"Integrate the RAG service into your applications, tools, or workflows with appropriate controls."},
+      {"title":"Monitoring & Continuous Improvement","description":"Monitor quality and usage, review feedback, and update the retrieval pipeline as your knowledge evolves."}
+    ]
+  },
+  "technology": {
+    "intro": "We select models and infrastructure to fit your knowledge sources, security requirements, expected usage, and existing technology environment.",
+    "groups": [
+      {"title":"RAG Frameworks","items":["LangChain","LlamaIndex","Haystack","Semantic Kernel"]},
+      {"title":"Vector Databases","items":["Pinecone","Weaviate","Qdrant","Chroma","Elasticsearch"]},
+      {"title":"Foundation Models","items":["OpenAI","Anthropic","Google Gemini","Llama","Mistral"]},
+      {"title":"Cloud & Data","items":["AWS","Microsoft Azure","Google Cloud","Databricks","PostgreSQL"]}
+    ]
+  },
+  "faqs": [
+    {"question":"What is retrieval-augmented generation (RAG)?","answer":"RAG is an approach that retrieves relevant information from selected data sources and supplies it to a generative model so its response can use that context."},
+    {"question":"How is RAG different from fine-tuning?","answer":"RAG provides relevant knowledge at response time, while fine-tuning changes model behavior through additional training. They address different needs and can be used together."},
+    {"question":"Can a RAG system use our internal documents?","answer":"Yes. A RAG system can index approved documents and knowledge sources, subject to source permissions, privacy requirements, and the chosen deployment design."},
+    {"question":"How can RAG reduce unsupported AI answers?","answer":"Retrieval supplies relevant source context for the model to use. Evaluation, clear instructions, citations, and fallback behavior further help manage answer quality."},
+    {"question":"Can users see the sources behind an answer?","answer":"Yes. The application can display source names, links, or cited passages alongside responses when that information is available and appropriate."},
+    {"question":"How do you keep indexed information up to date?","answer":"We design ingestion and re-indexing workflows for your source systems, including scheduled updates or event-based processing where appropriate."},
+    {"question":"Can RAG respect document permissions?","answer":"Yes. Access controls can be incorporated into retrieval so users only receive information they are authorized to access."},
+    {"question":"Which vector database or RAG framework should we use?","answer":"The right choice depends on your content, scale, latency, hosting, integration, and operational requirements. We assess these before recommending an architecture."},
+    {"question":"How do you evaluate a RAG solution?","answer":"We test retrieval relevance and answer quality against representative questions, then review grounding, citations, latency, safety, and user feedback."},
+    {"question":"How long does it take to build a RAG system?","answer":"A focused prototype can take a few weeks. Production delivery depends on the number and quality of sources, integrations, access controls, evaluation, and rollout scope."}
+  ]
+}

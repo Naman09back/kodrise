@@ -34,11 +34,12 @@ const adminQuery = `{
   "jobs": *[_type == "job"] | order(title asc) {
     _id, _type, title, "slug": slug.current, location, employmentType, summary, skills, isOpen
   },
-  "pages": *[_type == "sitePage" && path in ["/","/shopify-development","/shopify-app-development-company","/services/shopify-website-development","/services/shopify-development","/services/recover-shopify-abandoned-checkouts","/services","/services/generative-ai-development-company","/services/ai-agents-and-automation-solutions","/services/ai-app-development-company","/services/ai-chatbot-development-company","/services/machine-learning","/services/nlp-development","/services/rag-as-a-service","/services/outsourcing-ai-development","/ai-consulting-services","/about","/portfolio","/resources/blogs","/devresources","/careers","/contact"]] | order(path asc) {
+  "pages": *[_type == "sitePage" && path in ["/","/shopify-development","/shopify-app-development-company","/services/shopify-website-development","/services/shopify-development","/services/recover-shopify-abandoned-checkouts","/shopify-services/seo","/services","/services/generative-ai-development-company","/services/ai-agents-and-automation-solutions","/services/ai-app-development-company","/services/ai-chatbot-development-company","/services/machine-learning","/services/nlp-development","/services/rag-as-a-service","/services/outsourcing-ai-development","/ai-consulting-services","/about","/portfolio","/resources/blogs","/devresources","/careers","/contact"]] | order(path asc) {
     _id, _type, pageKey, path, family, isPublished, title, heroTitle, heroAccent, heroDescription, heroImage {asset->{_id,url},alt}, announcement, primaryCta, primaryCtaUrl, secondaryCta, secondaryCtaUrl, careerIntroTitle, careerIntroDescription, careerDisciplineOneTitle, careerDisciplineOneDescription, careerDisciplineTwoTitle, careerDisciplineTwoDescription, careerDisciplineThreeTitle, careerDisciplineThreeDescription, careerDisciplineFourTitle, careerDisciplineFourDescription,
     detailSolutionsHeading, detailSolutionsIntro, detailSolutionsItems, detailCapabilitiesHeading, detailCapabilitiesIntro, detailCapabilityItems,
     detailIndustriesIntro, detailIndustryItems, detailWhyIntro, detailWhyItems, detailCreativeHeading, detailCreativeIntro, detailCreativeItems,
     detailTechnologyIntro, detailTechnologyItems, detailCaseStudiesIntro, detailFaqItems,
+    shopifySeoIntroHeading, shopifySeoIntroCopy, shopifySeoTrustLabel, shopifySeoCtaHeading, shopifySeoCtaCopy, shopifySeoCtaLabel, shopifySeoCtaUrl, shopifySeoRelatedHeading, shopifySeoRelatedItems,
     seo {title, description, image, noIndex},
     "seoTitle": seo.title, "seoDescription": seo.description, "seoImage": seo.image, "seoNoIndex": seo.noIndex
   },

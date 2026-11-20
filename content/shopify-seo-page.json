@@ -1,0 +1,59 @@
+{
+  "hero": {
+    "eyebrow": "SHOPIFY SEO SERVICES",
+    "title": "Shopify SEO Services to",
+    "accent": "Grow Organic Traffic",
+    "description": "With SEO done right, your brand visibility increases on search engines because that is where customers are looking. SEO helps your brand appear in the right place at the right time, when customers are ready to find you.",
+    "cta": "Book a Strategy Call",
+    "ctaUrl": "/contact?service=shopify-seo"
+  },
+  "intro": {
+    "heading": "Why SEO deserves your special attention?",
+    "copy": "With SEO done right, your brand visibility increases on the search engines, because that's where your customers are trying to find you. The basic philosophy behind SEO being a brand's need of the hour is to be present at the right place at the right time. Fun fact: that's probably how you landed on this webpage.",
+    "trustLabel": "Certified Google Partner"
+  },
+  "services": {
+    "heading": "We master the art of SEO. Every type of it!",
+    "intro": "Here's how we get you to the top of the search engine result page.",
+    "items": [
+      {"title":"Local SEO Solution","description":"Optimize your online presence to attract customers in your local area and improve visibility on location-based searches."},
+      {"title":"App Store Optimization (ASO)","description":"Increase your app's visibility and downloads through targeted keyword optimization and improved app listings."},
+      {"title":"SEO Reporting and Analytics","description":"Gain actionable insights with detailed SEO performance reports and analytics tracking."},
+      {"title":"SEO Competitor Analysis","description":"Analyze competitors' strategies to uncover opportunities and stay ahead in search rankings."},
+      {"title":"Technical SEO Services","description":"Enhance your website's backend structure to ensure better crawlability, indexing, and performance."},
+      {"title":"On-Page & Off-Page SEO","description":"Improve rankings with content optimization, meta tags, and high-quality backlinks."},
+      {"title":"Website and Competitor Audit","description":"Identify and fix issues affecting your site's performance with a comprehensive SEO audit."},
+      {"title":"Authority Link Building","description":"Build high-quality backlinks to improve domain authority and search engine rankings."}
+    ]
+  },
+  "expertise": {
+    "heading": "Our SEO expertise goes beyond traditional theories.",
+    "intro": "Here's how we get you to the top of the search engine result page.",
+    "items": [
+      {"title":"SEO experts","description":"Your SEO dilemmas are taken care of by experts with extensive experience in delivering quality work."},
+      {"title":"Best-in-the-class tools","description":"We provide our SEO personnel with advanced SEO tools and technologies for precise optimization and measurable results."},
+      {"title":"Proven track record","description":"A history of delivering successful SEO campaigns that drive growth and visibility."},
+      {"title":"Customized solutions","description":"We tailor our strategies to your business's specific needs, based on your target audiences' online behavior and market trends to drive meaningful results."},
+      {"title":"Data-driven strategy","description":"Actionable insights and decisions backed by analytics to ensure maximum ROI and performance."}
+    ]
+  },
+  "cta": {
+    "heading": "Your customers are searching for you. Let's make sure they find you!",
+    "copy": "Let's improve your Shopify store's visibility with an SEO strategy built for your customers and business goals.",
+    "label": "Get a Quote",
+    "url": "/contact?service=shopify-seo"
+  },
+  "faqs": [
+    {"question":"What is Shopify SEO, and why do I need it?","answer":"Shopify SEO is the process of optimizing your online store to rank higher on search engines like Google. It helps increase organic traffic, improve visibility, and drive more sales without relying solely on paid ads."},
+    {"question":"How long does it take to see results from SEO?","answer":"SEO is a long-term strategy. While some improvements can be seen within a few weeks, significant results usually take 3–6 months, depending on competition, industry, and current store performance."},
+    {"question":"What makes Kodrise different from other Shopify SEO agencies?","answer":"Kodrise combines Shopify commerce context with technical SEO, on-page optimization, and data-informed planning. We focus on long-term growth and sustainable improvements for your store."},
+    {"question":"Can you help if my store has been penalized by Google?","answer":"Yes. We offer SEO recovery services to identify penalties, fix issues, and get your rankings back on track."},
+    {"question":"Do you offer local SEO for Shopify stores?","answer":"Absolutely. If your business has a physical presence, we optimize your store for local searches to attract nearby customers."},
+    {"question":"What's included in your Shopify SEO service?","answer":"Our SEO services cover technical SEO (fixing site speed, mobile-friendliness, and structure), keyword research (finding the best keywords to target), on-page SEO (optimizing product pages, collections, and content), content marketing (creating blogs and landing pages), and link building (building high-quality backlinks for better authority)."},
+    {"question":"How do I get started with Kodrise's SEO services?","answer":"Talk to an expert through our contact form, and we'll analyze your store's SEO health and create a custom growth plan."}
+  ],
+  "related": {
+    "heading": "The other channels we run.",
+    "items": ["PPC", "Email Marketing", "Social Media Marketing", "Content Marketing"]
+  }
+}

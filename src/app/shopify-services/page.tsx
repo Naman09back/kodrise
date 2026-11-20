@@ -27,9 +27,9 @@ const groups = [
     description: "Improve performance, visibility, and revenue.",
     links: [
       ["Shopify Marketing", "/shopify-services/marketing"],
-      ["SEO", "/shopify-services/marketing#search-visibility"],
-      ["PPC", "/shopify-services/marketing#ppc"],
-      ["Content Marketing", "/shopify-services/marketing#content-marketing"],
+      ["SEO", "/shopify-services/seo"],
+      ["PPC", "/shopify-services/ppc"],
+      ["Content Marketing", "/shopify-services/content-marketing"],
       ["Social Media Marketing", "/shopify-services/marketing#social-media-marketing"],
       ["Email Marketing", "/shopify-services/marketing#email-marketing"],
       ["Abandoned Checkout Recovery", "/shopify-services/abandoned-checkout-recovery"],

@@ -1,0 +1,15 @@
+.page{--red:#ed3f47}
+.page section[id]{scroll-margin-top:90px}
+.partnerBadge{position:absolute;right:3%;bottom:32px;display:flex;align-items:center;gap:12px;padding:13px 17px;background:#fff;color:#24242b;font-size:12px;line-height:1.35;box-shadow:0 8px 28px #0003}
+.partnerBadge img{display:block;width:108px;height:auto;object-fit:contain}
+.partnerBadge b{font-size:14px}
+.approach{padding:88px max(32px,calc((100% - 1300px)/2));background:#fff;color:#1a1a22}
+.approachIntro{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:62px;align-items:center;margin-bottom:48px}
+.approachIntro h2{max-width:600px;margin:12px 0 15px;font-size:clamp(30px,3vw,42px);line-height:1.15;font-weight:500;letter-spacing:-.8px}
+.approachIntro p{max-width:600px;margin:0;color:#64656e;font-size:17px;line-height:1.55}
+.teamImage{height:320px;overflow:hidden;background:#f1f2f4}
+.teamImage img{display:block;width:100%;height:100%;object-fit:cover}
+.strengthGrid{grid-template-columns:repeat(3,minmax(0,1fr))}
+.strengthGrid article{min-height:190px}
+@media(max-width:900px){.approachIntro{grid-template-columns:1fr;gap:28px}.teamImage{height:300px}.strengthGrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:700px){.partnerBadge{right:21px;bottom:18px;padding:9px 12px}.partnerBadge img{width:78px}.partnerBadge span{font-size:10px}.partnerBadge b{font-size:12px}.approach{padding:70px 20px 75px}.approachIntro{gap:24px;margin-bottom:31px}.approachIntro h2{font-size:24px}.approachIntro p{font-size:15px;line-height:1.45}.teamImage{height:230px}.strengthGrid{grid-template-columns:1fr}.strengthGrid article{min-height:0}}

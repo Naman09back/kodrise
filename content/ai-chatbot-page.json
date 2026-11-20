@@ -1,0 +1,98 @@
+{
+  "hero": {
+    "eyebrow": "DESIGNED TO TALK. BUILT TO SCALE.",
+    "title": "Custom AI Chatbot Development Company",
+    "accent": "Helpful conversations, real business outcomes.",
+    "description": "Build AI-powered chatbots that support customers, qualify leads, answer questions, and connect business workflows across web, mobile, and messaging channels.",
+    "cta": "Start AI Chatbot Development",
+    "ctaUrl": "/contact?service=ai-chatbot-development"
+  },
+  "solutions": {
+    "heading": "Our AI Chatbot Development Services",
+    "intro": "Kodrise designs and develops conversational products that bring together useful language models, trusted knowledge, connected systems, and a clear experience for every user.",
+    "items": [
+      {"title":"Chatbot Strategy & Roadmapping","description":"Choose the right use cases, goals, channels, integrations, and success measures, then map a practical path from prototype to launch."},
+      {"title":"Conversational AI Design","description":"Plan natural conversation flows, intents, prompts, tone, fallbacks, and user journeys around your brand and customer needs."},
+      {"title":"Multichannel Chatbot Development","description":"Deliver consistent chatbot experiences across websites, mobile applications, WhatsApp, Messenger, Slack, and other channels."},
+      {"title":"NLP & NLU Integration","description":"Help chatbots understand intent, context, and everyday language so they can respond clearly and guide users to the next step."},
+      {"title":"CRM & Backend Integration","description":"Connect chatbots with CRMs, ERPs, databases, APIs, and business applications to retrieve information and perform approved actions."},
+      {"title":"Knowledge Base Automation","description":"Ground responses in approved FAQs, documents, help articles, and internal knowledge so users can find useful answers faster."},
+      {"title":"Sales & Lead Generation Chatbots","description":"Answer product questions, guide prospects, qualify interest, capture lead details, and route opportunities to your sales team."},
+      {"title":"Chatbot Analytics & Optimization","description":"Review conversations, resolution rates, handoffs, and user feedback to improve responses and business outcomes over time."},
+      {"title":"Chatbot Support & MLOps","description":"Monitor performance, manage updates, protect integrations, and maintain reliable chatbot operations as your needs grow."},
+      {"title":"eCommerce Chatbots","description":"Help shoppers discover products, compare options, get order updates, and complete purchases with contextual recommendations."},
+      {"title":"Finance & Banking Chatbots","description":"Support common customer questions and service workflows with identity-aware access, secure integrations, and appropriate escalation."},
+      {"title":"Healthcare Chatbot Assistants","description":"Help patients navigate appointments, service information, and follow-up questions with privacy and human care teams in mind."}
+    ]
+  },
+  "capabilities": {
+    "heading": "Intelligent Chatbots for Customer Support and Business Automation",
+    "intro": "Make conversations useful from the first question through task completion. Our chatbot solutions combine natural interaction, relevant knowledge, system integrations, and clear safeguards.",
+    "items": [
+      {"title":"Natural, guided conversations","description":"Understand what users mean, keep the conversation on track, and make it easy to find information or complete common tasks.","image":"ai-chatbot-conversations"},
+      {"title":"Context-aware answers","description":"Use conversation context and approved business knowledge to provide relevant answers, recommendations, and next steps.","image":"ai-chatbot-knowledge"},
+      {"title":"Connected actions and workflows","description":"Retrieve records, capture requests, update connected systems, and route work through approved tools and APIs.","image":"ai-chatbot-integrations"},
+      {"title":"Secure, measurable service","description":"Apply access controls, privacy rules, human handoffs, and analytics to keep chatbot experiences reliable and accountable.","image":"ai-chatbot-security"}
+    ]
+  },
+  "industries": {
+    "intro": "We tailor chatbot knowledge, integrations, controls, and conversation flows to the questions and service needs of each industry.",
+    "items": [
+      {"title":"Healthcare","description":"Support appointment coordination, service information, patient navigation, and follow-up while keeping care teams involved where needed."},
+      {"title":"Banking, Finance & Insurance","description":"Guide customers through common account, policy, loan, and service questions with secure access and clear escalation paths."},
+      {"title":"eCommerce","description":"Help shoppers discover products, get buying guidance, check order status, and find support before and after a purchase."},
+      {"title":"Education","description":"Assist students, educators, and administrators with course discovery, onboarding, schedules, and frequently asked questions."},
+      {"title":"Logistics & Supply Chain","description":"Answer shipment questions, share status updates, collect delivery details, and route exceptions to the right team."},
+      {"title":"Retail","description":"Provide product information, promotion details, inventory answers, and helpful service across digital and in-store touchpoints."},
+      {"title":"Travel & Hospitality","description":"Support booking questions, itinerary changes, guest requests, and multilingual service around the clock."},
+      {"title":"Real Estate","description":"Answer property questions, qualify inquiries, coordinate viewings, and connect buyers or tenants with agents."},
+      {"title":"On-Demand Delivery","description":"Keep customers informed about orders, delivery estimates, driver coordination, and service issues."},
+      {"title":"Social & Community Platforms","description":"Help users navigate features, find relevant information, and report issues while supporting moderation workflows."},
+      {"title":"Energy & Utilities","description":"Help customers with service questions, account guidance, appointment requests, and operational information."},
+      {"title":"Media & Entertainment","description":"Guide audiences through content discovery, subscriptions, event information, and support requests."}
+    ]
+  },
+  "why": {
+    "intro": "Build a chatbot around your service goals, brand voice, and existing systems. Kodrise combines conversation design, AI engineering, and integration work from planning through ongoing improvement.",
+    "items": [
+      {"title":"Designed around your users","description":"Conversation flows and responses reflect real questions, customer journeys, accessibility, and your brand voice."},
+      {"title":"Connected end to end","description":"Integrations let chatbots work with the CRM, support tools, knowledge sources, and business systems your team uses."},
+      {"title":"Secure and governed","description":"We define permissions, sensitive-data handling, human review, and escalation behavior for the needs of your organization."},
+      {"title":"Improved with real feedback","description":"Analytics and ongoing evaluation help teams find gaps, tune responses, and improve resolution and engagement."}
+    ]
+  },
+  "caseStudiesIntro": "See how Kodrise applies intelligent technology to customer experiences, operational workflows, and digital products across industries.",
+  "creative": {
+    "heading": "Our Custom AI Chatbot Development Process",
+    "intro": "We work with your team to define the chatbot’s role, design its conversations, connect the right systems, and prepare it for real users.",
+    "items": [
+      {"title":"Strategy & Goal Setting","description":"Clarify the business goals, users, priority use cases, channels, and outcomes that will define a successful chatbot."},
+      {"title":"Conversation Design & Prototyping","description":"Map intents and user journeys, write conversation flows, and validate tone and logic with realistic scenarios."},
+      {"title":"Experience & Architecture","description":"Design the chatbot interface and select the model, knowledge, privacy, and integration architecture."},
+      {"title":"Development & Integration","description":"Build the chatbot, connect approved data and business systems, and implement its tools, handoffs, and safeguards."},
+      {"title":"Testing & AI Evaluation","description":"Evaluate answer quality, task completion, safety, latency, accessibility, and edge cases before launch."},
+      {"title":"Deployment & Optimization","description":"Launch with monitoring, review feedback and performance, and improve the chatbot as customer and business needs evolve."}
+    ]
+  },
+  "technology": {
+    "intro": "We choose language models, frameworks, cloud services, and integrations to fit your chatbot’s channels, knowledge, security requirements, and operating goals.",
+    "groups": [
+      {"title":"Language Models","items":["OpenAI GPT","Anthropic Claude","Google Gemini","Meta Llama","Mistral"]},
+      {"title":"NLP & Agent Frameworks","items":["LangChain","LangGraph","LlamaIndex","Rasa","Microsoft Bot Framework"]},
+      {"title":"Knowledge & Search","items":["PostgreSQL","Pinecone","Weaviate","Elasticsearch","Redis"]},
+      {"title":"Cloud & Channels","items":["AWS","Microsoft Azure","Google Cloud","WhatsApp Business","Slack APIs"]}
+    ]
+  },
+  "faqs": [
+    {"question":"What is AI chatbot development?","answer":"AI chatbot development combines conversation design, language models, business knowledge, integrations, and safeguards to build software that can understand requests and help users complete tasks."},
+    {"question":"How is an AI chatbot different from a rule-based bot?","answer":"A rule-based bot follows predefined paths. An AI chatbot can interpret more natural language, use context and approved knowledge, and support a wider range of questions, with clear boundaries and escalation."},
+    {"question":"Can a chatbot connect to our CRM or support system?","answer":"Yes. Chatbots can connect to CRMs, ticketing platforms, ecommerce systems, databases, and internal APIs to retrieve information or carry out approved actions."},
+    {"question":"Can the same chatbot work across multiple channels?","answer":"A chatbot can be designed to support web, mobile, messaging, and workplace channels while keeping its knowledge, tone, and service experience consistent."},
+    {"question":"How do chatbots use our business knowledge?","answer":"They can search approved documents, FAQs, and data sources to ground responses in your information. Access rules can limit which knowledge each user or chatbot flow can retrieve."},
+    {"question":"How do you keep chatbot responses safe and accurate?","answer":"We combine trusted sources, response validation, permissions, testing, monitoring, and human handoffs for sensitive or uncertain requests."},
+    {"question":"Can an AI chatbot hand a conversation to a person?","answer":"Yes. Escalation can pass the conversation context to a support or sales team when the user asks for a person or the chatbot reaches a request that needs human help."},
+    {"question":"How long does it take to build a custom AI chatbot?","answer":"A focused prototype can take a few weeks. A production chatbot with multiple channels, knowledge sources, security requirements, and system integrations takes longer based on its scope."},
+    {"question":"How do you measure chatbot performance?","answer":"We track measures such as resolution rate, task completion, answer quality, escalation rate, response time, user feedback, and operating cost."},
+    {"question":"Do you support chatbots after launch?","answer":"Yes. Support can include monitoring, knowledge updates, model and prompt evaluation, security maintenance, analytics reviews, and ongoing improvements."}
+  ]
+}

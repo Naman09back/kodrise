@@ -40,13 +40,22 @@ export type SitePageContent = {
   detailTechnologyItems?: string
   detailCaseStudiesIntro?: string
   detailFaqItems?: string
+  shopifySeoIntroHeading?: string
+  shopifySeoIntroCopy?: string
+  shopifySeoTrustLabel?: string
+  shopifySeoCtaHeading?: string
+  shopifySeoCtaCopy?: string
+  shopifySeoCtaLabel?: string
+  shopifySeoCtaUrl?: string
+  shopifySeoRelatedHeading?: string
+  shopifySeoRelatedItems?: string
   seo?: {title?: string; description?: string; noIndex?: boolean; image?: {asset?: {url?: string}}}
 }
 
 export async function getSitePage(pageKey: string) {
   try {
     return await sanityClient.fetch<SitePageContent | null>(
-      `*[_type == "sitePage" && pageKey == $pageKey][0]{title, heroTitle, heroAccent, heroDescription, heroImage {asset->{_id, url}, crop, hotspot}, announcement, primaryCta, primaryCtaUrl, secondaryCta, secondaryCtaUrl, careerIntroTitle, careerIntroDescription, careerDisciplineOneTitle, careerDisciplineOneDescription, careerDisciplineTwoTitle, careerDisciplineTwoDescription, careerDisciplineThreeTitle, careerDisciplineThreeDescription, careerDisciplineFourTitle, careerDisciplineFourDescription, detailSolutionsHeading, detailSolutionsIntro, detailSolutionsItems, detailCapabilitiesHeading, detailCapabilitiesIntro, detailCapabilityItems, detailIndustriesIntro, detailIndustryItems, detailWhyIntro, detailWhyItems, detailCreativeHeading, detailCreativeIntro, detailCreativeItems, detailTechnologyIntro, detailTechnologyItems, detailCaseStudiesIntro, detailFaqItems, seo {title, description, noIndex, image {asset->{url}}}}`,
+      `*[_type == "sitePage" && pageKey == $pageKey][0]{title, heroTitle, heroAccent, heroDescription, heroImage {asset->{_id, url}, crop, hotspot}, announcement, primaryCta, primaryCtaUrl, secondaryCta, secondaryCtaUrl, careerIntroTitle, careerIntroDescription, careerDisciplineOneTitle, careerDisciplineOneDescription, careerDisciplineTwoTitle, careerDisciplineTwoDescription, careerDisciplineThreeTitle, careerDisciplineThreeDescription, careerDisciplineFourTitle, careerDisciplineFourDescription, detailSolutionsHeading, detailSolutionsIntro, detailSolutionsItems, detailCapabilitiesHeading, detailCapabilitiesIntro, detailCapabilityItems, detailIndustriesIntro, detailIndustryItems, detailWhyIntro, detailWhyItems, detailCreativeHeading, detailCreativeIntro, detailCreativeItems, detailTechnologyIntro, detailTechnologyItems, detailCaseStudiesIntro, detailFaqItems, shopifySeoIntroHeading, shopifySeoIntroCopy, shopifySeoTrustLabel, shopifySeoCtaHeading, shopifySeoCtaCopy, shopifySeoCtaLabel, shopifySeoCtaUrl, shopifySeoRelatedHeading, shopifySeoRelatedItems, seo {title, description, noIndex, image {asset->{url}}}}`,
       {pageKey},
     )
   } catch {

@@ -1,0 +1,95 @@
+{
+  "hero": {
+    "eyebrow": "UNDERSTAND AND RESPOND INTELLIGENTLY",
+    "title": "Natural Language Processing Services Company",
+    "accent": "Make language useful to your business.",
+    "description": "Build NLP systems that understand text and speech, automate document workflows, analyze conversations, and turn unstructured language into useful insight.",
+    "cta": "Talk to Our NLP Experts",
+    "ctaUrl": "/contact?service=nlp-development"
+  },
+  "solutions": {
+    "heading": "Natural Language Processing Services We Offer",
+    "intro": "Kodrise builds NLP solutions for product teams and organizations that want to make human language easier to search, understand, and use across business systems.",
+    "items": [
+      {"title":"NLP Strategy & Consulting","description":"Identify high-value language use cases, assess data and system readiness, and define a roadmap tied to your business goals."},
+      {"title":"Custom NLP Model Development","description":"Design, train, and adapt language models to your domain, data, users, and operating requirements."},
+      {"title":"Text Classification & Categorization","description":"Automatically sort support tickets, documents, reviews, and other text into useful categories and workflows."},
+      {"title":"Named Entity Recognition","description":"Extract people, places, products, dates, organizations, and domain-specific entities from large volumes of text."},
+      {"title":"Sentiment & Emotion Analysis","description":"Understand opinions, tone, and sentiment in reviews, conversations, surveys, and customer feedback."},
+      {"title":"Document Summarization","description":"Turn lengthy contracts, reports, emails, and records into concise summaries that help teams review information faster."},
+      {"title":"Semantic Search & Query Understanding","description":"Interpret the meaning behind a search and surface relevant answers from your content and data sources."},
+      {"title":"Multilingual NLP & Translation","description":"Support language identification, translation, localization, and multilingual conversational experiences."},
+      {"title":"Voice & Speech Processing","description":"Transcribe, analyze, and structure spoken language for call centers, digital assistants, healthcare, and service operations."},
+      {"title":"Text Mining & Information Extraction","description":"Find topics, relationships, keywords, and patterns in unstructured business information."},
+      {"title":"Conversational Language Systems","description":"Build assistants and chatbots that understand user intent, maintain context, and guide conversations toward useful outcomes."},
+      {"title":"NLP Integration & MLOps","description":"Integrate language features into applications and manage deployment, evaluation, monitoring, and ongoing updates."}
+    ]
+  },
+  "capabilities": {
+    "heading": "Incorporate NLP Using Language Intelligence",
+    "intro": "Bring language understanding into everyday workflows. Our solutions help teams organize information, find relevant answers, and understand what customers and employees are saying.",
+    "items": [
+      {"title":"Text Mining & Classification","description":"Extract entities, topics, sentiment, and key phrases to make unstructured information easier to organize and analyze.","image":"nlp-text-mining"},
+      {"title":"Intelligent Enterprise Search","description":"Search business content by meaning and intent so people can find relevant knowledge beyond exact keyword matches.","image":"nlp-enterprise-search"},
+      {"title":"Contextual Content Understanding","description":"Analyze tone, meaning, and context to support sentiment insights, compliance review, and personalized content experiences.","image":"nlp-contextual-content"}
+    ]
+  },
+  "industries": {
+    "intro": "We adapt language models and workflows to the terminology, information, user needs, and compliance requirements of each industry.",
+    "items": [
+      {"title":"Healthcare","description":"Summarize clinical documents, structure notes, analyze patient feedback, and support healthcare search with privacy controls."},
+      {"title":"Finance & Banking","description":"Classify documents and transactions, analyze customer communications, and assist with compliance and risk workflows."},
+      {"title":"eCommerce","description":"Understand reviews and product questions, improve semantic search, and support personalized product discovery."},
+      {"title":"Education","description":"Support learning search, content organization, feedback analysis, and accessible multilingual experiences."},
+      {"title":"Logistics","description":"Extract shipment and order information, classify operational messages, and improve communication across delivery workflows."},
+      {"title":"Legal","description":"Search legal documents, identify clauses and entities, and summarize large collections of contracts and case information."},
+      {"title":"Retail","description":"Analyze customer feedback, product questions, and store communications to help teams respond and plan more effectively."},
+      {"title":"Real Estate","description":"Categorize listings, interpret property inquiries, extract details from documents, and qualify customer requests."},
+      {"title":"Media & Entertainment","description":"Organize content, support moderation, analyze audience feedback, and improve discovery across digital media."},
+      {"title":"Energy & Utilities","description":"Process field reports, service requests, and operational documents to make information easier to locate and act on."}
+    ]
+  },
+  "why": {
+    "intro": "NLP works best when it reflects the language of your users and the realities of your domain. Kodrise combines data, product, and AI engineering to deliver useful language capabilities from planning through support.",
+    "items": [
+      {"title":"Built around your language","description":"Adapt models, terminology, and workflows to your industry, users, content, and regional needs."},
+      {"title":"Full lifecycle delivery","description":"Plan, prepare data, develop models, integrate with products, and support ongoing evaluation and updates."},
+      {"title":"Enterprise-ready controls","description":"Design for privacy, permissions, secure data handling, auditability, and the requirements of your organization."},
+      {"title":"Performance that improves","description":"Track quality and user outcomes, then refine models and workflows as data and expectations change."}
+    ]
+  },
+  "caseStudiesIntro": "See how Kodrise uses intelligent technology to help products and teams solve practical data and workflow challenges.",
+  "creative": {
+    "heading": "Our End-to-End NLP Solution Development Process",
+    "intro": "A clear delivery process helps ensure the NLP solution fits your data, workflow, and users, and can be evaluated after launch.",
+    "items": [
+      {"title":"Goal Discovery","description":"Define the problem, users, success measures, constraints, and language tasks the solution should support."},
+      {"title":"Data Preparation","description":"Collect, clean, label, and organize language data while considering quality, privacy, and representativeness."},
+      {"title":"Model Development","description":"Select and adapt models, develop task logic, and evaluate results against representative business examples."},
+      {"title":"Integration & Testing","description":"Connect the NLP solution to applications, content sources, APIs, and workflows, then test real-world scenarios."},
+      {"title":"Launch & Monitoring","description":"Deploy with observability for quality, latency, usage, and operational reliability."},
+      {"title":"Continuous Improvement","description":"Use feedback and performance measures to refine models, data, and user experience over time."}
+    ]
+  },
+  "technology": {
+    "intro": "We select language models, data tools, infrastructure, and APIs based on the languages, data volumes, and workflows your solution needs to support.",
+    "groups": [
+      {"title":"NLP & Language Models","items":["Hugging Face","spaCy","NLTK","OpenAI","Transformers"]},
+      {"title":"Machine Learning","items":["PyTorch","TensorFlow","scikit-learn","Keras","XGBoost"]},
+      {"title":"Data Processing & Search","items":["Apache Spark","Pandas","Elasticsearch","PostgreSQL","Databricks"]},
+      {"title":"Cloud & APIs","items":["AWS","Microsoft Azure","Google Cloud","FastAPI","Docker"]}
+    ]
+  },
+  "faqs": [
+    {"question":"What is natural language processing?","answer":"Natural language processing is a field of AI that helps software work with human language, including text and speech, for tasks such as classification, search, extraction, translation, and summarization."},
+    {"question":"What can NLP development services help businesses do?","answer":"NLP can organize documents, analyze conversations and feedback, extract information, improve search, summarize content, and support multilingual customer experiences."},
+    {"question":"What is the difference between NLP and generative AI?","answer":"NLP is a broad set of methods for processing and understanding language. Generative AI focuses on creating new content. Modern systems can combine NLP tasks with generative models and retrieval."},
+    {"question":"Can NLP work with our business documents and data?","answer":"Yes. NLP solutions can process approved documents, messages, records, and knowledge sources, with access and privacy controls designed for your environment."},
+    {"question":"Can NLP systems support multiple languages?","answer":"Yes. Depending on the use case and data, NLP systems can identify languages, translate content, and support multilingual search and conversations."},
+    {"question":"How do you measure NLP model quality?","answer":"We evaluate models against representative examples using metrics suited to the task, along with human review, error analysis, and real-world performance monitoring."},
+    {"question":"Can an NLP solution integrate with existing applications?","answer":"Yes. NLP features can be exposed through APIs or integrated into websites, mobile apps, CRM platforms, search tools, and internal workflows."},
+    {"question":"How do you protect sensitive language data?","answer":"We plan data handling around permissions, privacy, encryption, retention, and deployment requirements, and can keep processing within your approved environment."},
+    {"question":"How long does NLP development take?","answer":"A focused proof of concept may take several weeks. Production delivery depends on data preparation, language coverage, integrations, evaluation, and compliance needs."},
+    {"question":"Do you support NLP systems after deployment?","answer":"Yes. Ongoing support can include model monitoring, data updates, quality evaluation, security maintenance, and continuous improvements."}
+  ]
+}
