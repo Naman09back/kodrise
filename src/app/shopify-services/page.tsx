@@ -7,7 +7,10 @@ export const metadata: Metadata = {
   description: "Shopify commerce services to build, grow, and evolve your online business.",
 };
 
-const groups = [
+type ServiceLink = [string, string] | {label: string; href: string; children: [string, string][]};
+type ServiceGroup = {title: string; description: string; links: ServiceLink[]};
+
+const groups: ServiceGroup[] = [
   {
     title: "Build",
     description: "Build the commerce foundation your business needs.",
@@ -38,17 +41,10 @@ const groups = [
     title: "Evolve",
     description: "Modernize, optimize, and scale your commerce ecosystem.",
     links: [
-      ["Shopify Migration", "/shopify-services/migration"],
-      ["Adobe Commerce", "/shopify-services/adobe-commerce"],
-      ["BigCommerce", "/shopify-services/bigcommerce"],
-      ["WooCommerce", "/shopify-services/woocommerce"],
-      ["Salesforce", "/shopify-services/salesforce"],
-      ["Magento", "/shopify-services/magento"],
-      ["Squarespace", "/shopify-services/squarespace"],
-      ["Wix", "/shopify-services/wix"],
+      {label: "Shopify Migration", href: "/shopify-services/shopify-migration", children: [["Adobe Commerce", "/shopify-services/shopify-migration/adobe-commerce"], ["BigCommerce", "/shopify-services/shopify-migration/bigcommerce"], ["WooCommerce", "/shopify-services/shopify-migration/woocommerce"], ["Salesforce", "/shopify-services/shopify-migration/salesforce"], ["Magento", "/shopify-services/shopify-migration/magento"], ["Squarespace", "/shopify-services/shopify-migration/squarespace"], ["Wix", "/shopify-services/shopify-migration/wix"]]},
       ["AI & Agentic Commerce", "/shopify-services/ai-agentic-commerce"],
       ["Shopify Ongoing Support", "/shopify-services/ongoing-support"],
-      ["Shopify Development Services", "/shopify-services/development-services"],
+      ["Dedicated Commerce Teams", "/shopify-services/development-services"],
     ],
   },
 ] as const;
@@ -70,7 +66,7 @@ export default function ShopifyServicesPage() {
       <div className={styles.groups}>{groups.map((group, index) => <article className={styles.group} key={group.title}>
         <div className={styles.groupTop}><span>0{index + 1}</span><h3>{group.title}</h3></div>
         <p className={styles.description}>{group.description}</p>
-        <ul>{group.links.map(([label, href]) => <li key={label}><Link href={href}>{label}<span aria-hidden="true">↗</span></Link></li>)}</ul>
+        <ul>{group.links.map((entry) => Array.isArray(entry) ? <li key={entry[0]}><Link href={entry[1]}>{entry[0]}<span aria-hidden="true">↗</span></Link></li> : <li key={entry.label}><Link href={entry.href}>{entry.label}<span aria-hidden="true">↗</span></Link><ul className={styles.subLinks}>{entry.children.map(([label, href]) => <li key={label}><Link href={href}>{label}<span aria-hidden="true">↗</span></Link></li>)}</ul></li>)}</ul>
       </article>)}</div>
     </section>
   </main>;
