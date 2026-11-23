@@ -1,5 +1,6 @@
 import type {Metadata} from "next";
 import ShopifyMobileAppPage from "./mobile-app-client";
+import ShopifyNativePage from "../native-page";
 
 export const metadata: Metadata = {
   title: {absolute: "Shopify Mobile App Development | Kodrise"},
@@ -8,5 +9,5 @@ export const metadata: Metadata = {
 };
 
 export default function Page() {
-  return <ShopifyMobileAppPage />;
+  return <ShopifyNativePage path="/shopify-services/mobile-app-development"><ShopifyMobileAppPage /></ShopifyNativePage>;
 }

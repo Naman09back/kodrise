@@ -3,6 +3,7 @@ import {getSitePage} from "@/sanity/lib/pages";
 import {sanityClient} from "@/sanity/lib/client";
 import {urlForImage} from "@/sanity/lib/image";
 import GenerativeAiExperience from "./generative-ai-experience";
+import CmsNativePageGate from "../../cms-native-page-gate";
 
 const PAGE_KEY = "/services/generative-ai-development-company";
 const ASSETS_QUERY = `*[_type == "siteAsset" && slot in [
@@ -34,5 +35,5 @@ export default async function GenerativeAiPage() {
     {src: urlForImage(asset.image).width(960).fit("max").auto("format").url(), alt: asset.alt || asset.title || "Kodrise generative AI service"},
   ]));
   const heroImage = page?.heroImage ? urlForImage(page.heroImage).width(1920).height(900).fit("crop").auto("format").url() : images["generative-ai-banner"]?.src;
-  return <GenerativeAiExperience page={page} images={images} heroImage={heroImage} />;
+  return <CmsNativePageGate page={page} label="Generative AI Development"><GenerativeAiExperience page={page} images={images} heroImage={heroImage} /></CmsNativePageGate>;
 }

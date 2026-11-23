@@ -3,6 +3,7 @@ import { getSitePage } from "@/sanity/lib/pages";
 import { sanityClient } from "@/sanity/lib/client";
 import { urlForImage } from "@/sanity/lib/image";
 import OverviewExperience from "./overview-experience";
+import CmsNativePageGate from "../cms-native-page-gate";
 
 type OverviewAsset = { slot: string; title?: string; alt?: string; image?: unknown };
 const OVERVIEW_ASSETS_QUERY = `
@@ -32,5 +33,5 @@ export default async function OverviewPage() {
     asset.slot,
     { src: urlForImage(asset.image).auto("format").fit("max").url(), alt: asset.alt || asset.title || "Kodrise project" },
   ]));
-  return <OverviewExperience page={page} images={images} />;
+  return <CmsNativePageGate page={page} label="Kodrise Overview"><OverviewExperience page={page} images={images} /></CmsNativePageGate>;
 }

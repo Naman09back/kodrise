@@ -5,8 +5,6 @@ import InteriorHero from "../../interior-hero";
 import { serviceDetails } from "../../ap-data";
 import { sanityClient } from "../../../sanity/lib/client";
 import { serviceBySlugQuery, serviceSlugsQuery } from "../../../sanity/lib/queries";
-import MirrorRoutePage from "../../mirror-route-page";
-import {getCodiantMirrorByPath} from "@/lib/codiant-mirrors";
 
 export const dynamic = "force-dynamic";
 
@@ -55,8 +53,6 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const mirror = await getCodiantMirrorByPath(`/services/${slug}`);
-  if (mirror?.title) return {title: {absolute: mirror.title}};
   const service = await getService(slug);
   return {
     alternates: {canonical: `/services/${slug}`},
@@ -70,7 +66,6 @@ export default async function ServiceDetailPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  if (await getCodiantMirrorByPath(`/services/${slug}`)) return <MirrorRoutePage pathname={`/services/${slug}`} />;
   const service = await getService(slug);
   if (!service) notFound();
   return (

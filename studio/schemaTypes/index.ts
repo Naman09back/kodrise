@@ -118,10 +118,8 @@ const sitePage = defineType({name: 'sitePage', title: 'Site pages', type: 'docum
   defineField({name: 'pageKey', title: 'Page key', type: 'string', validation: (rule) => rule.required()}),
   defineField({name: 'path', title: 'Local route', type: 'string', readOnly: true, validation: (rule) => rule.required()}),
   defineField({name: 'family', title: 'Page family', type: 'string'}),
-  defineField({name: 'sourceRouteId', title: 'Source route ID', type: 'string', readOnly: true}),
-  defineField({name: 'sourceUrl', title: 'Source URL', type: 'url', readOnly: true}),
-  defineField({name: 'contentHtml', title: 'Page HTML', description: 'Editable archived page markup. Changes are used by the local site renderer.', type: 'text', rows: 20}),
   defineField({name: 'isPublished', title: 'Show on the website', type: 'boolean', initialValue: true}),
+  defineField({name: 'useSanitySections', title: 'Render this page from Sanity sections', description: 'When enabled and at least one section is added, replace the built-in page content with the editable content below.', type: 'boolean', initialValue: false}),
   defineField({name: 'heroTitle', type: 'string'}),
   defineField({name: 'heroAccent', type: 'string'}),
   defineField({name: 'heroDescription', type: 'text', rows: 4}),
@@ -131,6 +129,16 @@ const sitePage = defineType({name: 'sitePage', title: 'Site pages', type: 'docum
   defineField({name: 'primaryCtaUrl', type: 'string'}),
   defineField({name: 'secondaryCta', type: 'string'}),
   defineField({name: 'secondaryCtaUrl', type: 'string'}),
+  defineField({name: 'sections', title: 'Page sections', description: 'Content blocks used by native Kodrise page layouts. Add a section when you want its content managed in Sanity.', type: 'array', of: [defineArrayMember({type: 'object', name: 'pageSection', title: 'Page section', fields: [
+    defineField({name: 'layout', type: 'string', options: {list: [{title: 'Text section', value: 'text'}, {title: 'Feature cards', value: 'cards'}, {title: 'Checklist', value: 'list'}, {title: 'Call to action', value: 'cta'}, {title: 'Frequently asked questions', value: 'faq'}]}, initialValue: 'text'}),
+    defineField({name: 'eyebrow', type: 'string'}),
+    defineField({name: 'heading', type: 'string'}),
+    defineField({name: 'body', type: 'text', rows: 5}),
+    defineField({name: 'image', type: 'image', options: {hotspot: true}, fields: [defineField({name: 'alt', title: 'Alternative text', type: 'string'})]}),
+    defineField({name: 'items', type: 'array', of: [defineArrayMember({type: 'object', fields: [defineField({name: 'title', type: 'string'}), defineField({name: 'description', type: 'text', rows: 3}), defineField({name: 'image', type: 'image', options: {hotspot: true}, fields: [defineField({name: 'alt', title: 'Alternative text', type: 'string'})]}), defineField({name: 'href', type: 'string'})]})]}),
+    defineField({name: 'buttonLabel', type: 'string'}),
+    defineField({name: 'buttonUrl', type: 'string'}),
+  ]})]}),
   defineField({name: 'careerIntroTitle', type: 'string'}),
   defineField({name: 'careerIntroDescription', type: 'text', rows: 3}),
   ...['One', 'Two', 'Three', 'Four'].flatMap((number) => [
@@ -170,7 +178,7 @@ const siteAsset = defineType({name: 'siteAsset', title: 'Website images', type: 
   defineField({name: 'slot', title: 'Image key', description: 'Stable key used by the website, for example home-hero or portfolio-scribeflo.', type: 'string', validation: (rule) => rule.required().regex(/^[a-z0-9][a-z0-9-]{0,119}$/)}),
   defineField({name: 'title', type: 'string', validation: (rule) => rule.required()}),
   defineField({name: 'alt', title: 'Alternative text', type: 'string', validation: (rule) => rule.required()}),
-  defineField({name: 'sourcePath', title: 'Replace this image URL or path', description: 'Optional exact source URL/path to replace on mirrored pages.', type: 'string'}),
+  defineField({name: 'sourcePath', title: 'Website image path', description: 'Connect this Sanity image to an existing /site-assets/... image location so it can be replaced from the media library.', type: 'string'}),
   defineField({name: 'image', title: 'Image', type: 'image', options: {hotspot: true}, validation: (rule) => rule.required()}),
 ]})
 

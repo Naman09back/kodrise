@@ -4,6 +4,18 @@ import AdminDashboard from "./admin-dashboard";
 
 export const dynamic = "force-dynamic";
 
+const nativePagePaths = [
+  "/", "/about", "/contact", "/overview", "/process-methodology", "/services", "/ai-consulting-services",
+  "/services/generative-ai-development-company", "/services/ai-agents-and-automation-solutions", "/services/ai-app-development-company",
+  "/services/ai-chatbot-development-company", "/services/machine-learning", "/services/nlp-development", "/services/rag-as-a-service",
+  "/services/outsourcing-ai-development", "/shopify-services", "/portfolio", "/resources", "/careers", "/devresources", "/shopify-services/website-design", "/shopify-services/website-development",
+  "/shopify-services/b2b-ecommerce-solutions", "/shopify-services/headless-commerce", "/shopify-services/mobile-app-development",
+  "/shopify-services/custom-ecommerce-solutions", "/shopify-services/marketing", "/shopify-services/seo", "/shopify-services/ppc",
+  "/shopify-services/content-marketing", "/shopify-services/social-media-marketing", "/shopify-services/email-marketing",
+  "/shopify-services/ai-agentic-commerce", "/shopify-services/ongoing-support", "/shopify-services/shopify-migration",
+  ...["adobe-commerce", "bigcommerce", "woocommerce", "salesforce", "magento", "squarespace", "wix"].map((slug) => `/shopify-services/shopify-migration/${slug}`),
+];
+
 const adminQuery = `{
   "services": *[_type == "service"] | order(title asc) {
     _id, _type, title, "slug": slug.current, eyebrow, lead, overview, skills, useCases, benefits, isPublished,
@@ -34,8 +46,9 @@ const adminQuery = `{
   "jobs": *[_type == "job"] | order(title asc) {
     _id, _type, title, "slug": slug.current, location, employmentType, summary, skills, isOpen
   },
-  "pages": *[_type == "sitePage" && path in ["/","/shopify-development","/shopify-app-development-company","/services/shopify-website-development","/services/shopify-development","/services/recover-shopify-abandoned-checkouts","/shopify-services/seo","/services","/services/generative-ai-development-company","/services/ai-agents-and-automation-solutions","/services/ai-app-development-company","/services/ai-chatbot-development-company","/services/machine-learning","/services/nlp-development","/services/rag-as-a-service","/services/outsourcing-ai-development","/ai-consulting-services","/about","/portfolio","/resources/blogs","/devresources","/careers","/contact"]] | order(path asc) {
-    _id, _type, pageKey, path, family, isPublished, title, heroTitle, heroAccent, heroDescription, heroImage {asset->{_id,url},alt}, announcement, primaryCta, primaryCtaUrl, secondaryCta, secondaryCtaUrl, careerIntroTitle, careerIntroDescription, careerDisciplineOneTitle, careerDisciplineOneDescription, careerDisciplineTwoTitle, careerDisciplineTwoDescription, careerDisciplineThreeTitle, careerDisciplineThreeDescription, careerDisciplineFourTitle, careerDisciplineFourDescription,
+  "pages": *[_type == "sitePage" && path in $nativePagePaths] | order(path asc) {
+    _id, _type, pageKey, path, family, isPublished, title, heroTitle, heroAccent, heroDescription, heroImage {asset->{_id,url},alt}, announcement, primaryCta, primaryCtaUrl, secondaryCta, secondaryCtaUrl, careerIntroTitle, careerIntroDescription, careerDisciplineOneTitle, careerDisciplineOneDescription, careerDisciplineTwoTitle, careerDisciplineTwoDescription, careerDisciplineThreeTitle, careerDisciplineThreeDescription, careerDisciplineFourTitle, careerDisciplineFourDescription, useSanitySections, sections,
+    "sectionsJson": sections,
     detailSolutionsHeading, detailSolutionsIntro, detailSolutionsItems, detailCapabilitiesHeading, detailCapabilitiesIntro, detailCapabilityItems,
     detailIndustriesIntro, detailIndustryItems, detailWhyIntro, detailWhyItems, detailCreativeHeading, detailCreativeIntro, detailCreativeItems,
     detailTechnologyIntro, detailTechnologyItems, detailCaseStudiesIntro, detailFaqItems,
@@ -82,7 +95,7 @@ const emptyContent = {
 export default async function AdminPage() {
   let content = emptyContent;
   try {
-    content = await sanityClient.fetch(adminQuery);
+    content = await sanityClient.fetch(adminQuery, {nativePagePaths});
   } catch (error) {
     console.error("Unable to load dashboard content from Sanity:", error);
   }

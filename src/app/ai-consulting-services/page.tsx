@@ -3,6 +3,7 @@ import {getSitePage} from "@/sanity/lib/pages";
 import {sanityClient} from "@/sanity/lib/client";
 import {urlForImage} from "@/sanity/lib/image";
 import AiConsultingExperience from "./consulting-experience";
+import CmsNativePageGate from "../cms-native-page-gate";
 
 const PAGE_KEY = "/ai-consulting-services";
 const ASSETS_QUERY = `*[_type == "siteAsset" && slot in [
@@ -32,5 +33,5 @@ export default async function AiConsultingPage() {
     {src: urlForImage(asset.image).width(960).fit("max").auto("format").url(), alt: asset.alt || asset.title || "Kodrise AI consulting"},
   ]));
   const heroImage = page?.heroImage ? urlForImage(page.heroImage).width(1920).height(900).fit("crop").auto("format").url() : images["consulting-banner"]?.src;
-  return <AiConsultingExperience page={page} images={images} heroImage={heroImage} />;
+  return <CmsNativePageGate page={page} label="AI Consulting"><AiConsultingExperience page={page} images={images} heroImage={heroImage} /></CmsNativePageGate>;
 }

@@ -3,6 +3,7 @@ import {getSitePage} from "@/sanity/lib/pages";
 import {sanityClient} from "@/sanity/lib/client";
 import {urlForImage} from "@/sanity/lib/image";
 import AiAgentExperience from "./ai-agent-experience";
+import CmsNativePageGate from "../../cms-native-page-gate";
 
 const PAGE_KEY = "/services/ai-agents-and-automation-solutions";
 const ASSETS_QUERY = `*[_type == "siteAsset" && slot in [
@@ -33,5 +34,5 @@ export default async function AiAgentDevelopmentPage() {
     {src: urlForImage(asset.image).width(960).fit("max").auto("format").url(), alt: asset.alt || asset.title || "Kodrise AI agent development"},
   ]));
   const heroImage = page?.heroImage ? urlForImage(page.heroImage).width(1920).height(900).fit("crop").auto("format").url() : images["ai-agent-banner"]?.src;
-  return <AiAgentExperience page={page} images={images} heroImage={heroImage} />;
+  return <CmsNativePageGate page={page} label="AI Agent Development"><AiAgentExperience page={page} images={images} heroImage={heroImage} /></CmsNativePageGate>;
 }

@@ -44,7 +44,7 @@ const editableFields: Record<string, string[]> = {
   faq: ["question", "answer", "order", "isPublished"],
   developer: ["profileId", "name", "role", "experience", "skills", "availability", "engagement", "isPublished"],
   job: ["title", "location", "employmentType", "summary", "skills", "isOpen"],
-  sitePage: ["title", "family", "isPublished", "contentHtml", "heroTitle", "heroAccent", "heroDescription", "heroImageFile", "announcement", "primaryCta", "primaryCtaUrl", "secondaryCta", "secondaryCtaUrl", "careerIntroTitle", "careerIntroDescription", "careerDisciplineOneTitle", "careerDisciplineOneDescription", "careerDisciplineTwoTitle", "careerDisciplineTwoDescription", "careerDisciplineThreeTitle", "careerDisciplineThreeDescription", "careerDisciplineFourTitle", "careerDisciplineFourDescription", "detailSolutionsHeading", "detailSolutionsIntro", "detailSolutionsItems", "detailCapabilitiesHeading", "detailCapabilitiesIntro", "detailCapabilityItems", "detailIndustriesIntro", "detailIndustryItems", "detailWhyIntro", "detailWhyItems", "detailCreativeHeading", "detailCreativeIntro", "detailCreativeItems", "detailTechnologyIntro", "detailTechnologyItems", "detailCaseStudiesIntro", "detailFaqItems", "shopifySeoIntroHeading", "shopifySeoIntroCopy", "shopifySeoTrustLabel", "shopifySeoCtaHeading", "shopifySeoCtaCopy", "shopifySeoCtaLabel", "shopifySeoCtaUrl", "shopifySeoRelatedHeading", "shopifySeoRelatedItems", "seoTitle", "seoDescription", "seoNoIndex", "seoImageFile"],
+  sitePage: ["title", "family", "isPublished", "useSanitySections", "sectionsJson", "heroTitle", "heroAccent", "heroDescription", "heroImageFile", "announcement", "primaryCta", "primaryCtaUrl", "secondaryCta", "secondaryCtaUrl", "careerIntroTitle", "careerIntroDescription", "careerDisciplineOneTitle", "careerDisciplineOneDescription", "careerDisciplineTwoTitle", "careerDisciplineTwoDescription", "careerDisciplineThreeTitle", "careerDisciplineThreeDescription", "careerDisciplineFourTitle", "careerDisciplineFourDescription", "detailSolutionsHeading", "detailSolutionsIntro", "detailSolutionsItems", "detailCapabilitiesHeading", "detailCapabilitiesIntro", "detailCapabilityItems", "detailIndustriesIntro", "detailIndustryItems", "detailWhyIntro", "detailWhyItems", "detailCreativeHeading", "detailCreativeIntro", "detailCreativeItems", "detailTechnologyIntro", "detailTechnologyItems", "detailCaseStudiesIntro", "detailFaqItems", "shopifySeoIntroHeading", "shopifySeoIntroCopy", "shopifySeoTrustLabel", "shopifySeoCtaHeading", "shopifySeoCtaCopy", "shopifySeoCtaLabel", "shopifySeoCtaUrl", "shopifySeoRelatedHeading", "shopifySeoRelatedItems", "seoTitle", "seoDescription", "seoNoIndex", "seoImageFile"],
   lead: ["status"],
   jobApplication: ["status"],
   testimonial: ["name", "role", "company", "quote", "rating", "status", "featured"],
@@ -64,16 +64,17 @@ function editorField(record: RecordItem, field: string) {
     const asset = image?.asset as Record<string, unknown> | undefined;
     return <label key={field}>{field === "heroImageFile" ? "Hero image" : field === "seoImageFile" ? "Social sharing image" : "Replace image"}<input name={field} type="file" accept="image/png,image/jpeg,image/webp" /><small>PNG, JPG or WebP up to 5 MB.</small>{asset?.url ? <img className="admin-image-preview" src={String(asset.url)} alt={String(record.alt || "Current image")} /> : null}</label>;
   }
-  if (["isOpen", "isFeatured", "seoNoIndex", "featured", "isPublished"].includes(field)) {
+  if (["isOpen", "isFeatured", "seoNoIndex", "featured", "isPublished", "useSanitySections"].includes(field)) {
     const missing = record[field] === undefined;
     const enabledByDefault = missing && ["isOpen", "isFeatured", "isPublished"].includes(field);
-    return <label className="admin-check" key={field}><input defaultChecked={missing ? enabledByDefault : Boolean(value)} name={field} type="checkbox" /> {field === "isOpen" ? "Open for applications" : field === "featured" || field === "isFeatured" ? "Feature on the website" : field === "isPublished" ? "Show on the website" : "No index"}</label>;
+    return <label className="admin-check" key={field}><input defaultChecked={missing ? enabledByDefault : Boolean(value)} name={field} type="checkbox" /> {field === "isOpen" ? "Open for applications" : field === "featured" || field === "isFeatured" ? "Feature on the website" : field === "isPublished" ? "Show on the website" : field === "useSanitySections" ? "Render editable Sanity sections instead of the built-in page" : "No index"}</label>;
   }
   if (field === "status") return <label key={field}>{labelFor(field)}<select defaultValue={String(value || "pending")} name={field}><option value="pending">Pending review</option><option value="approved">Approved</option><option value="rejected">Rejected</option></select></label>;
   if (field === "rating") return <label key={field}>{labelFor(field)}<select defaultValue={String(value || 5)} name={field}><option value="5">★★★★★</option><option value="4">★★★★☆</option><option value="3">★★★☆☆</option><option value="2">★★☆☆☆</option><option value="1">★☆☆☆☆</option></select></label>;
   const cleanLabel = field === "seoTitle" ? "Title" : field === "seoDescription" ? "Description" : labelFor(field);
-  const multiLineFields = ["skills", "useCases", "benefits", "heroDescription", "seoDescription", "description", "challenge", "solution", "excerpt", "contentHtml", "detailSolutionsIntro", "detailSolutionsItems", "detailCapabilitiesIntro", "detailCapabilityItems", "detailIndustriesIntro", "detailIndustryItems", "detailWhyIntro", "detailWhyItems", "detailCreativeIntro", "detailCreativeItems", "detailTechnologyIntro", "detailTechnologyItems", "detailCaseStudiesIntro", "detailFaqItems", "shopifySeoIntroCopy", "shopifySeoCtaCopy", "shopifySeoRelatedItems"];
-  return <label key={field}>{cleanLabel}{multiLineFields.includes(field) ? <textarea defaultValue={String(value)} name={field} rows={field === "contentHtml" ? 24 : field.endsWith("Items") ? 9 : 4} spellCheck={field !== "contentHtml"} /> : <input defaultValue={String(value)} name={field} />}</label>;
+  const multiLineFields = ["skills", "useCases", "benefits", "heroDescription", "seoDescription", "description", "challenge", "solution", "excerpt", "sectionsJson", "detailSolutionsIntro", "detailSolutionsItems", "detailCapabilitiesIntro", "detailCapabilityItems", "detailIndustriesIntro", "detailIndustryItems", "detailWhyIntro", "detailWhyItems", "detailCreativeIntro", "detailCreativeItems", "detailTechnologyIntro", "detailTechnologyItems", "detailCaseStudiesIntro", "detailFaqItems", "shopifySeoIntroCopy", "shopifySeoCtaCopy", "shopifySeoRelatedItems"];
+  const displayValue = field === "sectionsJson" && Array.isArray(record.sectionsJson) ? JSON.stringify(record.sectionsJson, null, 2) : String(value);
+  return <label key={field}>{field === "sectionsJson" ? "Editable sections (JSON)" : cleanLabel}{multiLineFields.includes(field) ? <textarea defaultValue={displayValue} name={field} rows={field === "sectionsJson" ? 16 : field.endsWith("Items") ? 9 : 4} spellCheck={field !== "sectionsJson"} /> : <input defaultValue={String(value)} name={field} />}</label>;
 }
 
 function valueFor(value: unknown) {
@@ -120,7 +121,6 @@ export default function AdminDashboard({initialContent, isAdmin, sessionEmail}: 
   const [jobFormOpen, setJobFormOpen] = useState(false);
   const [assetFormOpen, setAssetFormOpen] = useState(false);
   const [contentFormOpen, setContentFormOpen] = useState(false);
-  const [pageHtmlCache, setPageHtmlCache] = useState<Record<string, string>>({});
   const [pageSearch, setPageSearch] = useState("");
 
   useEffect(() => {
@@ -170,25 +170,25 @@ export default function AdminDashboard({initialContent, isAdmin, sessionEmail}: 
     setActiveId(open ? null : record._id);
     setMessage("");
     setSaveState("idle");
-    if (open || record._type !== "sitePage" || Object.hasOwn(pageHtmlCache, record._id)) return;
-    setSaveState("saving");
-    setMessage("Loading page content…");
-    fetch(`/api/admin/content?id=${encodeURIComponent(record._id)}`)
-      .then((response) => response.ok ? response.json() : Promise.reject(new Error("Unable to load page HTML.")))
-      .then((result) => {
-        setPageHtmlCache((current) => ({...current, [record._id]: String(result.item?.contentHtml || "")}));
-        setSaveState("idle");
-        setMessage("Editing the selected page");
-      })
-      .catch((error: Error) => {setSaveState("error"); setMessage(error.message);});
   }
 
   async function save(record: RecordItem, formData: FormData) {
     const patch: Record<string, unknown> = {};
     for (const field of editableFields[record._type] || []) {
-      if (field === "seoImageFile" || field === "imageFile") continue;
+      if (field === "seoImageFile" || field === "imageFile" || field === "sectionsJson") continue;
       const raw = formData.get(field);
-      patch[field] = ["isOpen", "isFeatured", "seoNoIndex", "featured", "isPublished"].includes(field) ? raw === "on" : field === "rating" ? Number(raw || 5) : ["skills", "useCases", "benefits", "technologies"].includes(field) ? String(raw || "").split("\n").map((item) => item.trim()).filter(Boolean) : raw;
+      patch[field] = ["isOpen", "isFeatured", "seoNoIndex", "featured", "isPublished", "useSanitySections"].includes(field) ? raw === "on" : field === "rating" ? Number(raw || 5) : ["skills", "useCases", "benefits", "technologies"].includes(field) ? String(raw || "").split("\n").map((item) => item.trim()).filter(Boolean) : raw;
+    }
+    if (record._type === "sitePage") {
+      try {
+        const sections = JSON.parse(String(formData.get("sectionsJson") || "[]"));
+        if (!Array.isArray(sections)) throw new Error("Sections must be an array.");
+        patch.sections = sections;
+      } catch {
+        setSaveState("error");
+        setMessage("Sections must be valid JSON. Use the Sanity Studio section editor for guided editing.");
+        return;
+      }
     }
     const imageFile = formData.get("seoImageFile");
     if (record._type === "sitePage" && imageFile instanceof File && imageFile.size > 0) {
@@ -226,10 +226,10 @@ export default function AdminDashboard({initialContent, isAdmin, sessionEmail}: 
       setMessage(result.error || "Save failed. Add SANITY_API_WRITE_TOKEN to .env.local.");
       return;
     }
-    if (record._type === "sitePage" && typeof patch.contentHtml === "string") setPageHtmlCache((current) => ({...current, [record._id]: patch.contentHtml as string}));
     setContent((current) => ({...current, [activeSection]: current[activeSection as keyof Content].map((item) => {
       if (item._id !== record._id) return item;
       const updated = {...item, ...patch};
+      if (record._type === "sitePage" && Array.isArray(patch.sections)) updated.sectionsJson = patch.sections;
       if (record._type === "sitePage") updated.seo = {...((item.seo || {}) as Record<string, unknown>), title: patch.seoTitle, description: patch.seoDescription, noIndex: patch.seoNoIndex, ...(patch.seoImage ? {image: patch.seoImage} : {})};
       return updated;
     })}));
@@ -428,7 +428,7 @@ export default function AdminDashboard({initialContent, isAdmin, sessionEmail}: 
                   </div>
                   {editableFields[record._type].map((field) => editorField(record, field))}
                 </> : record._type === "sitePage" ? <>
-                  <div className="admin-editor-group"><span className="admin-editor-group-title">Page content</span>{editableFields[record._type].filter((field) => !field.startsWith("seo") && field !== "seoImageFile" && (!field.startsWith("career") || record.pageKey === "careers") && !(record.path === "/services/generative-ai-development-company" && field === "contentHtml")).map((field) => editorField(field === "contentHtml" && pageHtmlCache[record._id] !== undefined ? {...record, contentHtml: pageHtmlCache[record._id]} : record, field))}</div>
+                  <div className="admin-editor-group"><span className="admin-editor-group-title">Page content</span>{editableFields[record._type].filter((field) => !field.startsWith("seo") && field !== "seoImageFile" && (!field.startsWith("career") || record.pageKey === "careers")).map((field) => editorField(record, field))}</div>
                   {record.path === "/services/generative-ai-development-company" && <div className="admin-editor-group"><span className="admin-editor-group-title">Generative AI page sections</span>{editableFields.sitePage.filter((field) => field.startsWith("detail")).map((field) => editorField(record, field))}</div>}
                   <div className="admin-editor-group admin-seo-group"><span className="admin-editor-group-title">SEO</span>{["seoTitle", "seoDescription", "seoNoIndex", "seoImageFile"].map((field) => editorField(record, field))}<div className="admin-seo-assessments"><div className="admin-seo-assessments-heading"><strong>SEO analysis</strong><b className={`seo-score seo-score-${seoScore(record) >= 75 ? "good" : seoScore(record) >= 50 ? "mid" : "low"}`}>{seoScore(record)}/100</b></div>{seoChecks(record).map((check) => <div className="admin-seo-check" key={check.label}><span className={`admin-seo-light ${check.status}`} aria-label={check.status} /><span><strong>{check.label}</strong><small>{check.detail}</small></span></div>)}</div></div>
                 </> : editableFields[record._type].map((field) => editorField(record, field))}

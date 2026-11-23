@@ -1,5 +1,6 @@
 import type {Metadata} from "next";
 import HeadlessCommercePage from "./headless-commerce-client";
+import ShopifyNativePage from "../native-page";
 
 export const metadata: Metadata = {
   title: {absolute: "Headless Shopify Commerce Services | Kodrise"},
@@ -8,5 +9,5 @@ export const metadata: Metadata = {
 };
 
 export default function Page() {
-  return <HeadlessCommercePage />;
+  return <ShopifyNativePage path="/shopify-services/headless-commerce"><HeadlessCommercePage /></ShopifyNativePage>;
 }

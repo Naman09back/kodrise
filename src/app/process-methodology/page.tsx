@@ -3,6 +3,7 @@ import { getSitePage } from "@/sanity/lib/pages";
 import { sanityClient } from "@/sanity/lib/client";
 import { urlForImage } from "@/sanity/lib/image";
 import ProcessExperience from "./process-experience";
+import CmsNativePageGate from "../cms-native-page-gate";
 
 type ProcessAsset = { slot: string; title?: string; alt?: string; image?: unknown };
 
@@ -27,5 +28,5 @@ export default async function ProcessMethodologyPage() {
     asset.slot,
     { src: urlForImage(asset.image).auto("format").fit("max").url(), alt: asset.alt || asset.title || "Kodrise software engineering" },
   ]));
-  return <ProcessExperience page={page} images={images} />;
+  return <CmsNativePageGate page={page} label="Process Methodology"><ProcessExperience page={page} images={images} /></CmsNativePageGate>;
 }

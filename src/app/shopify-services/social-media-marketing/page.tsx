@@ -1,5 +1,6 @@
 import type {Metadata} from "next";
 import SocialMediaMarketingPage from "./social-media-marketing-client";
+import ShopifyNativePage from "../native-page";
 
 export const metadata: Metadata = {
   title: {absolute: "Shopify Social Media Marketing | Kodrise"},
@@ -8,5 +9,5 @@ export const metadata: Metadata = {
 };
 
 export default function Page() {
-  return <SocialMediaMarketingPage />;
+  return <ShopifyNativePage path="/shopify-services/social-media-marketing"><SocialMediaMarketingPage /></ShopifyNativePage>;
 }

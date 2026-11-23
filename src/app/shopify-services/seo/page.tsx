@@ -3,6 +3,7 @@ import {getSitePage} from "@/sanity/lib/pages";
 import {sanityClient} from "@/sanity/lib/client";
 import {urlForImage} from "@/sanity/lib/image";
 import ShopifySeoExperience from "./seo-experience";
+import CmsNativePageGate from "../../cms-native-page-gate";
 
 const PAGE_KEY = "/shopify-services/seo";
 const ASSETS_QUERY = `*[_type == "siteAsset" && slot in [
@@ -30,5 +31,5 @@ export default async function ShopifySeoPage() {
     asset.slot,
     {src: urlForImage(asset.image).width(asset.slot === "shopify-seo-hero" ? 1920 : 900).auto("format").url(), alt: asset.alt || asset.title || "Shopify SEO by Kodrise"},
   ]));
-  return <ShopifySeoExperience page={page} images={images} />;
+  return <CmsNativePageGate page={page} label="Shopify SEO"><ShopifySeoExperience page={page} images={images} /></CmsNativePageGate>;
 }

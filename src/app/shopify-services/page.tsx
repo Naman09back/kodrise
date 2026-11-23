@@ -1,6 +1,7 @@
 import type {Metadata} from "next";
 import Link from "next/link";
 import styles from "./shopify-services.module.css";
+import ShopifyNativePage from "./native-page";
 
 export const metadata: Metadata = {
   title: "Shopify Services",
@@ -48,7 +49,7 @@ const groups: ServiceGroup[] = [
 ] as const;
 
 export default function ShopifyServicesPage() {
-  return <main className={styles.page} id="main">
+  return <ShopifyNativePage path="/shopify-services"><main className={styles.page} id="main">
     <section className={styles.hero}>
       <div className={styles.heroInner}>
         <span className={styles.eyebrow}>SHOPIFY SERVICES</span>
@@ -67,5 +68,5 @@ export default function ShopifyServicesPage() {
         <ul>{group.links.map((entry) => Array.isArray(entry) ? <li key={entry[0]}><Link href={entry[1]}>{entry[0]}<span aria-hidden="true">↗</span></Link></li> : <li key={entry.label}><Link href={entry.href}>{entry.label}<span aria-hidden="true">↗</span></Link><ul className={styles.subLinks}>{entry.children.map(([label, href]) => <li key={label}><Link href={href}>{label}<span aria-hidden="true">↗</span></Link></li>)}</ul></li>)}</ul>
       </article>)}</div>
     </section>
-  </main>;
+  </main></ShopifyNativePage>;
 }
