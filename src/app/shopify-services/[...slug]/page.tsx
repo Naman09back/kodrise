@@ -4,8 +4,6 @@ import MirroredPage from "../../mirrored-page";
 import {getCodiantMirrorByPath} from "@/lib/codiant-mirrors";
 
 const existingShopifyPages: Record<string, string> = {
-  "shopify-development": "/shopify-development",
-  "shopify-app-development": "/shopify-app-development-company",
   "website-design": "/shopify-development",
   "website-development": "/services/shopify-website-development",
   "b2b-ecommerce-solutions": "/shopify-development",
@@ -15,7 +13,6 @@ const existingShopifyPages: Record<string, string> = {
   "abandoned-checkout-recovery": "/services/recover-shopify-abandoned-checkouts",
   "ai-agentic-commerce": "/shopify-development",
   "ongoing-support": "/shopify-development",
-  "development-services": "/services/shopify-development",
 };
 
 const migrationRedirects: Record<string, string> = {

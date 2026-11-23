@@ -15,8 +15,6 @@ const groups: ServiceGroup[] = [
     title: "Build",
     description: "Build the commerce foundation your business needs.",
     links: [
-      ["Shopify Development", "/shopify-services/shopify-development"],
-      ["Shopify App Development", "/shopify-services/shopify-app-development"],
       ["Shopify Website Design", "/shopify-services/website-design"],
       ["Shopify Website Development", "/shopify-services/website-development"],
       ["B2B Ecommerce Solutions", "/shopify-services/b2b-ecommerce-solutions"],
@@ -44,7 +42,7 @@ const groups: ServiceGroup[] = [
       {label: "Shopify Migration", href: "/shopify-services/shopify-migration", children: [["Adobe Commerce", "/shopify-services/shopify-migration/adobe-commerce"], ["BigCommerce", "/shopify-services/shopify-migration/bigcommerce"], ["WooCommerce", "/shopify-services/shopify-migration/woocommerce"], ["Salesforce", "/shopify-services/shopify-migration/salesforce"], ["Magento", "/shopify-services/shopify-migration/magento"], ["Squarespace", "/shopify-services/shopify-migration/squarespace"], ["Wix", "/shopify-services/shopify-migration/wix"]]},
       ["AI & Agentic Commerce", "/shopify-services/ai-agentic-commerce"],
       ["Shopify Ongoing Support", "/shopify-services/ongoing-support"],
-      ["Dedicated Commerce Teams", "/shopify-services/development-services"],
+      ["Dedicated Commerce Teams", "/shopify-services/dedicated-commerce-teams"],
     ],
   },
 ] as const;
