@@ -104,3 +104,8 @@
 }
 @media (max-width: 620px) { .navigation { padding-inline: 14px; } .megaGrid { grid-template-columns: 1fr; } }
 @media (prefers-reduced-motion: reduce) { .menuButton i { transition: none; } .trialEdge { animation: none !important; } }
+.megaNested { min-width: 0; }
+.megaChildren { display: grid; gap: 5px; margin: 2px 0 7px 38px; padding-left: 11px; border-left: 1px solid #ffffff25; }
+.megaChildren .megaLink { min-height: 24px; color: #c8c7ce; font-size: 13px; }
+.megaChildren .megaIcon { display: none; }
+.megaChildren .megaLink b { display: none; }
