@@ -7,8 +7,10 @@
     "build": "next build",
     "start": "next start --hostname 127.0.0.1",
     "typecheck": "tsc --noEmit",
-    "sanity:seed-pages": "node --env-file=.env.local scripts/seed-sanity-pages.mjs",
     "sanity:seed-assets": "node scripts/seed-sanity-site-assets.mjs",
+    "sanity:migrate-native-pages": "node --env-file=.env.local scripts/migrate-sanity-native-pages.mjs",
+    "sanity:migrate-native-content": "node --env-file=.env.local scripts/migrate-native-page-content.mjs",
+    "sanity:clean-unused-assets": "node --env-file=.env.local scripts/clean-unused-sanity-assets.mjs",
     "test:e2e": "playwright test",
     "test:unit": "node --test tests/home-content.test.ts"
   },

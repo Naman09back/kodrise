@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image from "./migration-images";
 import Link from "next/link";
 import styles from "./migration-page.module.css";
 

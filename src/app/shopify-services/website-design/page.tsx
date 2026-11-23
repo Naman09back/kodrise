@@ -1,5 +1,6 @@
 import type {Metadata} from "next";
 import ShopifyWebsiteDesignPage from "./website-design-client";
+import ShopifyNativePage from "../native-page";
 
 export const metadata: Metadata = {
   title: {absolute: "Shopify Website Design Services | Kodrise"},
@@ -8,5 +9,5 @@ export const metadata: Metadata = {
 };
 
 export default function Page() {
-  return <ShopifyWebsiteDesignPage />;
+  return <ShopifyNativePage path="/shopify-services/website-design"><ShopifyWebsiteDesignPage /></ShopifyNativePage>;
 }

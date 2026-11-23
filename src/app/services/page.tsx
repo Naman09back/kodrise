@@ -3,6 +3,7 @@ import { getSitePage } from "@/sanity/lib/pages";
 import { sanityClient } from "@/sanity/lib/client";
 import { urlForImage } from "@/sanity/lib/image";
 import AiServicesExperience from "./ai-services-experience";
+import CmsNativePageGate from "../cms-native-page-gate";
 
 type ServiceAsset = { slot: string; title?: string; alt?: string; image?: unknown };
 const SERVICE_ASSETS_QUERY = `
@@ -32,5 +33,5 @@ export default async function ServicesPage() {
     asset.slot,
     { src: urlForImage(asset.image).auto("format").fit("max").url(), alt: asset.alt || asset.title || "Kodrise AI service" },
   ]));
-  return <AiServicesExperience page={page} images={images} />;
+  return <CmsNativePageGate page={page} label="AI Services"><AiServicesExperience page={page} images={images} /></CmsNativePageGate>;
 }

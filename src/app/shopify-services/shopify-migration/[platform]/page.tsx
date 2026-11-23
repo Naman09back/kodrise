@@ -6,6 +6,13 @@ import AdobeCommerceMigrationPage from "../adobe-commerce-page";
 import BigCommerceMigrationPage from "../bigcommerce-page";
 import WooCommerceMigrationPage from "../woocommerce-page";
 import SalesforceMigrationPage from "../salesforce-page";
+import MagentoMigrationPage from "../magento-page";
+import SquarespaceMigrationPage from "../squarespace-page";
+import WixMigrationPage from "../wix-page";
+import {MigrationImageProvider} from "../migration-images";
+import {getMigrationAssets} from "@/sanity/lib/migration-assets";
+import {getSitePage} from "@/sanity/lib/pages";
+import CmsNativePageGate from "../../../cms-native-page-gate";
 
 type PageProps = {params: Promise<{platform: string}>};
 
@@ -33,6 +40,21 @@ export async function generateMetadata({params}: PageProps): Promise<Metadata> {
     description: "Plan your Salesforce Commerce Cloud to Shopify migration around enterprise catalogs, customizations, storefronts, integrations, and SEO.",
     alternates: {canonical: "/shopify-services/shopify-migration/salesforce"},
   };
+  if (slug === "magento") return {
+    title: {absolute: "Magento to Shopify Migration Services | Kodrise"},
+    description: "Plan your Magento to Shopify migration around product catalogs, custom modules, integrations, storefront experience, and SEO.",
+    alternates: {canonical: "/shopify-services/shopify-migration/magento"},
+  };
+  if (slug === "squarespace") return {
+    title: {absolute: "Squarespace to Shopify Migration Services | Kodrise"},
+    description: "Plan your Squarespace to Shopify migration around products, website content, customer data, integrations, storefront design, and SEO.",
+    alternates: {canonical: "/shopify-services/shopify-migration/squarespace"},
+  };
+  if (slug === "wix") return {
+    title: {absolute: "Wix to Shopify Migration Services | Kodrise"},
+    description: "Plan your Wix to Shopify migration around products, customer and order data, website content, integrations, and SEO.",
+    alternates: {canonical: "/shopify-services/shopify-migration/wix"},
+  };
   return {
     title: {absolute: `${platform.name} to Shopify Migration | Kodrise`},
     description: platform.intro,
@@ -44,9 +66,15 @@ export default async function Page({params}: PageProps) {
   const {platform: slug} = await params;
   const platform = migrationPlatforms[slug];
   if (!platform) notFound();
-  if (slug === "adobe-commerce") return <AdobeCommerceMigrationPage />;
-  if (slug === "bigcommerce") return <BigCommerceMigrationPage />;
-  if (slug === "woocommerce") return <WooCommerceMigrationPage />;
-  if (slug === "salesforce") return <SalesforceMigrationPage />;
-  return <MigrationPlatformPage platform={platform} />;
+  const assets = await getMigrationAssets(slug);
+  const pageContent = await getSitePage(`/shopify-services/shopify-migration/${slug}`);
+  const page = slug === "adobe-commerce" ? <AdobeCommerceMigrationPage />
+    : slug === "bigcommerce" ? <BigCommerceMigrationPage />
+    : slug === "woocommerce" ? <WooCommerceMigrationPage />
+    : slug === "salesforce" ? <SalesforceMigrationPage />
+    : slug === "magento" ? <MagentoMigrationPage />
+    : slug === "squarespace" ? <SquarespaceMigrationPage />
+    : slug === "wix" ? <WixMigrationPage />
+    : <MigrationPlatformPage platform={platform} />;
+  return <MigrationImageProvider assets={assets}><CmsNativePageGate page={pageContent} label={`${platform.name} to Shopify Migration`}>{page}</CmsNativePageGate></MigrationImageProvider>;
 }

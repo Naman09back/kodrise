@@ -1,5 +1,6 @@
 import type {Metadata} from "next";
 import ShopifyOngoingSupportPage from "./ongoing-support-client";
+import ShopifyNativePage from "../native-page";
 
 export const metadata: Metadata = {
   title: {absolute: "Ongoing Shopify Support & Development | Kodrise"},
@@ -8,5 +9,5 @@ export const metadata: Metadata = {
 };
 
 export default function Page() {
-  return <ShopifyOngoingSupportPage />;
+  return <ShopifyNativePage path="/shopify-services/ongoing-support"><ShopifyOngoingSupportPage /></ShopifyNativePage>;
 }

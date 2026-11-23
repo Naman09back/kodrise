@@ -1,5 +1,6 @@
 import type {Metadata} from "next";
 import CustomEcommercePage from "./custom-ecommerce-client";
+import ShopifyNativePage from "../native-page";
 
 export const metadata: Metadata = {
   title: {absolute: "Custom Ecommerce Solutions for Shopify | Kodrise"},
@@ -8,5 +9,5 @@ export const metadata: Metadata = {
 };
 
 export default function Page() {
-  return <CustomEcommercePage />;
+  return <ShopifyNativePage path="/shopify-services/custom-ecommerce-solutions"><CustomEcommercePage /></ShopifyNativePage>;
 }

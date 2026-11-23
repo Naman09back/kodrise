@@ -1,21 +1,10 @@
-/* Kodrise's original implementation of the reference site's high-contrast
-   engineering-agency language. Keep the content and assets Kodrise-owned. */
+/* Shared Kodrise site theme. */
 :root {
   --brand-navy: #00103d;
   --brand-red: #eb3f43;
   --brand-ink: #14141c;
   --brand-line: #e6e6e6;
   --brand-soft: #f5f6f8;
-}
-
-/* Source pages run inside a same-origin frame with Kodrise's shared site shell. */
-.mirrored-page { position: relative; width: 100%; min-height: calc(100vh - 66px); overflow: clip; background: #faf9f6; }
-.mirrored-page[data-home="true"] { background: #14141c; }
-.mirrored-page iframe { display: block; width: 100%; min-height: calc(100vh - 66px); height: calc(100vh - 66px); border: 0; visibility: hidden; background: transparent; }
-body:has(.mirrored-page) { overflow-x: hidden; }
-@media (max-width: 760px) {
-  .mirrored-page, .mirrored-page iframe { min-height: calc(100vh - 58px); }
-  .mirrored-page iframe { height: calc(100vh - 58px); }
 }
 
 body {

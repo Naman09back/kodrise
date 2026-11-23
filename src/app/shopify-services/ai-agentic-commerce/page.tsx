@@ -1,5 +1,6 @@
 import type {Metadata} from "next";
 import AgenticCommercePage from "./agentic-commerce-client";
+import ShopifyNativePage from "../native-page";
 
 export const metadata: Metadata = {
   title: {absolute: "AI & Agentic Commerce Services | Kodrise"},
@@ -8,5 +9,5 @@ export const metadata: Metadata = {
 };
 
 export default function Page() {
-  return <AgenticCommercePage />;
+  return <ShopifyNativePage path="/shopify-services/ai-agentic-commerce"><AgenticCommercePage /></ShopifyNativePage>;
 }

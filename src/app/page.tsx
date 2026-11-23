@@ -4,9 +4,11 @@ import { getSitePageMetadata } from "@/sanity/lib/pages";
 import { defineQuery } from "next-sanity";
 import { sanityClient } from "@/sanity/lib/client";
 import { urlForImage } from "@/sanity/lib/image";
+import CmsNativePageGate from "./cms-native-page-gate";
+import type {SitePageContent} from "@/sanity/lib/pages";
 
 const HOME_QUERY = defineQuery(`{
-  "page": *[_type == "sitePage" && pageKey == "home"][0]{heroTitle,heroDescription,announcement},
+  "page": *[_type == "sitePage" && pageKey == "home"][0]{title,heroTitle,heroAccent,heroDescription,heroImage{asset->{url},alt},announcement,primaryCta,primaryCtaUrl,secondaryCta,secondaryCtaUrl,useSanitySections,sections[]{layout,eyebrow,heading,body,image{asset->{url},alt},items[]{title,description,href,image{asset->{url},alt}} ,buttonLabel,buttonUrl}},
   "assets": *[_type == "siteAsset" && slot in ["services-ai","services-mobile","services-web","services-teams","services-devops","services-custom","services-banner","portfolio-calcounts","portfolio-scribeflo","portfolio-ucpa","portfolio1","portfolio2","portfolio3","awards","about-testimonial-distri-logo","about-testimonial-gezabel-perroti","about-testimonial-autism-logo","about-testimonial-catherine-kleins","about-testimonial-labayh-logo","about-testimonial-basim-albeladi","homepage-home-insights-legacy-modernization","homepage-home-insights-ai-app-maintenance","homepage-home-insights-ai-voice-agents","homepage-industry-healthcare","homepage-industry-ecommerce","homepage-industry-transport","homepage-industry-real-estate","homepage-industry-education","homepage-industry-travel","homepage-industry-media","homepage-industry-on-demand"]]{slot,title,alt,image{asset->{_id,url},crop,hotspot}},
   "insights": *[_type == "insight" && isPublished != false && isFeatured != false] | order(publishedAt desc,_createdAt desc)[0...3]{title,category,excerpt,url,slug,image{asset->{_id,url},alt,crop,hotspot}},
   "industries": *[_type == "industry" && isFeatured != false] | order(title asc)[0...8]{title,description,slug,image{asset->{_id,url},alt,crop,hotspot}},
@@ -22,9 +24,18 @@ type CmsImage = {
 
 type HomeData = {
   page?: {
+    title?: string;
     heroTitle?: string;
+    heroAccent?: string;
     heroDescription?: string;
+    heroImage?: {asset?: {url?: string}; alt?: string};
     announcement?: string;
+    primaryCta?: string;
+    primaryCtaUrl?: string;
+    secondaryCta?: string;
+    secondaryCtaUrl?: string;
+    useSanitySections?: boolean;
+    sections?: SitePageContent["sections"];
   } | null;
   assets?: Array<{
     slot: string;
@@ -167,6 +178,7 @@ export default async function HomePage() {
     ...industries.filter((industry) => !matchedPrimaryTitles.includes(industry)),
   ];
   return (
+    <CmsNativePageGate page={data.page || null} label="Kodrise Home">
     <HomeExperience
       images={images}
       insights={homeInsights}
@@ -174,5 +186,6 @@ export default async function HomePage() {
       faqs={data.faqs || []}
       hero={data.page || undefined}
     />
+    </CmsNativePageGate>
   );
 }

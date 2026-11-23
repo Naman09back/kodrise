@@ -1,5 +1,6 @@
 import type {Metadata} from "next";
 import EmailMarketingPage from "./email-marketing-client";
+import ShopifyNativePage from "../native-page";
 
 export const metadata: Metadata = {
   title: {absolute: "Shopify Email Marketing Services | Kodrise"},
@@ -8,5 +9,5 @@ export const metadata: Metadata = {
 };
 
 export default function Page() {
-  return <EmailMarketingPage />;
+  return <ShopifyNativePage path="/shopify-services/email-marketing"><EmailMarketingPage /></ShopifyNativePage>;
 }

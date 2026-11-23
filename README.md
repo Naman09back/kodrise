@@ -27,9 +27,9 @@ Copy `.env.example` to `.env.local` and set the Sanity write token and admin sec
 
 ## Content management
 
-The standalone Sanity Studio contains the content schemas. The protected `/admin` dashboard provides day-to-day editing, application and enquiry review, SEO settings, and the Sanity-backed media library. Website image records have stable keys and can optionally replace an exact image URL or path on mirrored routes.
+The standalone Sanity Studio contains the content schemas. The protected `/admin` dashboard provides day-to-day editing, application and enquiry review, SEO settings, and the Sanity-backed media library. Stable asset paths resolve through Sanity first and fall back to `public/site-assets/` when needed.
 
-Schema and migration status are tracked in [the Sanity CMS plan](docs/sanity-cms-plan.md). The legacy page archive is still used for many routes; it will be retired only after those routes and their media have been migrated and checked in Sanity.
+The old HTML mirror renderer is no longer in the route path. The site-wide content migration is still in progress; see [the native page and CMS status](docs/native-pages-and-cms-status.md) for the page inventory and remaining work.
 
 ## Build and deploy
 

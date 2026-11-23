@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import Image from "./migration-images";
 import Link from "next/link";
 import {useState} from "react";
 import styles from "./migration-detail.module.css";

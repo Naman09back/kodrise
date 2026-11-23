@@ -3,6 +3,7 @@ import {getSitePage} from "@/sanity/lib/pages";
 import {sanityClient} from "@/sanity/lib/client";
 import {urlForImage} from "@/sanity/lib/image";
 import AiOutsourcingExperience from "./outsourcing-experience";
+import CmsNativePageGate from "../../cms-native-page-gate";
 
 const PAGE_KEY = "/services/outsourcing-ai-development";
 const ASSETS_QUERY = `*[_type == "siteAsset" && slot in [
@@ -32,5 +33,5 @@ export default async function AiOutsourcingPage() {
     {src: urlForImage(asset.image).width(960).fit("max").auto("format").url(), alt: asset.alt || asset.title || "Kodrise AI outsourcing"},
   ]));
   const heroImage = page?.heroImage ? urlForImage(page.heroImage).width(1920).height(900).fit("crop").auto("format").url() : images["outsourcing-banner"]?.src;
-  return <AiOutsourcingExperience page={page} images={images} heroImage={heroImage} />;
+  return <CmsNativePageGate page={page} label="AI Outsourcing"><AiOutsourcingExperience page={page} images={images} heroImage={heroImage} /></CmsNativePageGate>;
 }

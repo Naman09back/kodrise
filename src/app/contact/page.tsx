@@ -3,6 +3,7 @@ import { getSitePage, getSitePageMetadata } from "@/sanity/lib/pages";
 import { sanityClient } from "@/sanity/lib/client";
 import { urlForImage } from "@/sanity/lib/image";
 import ContactExperience from "./contact-experience";
+import CmsNativePageGate from "../cms-native-page-gate";
 
 type ContactAsset = {
   slot: string;
@@ -46,5 +47,5 @@ export default async function ContactPage() {
       ]),
   );
 
-  return <ContactExperience page={page} images={images} />;
+  return <CmsNativePageGate page={page} label="Contact Kodrise"><ContactExperience page={page} images={images} /></CmsNativePageGate>;
 }

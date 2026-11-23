@@ -4,6 +4,7 @@ import AboutExperience from "./about-experience";
 import {getSitePage, getSitePageMetadata} from "@/sanity/lib/pages";
 import {sanityClient} from "@/sanity/lib/client";
 import {urlForImage} from "@/sanity/lib/image";
+import CmsNativePageGate from "../cms-native-page-gate";
 
 type AboutImage = {slot: string; title?: string; alt?: string; image?: unknown};
 
@@ -25,5 +26,5 @@ export default async function AboutPage() {
     sanityClient.fetch<AboutImage[]>(ABOUT_IMAGES_QUERY).catch(() => []),
   ]);
   const images = Object.fromEntries(assets.filter((asset) => asset.image).map((asset) => [asset.slot, {src: urlForImage(asset.image).auto("format").fit("max").url(), alt: asset.alt || asset.title || ""}]));
-  return <AboutExperience images={images} page={page} />;
+  return <CmsNativePageGate page={page} label="About Kodrise"><AboutExperience images={images} page={page} /></CmsNativePageGate>;
 }

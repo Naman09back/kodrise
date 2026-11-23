@@ -1,19 +1,9 @@
 import {NextResponse} from "next/server";
 import {getAdminSession} from "../../../../lib/admin-session";
 import {sanityWriteClient} from "../../../../sanity/lib/client";
-import {sanityClient} from "../../../../sanity/lib/client";
 
 const createTypes = new Set(["service", "caseStudy", "industry", "insight", "resource", "faq", "developer"]);
 const deletableTypes = new Set([...createTypes, "siteAsset"]);
-
-export async function GET(request: Request) {
-  if (!await getAdminSession()) return NextResponse.json({error: "Authentication required."}, {status: 401});
-  const id = new URL(request.url).searchParams.get("id");
-  if (!id) return NextResponse.json({error: "Content ID is required."}, {status: 400});
-  const item = await sanityClient.fetch(`*[_id == $id && _type == "sitePage"][0]{_id,_type,path,contentHtml}`, {id});
-  if (!item) return NextResponse.json({error: "Site page not found."}, {status: 404});
-  return NextResponse.json({item});
-}
 
 function slugify(value: string) {
   return value.toLowerCase().trim().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");

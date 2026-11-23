@@ -1,5 +1,6 @@
 import type {Metadata} from "next";
 import ShopifyPpcPage from "./ppc-client";
+import ShopifyNativePage from "../native-page";
 
 export const metadata: Metadata = {
   title: {absolute: "Shopify PPC Services | Kodrise"},
@@ -8,5 +9,5 @@ export const metadata: Metadata = {
 };
 
 export default function Page() {
-  return <ShopifyPpcPage />;
+  return <ShopifyNativePage path="/shopify-services/ppc"><ShopifyPpcPage /></ShopifyNativePage>;
 }
