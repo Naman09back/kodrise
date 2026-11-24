@@ -16,7 +16,6 @@ export default function SiteFooter() {
         <nav aria-label="Quick links"><h3>Quick Links</h3><Link href="/portfolio">Portfolio</Link><Link href="/careers">Careers</Link><Link href="/overview">Overview</Link><Link href="/process-methodology">Process Methodology</Link><Link href="/about">About Us</Link><Link href="/contact">Contact Us</Link></nav>
         <div className={styles.newsletter}><h3>Kodrise Newsletter</h3><p>Get the latest insights and updates straight to your inbox.</p><form action="/contact"><label htmlFor="footer-email">Your email address</label><div><input id="footer-email" type="email" name="email" placeholder="name@company.com" required/><button type="submit" aria-label="Subscribe">↗</button></div></form><div className={styles.socials}><a href="https://www.linkedin.com/" aria-label="LinkedIn">in</a><a href="https://www.facebook.com/" aria-label="Facebook">f</a><a href="https://www.instagram.com/" aria-label="Instagram">◎</a></div></div>
       </div>
-      <div className={styles.locations}><span>USA</span><span>Canada</span><span>UK</span><span>Australia</span><span>Saudi Arabia</span><span>UAE</span><span>India</span><span>Netherlands</span></div>
       <div className={styles.bottom}><span>© {new Date().getFullYear()} Kodrise Pvt. Ltd. All Rights Reserved.</span><div><Link href="/contact">Terms of Use</Link><Link href="/contact">Privacy</Link><Link href="/sitemap.xml">Sitemap</Link><Link href="/contact">Beware of Scams</Link></div></div>
   </footer>;
 }

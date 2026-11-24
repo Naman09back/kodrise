@@ -1,7 +1,7 @@
 .footer { padding:64px clamp(24px,5vw,72px) 22px; color:#fff; background:#17181d; font-family:"Kodrise Header Inter",Inter,Arial,sans-serif; font-size:15px; }
 .contactBand { position:relative; display:grid; grid-template-columns:minmax(0,1.55fr) minmax(300px,.9fr); max-width:1440px; margin:0 auto 72px; overflow:hidden; border-radius:4px; background:#fff; color:#20212a; }
 .contactBand::before { position:absolute; z-index:1; top:0; left:0; width:100%; height:4px; background:linear-gradient(90deg,#493b91,#9a3a86,#eb3f43); content:""; }
-.contactPrompt { display:grid; align-content:center; gap:22px; padding:clamp(28px,4vw,52px); background:#fff; }
+.contactPrompt { display:grid; align-content:center; gap:22px; padding:clamp(28px,4vw,52px); background-color:#fff; background-image:linear-gradient(90deg,#fff 0%,#fffffff2 38%,#ffffffa8 66%,#ffffff26 100%),url("/site-assets/contact-project-discussion.jpg"); background-size:cover; background-position:center 48%; }
 .contactHeading > span { color:#707684; font-size:15px; }
 .contactHeading h2 { margin:8px 0 0; font-size:clamp(30px,3vw,41px); font-weight:500; line-height:1.2; letter-spacing:-.035em; }
 .contactCta { display:inline-flex; align-items:center; justify-content:space-between; gap:36px; width:max-content; max-width:100%; padding:15px 20px; color:#fff; background:#eb3f43; font-size:15px; font-weight:600; text-decoration:none; transition:background .2s,transform .2s; }
@@ -32,9 +32,8 @@
 .newsletter form button { border:0; color:#ffcf23; background:transparent; font-size:21px; cursor:pointer; }
 .socials { display:flex; gap:10px; margin-top:8px; }
 .socials a { display:grid; place-items:center; width:34px; height:34px; border:1px solid #45474f; border-radius:50%; color:#d6d7da; font-size:13px; font-weight:700; text-decoration:none; }
-.locations { display:flex; flex-wrap:wrap; gap:22px; margin-top:48px; padding:24px 0; border-top:1px solid #34363d; border-bottom:1px solid #34363d; color:#b9bbc0; font-size:14px; }
 .bottom { display:flex; justify-content:space-between; gap:20px; align-items:center; max-width:1440px; margin:0 auto; padding-top:20px; color:#858890; font-size:13px; }
 .bottom div { display:flex; flex-wrap:wrap; gap:20px; }
 .bottom a { color:#c0c2c7; text-decoration:none; }
 @media(max-width:1050px) { .grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:34px 28px; } }
-@media(max-width:650px) { .footer { padding:42px 20px 20px; }.contactBand { grid-template-columns:1fr; margin-bottom:44px; }.contactPrompt { padding:30px 22px; }.contactInfo { padding:30px 24px; }.grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:30px 18px; }.brandColumn { grid-column:1/-1; }.newsletter { grid-column:1/-1; }.locations { gap:14px 18px; margin-top:30px; }.bottom { align-items:flex-start; flex-direction:column; line-height:1.7; } }
+@media(max-width:650px) { .footer { padding:42px 20px 20px; }.contactBand { grid-template-columns:1fr; margin-bottom:44px; }.contactPrompt { padding:30px 22px; }.contactInfo { padding:30px 24px; }.grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:30px 18px; }.brandColumn { grid-column:1/-1; }.newsletter { grid-column:1/-1; }.bottom { align-items:flex-start; flex-direction:column; line-height:1.7; } }
