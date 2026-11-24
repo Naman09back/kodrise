@@ -71,12 +71,10 @@ export default function SiteHeader() {
         </nav>
         <div className={styles.actions}>
           <button className={styles.searchButton} type="button" aria-label={searchOpen ? "Close search" : "Search"} onClick={() => {setSearchOpen(!searchOpen);setOpen(null);setMobileOpen(false);}}><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.7" cy="10.7" r="6.7"/><path d="m16 16 5 5"/></svg></button>
-          <Link className={styles.trial} href="/contact?trial=1"><span className={styles.trialEdge} aria-hidden="true"/><span className={styles.trialEdge} aria-hidden="true"/><span className={styles.trialEdge} aria-hidden="true"/><span className={styles.trialEdge} aria-hidden="true"/><span className={styles.trialText}>7 DAYS FREE TRIAL</span></Link>
           <Link className={styles.contact} href="/contact"><span className={styles.contactText}>CONTACT US</span><svg className={styles.contactIcon} viewBox="0 0 24 24" aria-hidden="true"><rect x="3.25" y="5.25" width="17.5" height="13.5" rx="1.4"/><path d="m4 7 8 6 8-6"/></svg></Link>
           <button ref={toggle} className={styles.menuButton} type="button" aria-expanded={mobileOpen} aria-label={mobileOpen ? "Close navigation" : "Open navigation"} onClick={() => {setMobileOpen(!mobileOpen);setOpen(null);}}><i/><i/><i/></button>
         </div>
       </div>
-      <Link className={styles.mobileTrial} href="/contact?trial=1">7 Days Free Trial</Link>
       {searchOpen && <form className={styles.searchPanel} action="/resources"><label htmlFor="site-search">Search Kodrise</label><input id="site-search" name="q" type="search" placeholder="Search services, case studies, resources…" autoFocus/><button type="submit">SEARCH <span aria-hidden="true">↗</span></button></form>}
     </header>
     <div className={styles.headerSpacer} aria-hidden="true" />
