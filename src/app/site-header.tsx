@@ -10,7 +10,7 @@ type MenuLink = [string, string];
 type NestedMenuLink = {label: string; href: string; children: MenuLink[]};
 type MenuEntry = MenuLink | NestedMenuLink;
 type MenuGroup = {title: string; description: string; links: MenuEntry[]};
-type NavigationItem = {title: string; href: string; heading?: string; links?: MenuLink[]; groups?: MenuGroup[]};
+type NavigationItem = {title: string; href: string; heading?: string; links?: MenuLink[]; groups?: MenuGroup[]; compact?: boolean};
 
 const navigation: NavigationItem[] = [
   {title: "Company", href: "/about", heading: "Who we are", links: [["Overview", "/overview"], ["About Us", "/about"], ["Process Methodology", "/process-methodology"]]},
@@ -21,8 +21,8 @@ const navigation: NavigationItem[] = [
   ]},
   {title: "AI Services", href: "/services", heading: "AI Services", links: [["Generative AI Development", "/services/generative-ai-development-company"], ["AI Agent Development", "/services/ai-agents-and-automation-solutions"], ["AI App Development", "/services/ai-app-development-company"], ["AI Chatbot Development", "/services/ai-chatbot-development-company"], ["Machine Learning", "/services/machine-learning"], ["NLP Development", "/services/nlp-development"], ["RAG as a Service", "/services/rag-as-a-service"], ["AI Outsourcing", "/services/outsourcing-ai-development"], ["AI Consulting", "/ai-consulting-services"]]},
   {title: "Hire Developers", href: "/devresources"},
-  {title: "Our Work", href: "/portfolio", heading: "Selected work", links: [["Portfolio", "/portfolio"], ["Case Studies", "/case-studies"]]},
-  {title: "Resources", href: "/resources", heading: "Explore resources", links: [["Blogs", "/resources"], ["Press Releases", "/resources"], ["Whitepapers / eBooks", "/resources"]]},
+  {title: "Our Work", href: "/portfolio", links: [["Portfolio", "/portfolio"], ["Case Studies", "/case-studies"]], compact: true},
+  {title: "Resources", href: "/resources", links: [["Blogs", "/resources"], ["Press Releases", "/resources"], ["Whitepapers / eBooks", "/resources"]], compact: true},
   {title: "Careers", href: "/careers"},
 ];
 
@@ -63,20 +63,18 @@ export default function SiteHeader() {
           {navigation.map((item) => item.links || item.groups ? <div className={styles.navGroup} key={item.title} onMouseEnter={() => {if (window.matchMedia("(min-width: 1200px)").matches) setOpen(item.title);}} onMouseLeave={() => {if (window.matchMedia("(min-width: 1200px)").matches) setOpen(null);}} onFocus={() => setOpen(item.title)}>
             <Link className={styles.navLink} href={item.href} aria-current={item.href === pathname ? "page" : undefined} aria-haspopup="true">{item.title}<span className={styles.chevron} aria-hidden="true"/></Link>
             <button className={styles.navToggle} type="button" aria-label={`${open === item.title ? "Close" : "Open"} ${item.title} menu`} aria-expanded={open === item.title} onClick={() => setOpen(open === item.title ? null : item.title)}><span className={styles.chevron} aria-hidden="true"/></button>
-            <div className={styles.megaPanel} data-open={open === item.title}>
-              <div className={styles.megaMain}>{item.groups ? <div className={styles.megaGroups}>{item.groups.map((group) => <section className={styles.megaGroup} key={group.title}><h2>{group.title}</h2><p>{group.description}</p><div className={styles.megaGroupLinks}>{renderMegaLinks(group.links)}</div></section>)}</div> : <><h2>{item.heading ?? item.title}</h2><div className={styles.megaGrid}>{renderMegaLinks(item.links || [])}</div></>}</div>
-              <aside className={styles.megaAside}><span>GOOD IDEAS DESERVE GREAT ENGINEERING</span><h3>Let’s build what’s next.</h3><p>Talk with the Kodrise team about your next product, platform, or engineering team.</p><Link href="/contact" onClick={() => {setOpen(null);setMobileOpen(false);}}>Talk to our experts <b aria-hidden="true">→</b></Link></aside>
+            <div className={`${styles.megaPanel} ${item.compact ? styles.compactPanel : ""}`} data-open={open === item.title}>
+              {item.compact ? <div className={styles.compactMenu}>{item.links?.map(([label,href])=><Link className={styles.compactLink} key={label} href={href} onClick={() => {setOpen(null);setMobileOpen(false);}} aria-current={href === pathname ? "page" : undefined}><span>{label}</span><b aria-hidden="true">›</b></Link>)}</div> : <><div className={styles.megaMain}>{item.groups ? <div className={styles.megaGroups}>{item.groups.map((group) => <section className={styles.megaGroup} key={group.title}><h2>{group.title}</h2><p>{group.description}</p><div className={styles.megaGroupLinks}>{renderMegaLinks(group.links)}</div></section>)}</div> : <><h2>{item.heading ?? item.title}</h2><div className={styles.megaGrid}>{renderMegaLinks(item.links || [])}</div></>}</div>
+                <aside className={styles.megaAside}><span>GOOD IDEAS DESERVE GREAT ENGINEERING</span><h3>Let’s build what’s next.</h3><p>Talk with the Kodrise team about your next product, platform, or engineering team.</p><Link href="/contact" onClick={() => {setOpen(null);setMobileOpen(false);}}>Talk to our experts <b aria-hidden="true">→</b></Link></aside></>}
             </div>
           </div> : <Link key={item.title} className={styles.navLink} href={item.href} onClick={() => setMobileOpen(false)} aria-current={item.href === pathname ? "page" : undefined}>{item.title}</Link>)}
         </nav>
         <div className={styles.actions}>
           <button className={styles.searchButton} type="button" aria-label={searchOpen ? "Close search" : "Search"} onClick={() => {setSearchOpen(!searchOpen);setOpen(null);setMobileOpen(false);}}><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.7" cy="10.7" r="6.7"/><path d="m16 16 5 5"/></svg></button>
-          <Link className={styles.trial} href="/contact?trial=1"><span className={styles.trialEdge} aria-hidden="true"/><span className={styles.trialEdge} aria-hidden="true"/><span className={styles.trialEdge} aria-hidden="true"/><span className={styles.trialEdge} aria-hidden="true"/><span className={styles.trialText}>7 DAYS FREE TRIAL</span></Link>
           <Link className={styles.contact} href="/contact"><span className={styles.contactText}>CONTACT US</span><svg className={styles.contactIcon} viewBox="0 0 24 24" aria-hidden="true"><rect x="3.25" y="5.25" width="17.5" height="13.5" rx="1.4"/><path d="m4 7 8 6 8-6"/></svg></Link>
           <button ref={toggle} className={styles.menuButton} type="button" aria-expanded={mobileOpen} aria-label={mobileOpen ? "Close navigation" : "Open navigation"} onClick={() => {setMobileOpen(!mobileOpen);setOpen(null);}}><i/><i/><i/></button>
         </div>
       </div>
-      <Link className={styles.mobileTrial} href="/contact?trial=1">7 Days Free Trial</Link>
       {searchOpen && <form className={styles.searchPanel} action="/resources"><label htmlFor="site-search">Search Kodrise</label><input id="site-search" name="q" type="search" placeholder="Search services, case studies, resources…" autoFocus/><button type="submit">SEARCH <span aria-hidden="true">↗</span></button></form>}
     </header>
     <div className={styles.headerSpacer} aria-hidden="true" />

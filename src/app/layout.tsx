@@ -24,7 +24,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({children}: Readonly<{children: React.ReactNode}>) {
   const structuredData = {"@context": "https://schema.org", "@graph": [
-    {"@type": "Organization", "@id": organizationId, name: "Kodrise", url: "https://kodrise.com", email: "hr@kodrise.com", telephone: "+91 9302752700", address: {"@type": "PostalAddress", addressLocality: "Ahmedabad", addressRegion: "Gujarat", addressCountry: "IN"}},
+    {"@type": "Organization", "@id": organizationId, name: "Kodrise", url: "https://kodrise.com", email: "hr@kodrise.com", telephone: "+91 9302752700", address: {"@type": "PostalAddress", addressLocality: "Indore", addressRegion: "Madhya Pradesh", addressCountry: "IN"}},
     {"@type": "WebSite", "@id": "https://kodrise.com/#website", name: "Kodrise", url: "https://kodrise.com", publisher: {"@id": organizationId}},
   ]};
   return <html lang="en"><body>

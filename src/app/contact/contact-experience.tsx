@@ -16,7 +16,7 @@ const contactWays = [
 const regions = ["North America", "Asia", "Australia", "European Union", "Global Operations", "Middle East & Africa"];
 const regionCopy: Record<string, string> = {
   "North America": "Our team works with North American businesses through remote project delivery and scheduled calls.",
-  Asia: "Kodrise is based in Ahmedabad, Gujarat, India, and supports projects across Asia.",
+  Asia: "Kodrise is based in Indore, Madhya Pradesh, India, and supports projects across Asia.",
   Australia: "We collaborate with Australian teams remotely, with meeting times planned around your working day.",
   "European Union": "Our distributed delivery model supports European businesses from discovery through ongoing development.",
   "Global Operations": "Kodrise works with clients across regions through online workshops, shared project tools, and regular progress reviews.",
@@ -90,7 +90,7 @@ export default function ContactExperience({ page, images }: { page: ContactPageD
         <p>We’re ready to listen, learn about your goals, and help you find a way forward.</p>
         <a className={styles.infoItem} href="mailto:hr@kodrise.com"><span className={styles.icon} aria-hidden="true">✉</span><span><small>Email us</small><strong>hr@kodrise.com</strong></span></a>
         <a className={styles.infoItem} href="tel:+9193027572700"><span className={styles.icon} aria-hidden="true">⌕</span><span><small>Call us</small><strong>+91 9302752700</strong></span></a>
-        <div className={styles.address}><span className={styles.icon} aria-hidden="true">⌖</span><span><small>Our base</small><strong>Ahmedabad, Gujarat, India</strong></span></div>
+        <div className={styles.address}><span className={styles.icon} aria-hidden="true">⌖</span><span><small>Our base</small><strong>Indore, Madhya Pradesh, India</strong></span></div>
         <a className={styles.whatsapp} href="https://wa.me/916351058011" target="_blank" rel="noreferrer">Message us on WhatsApp <span aria-hidden="true">↗</span></a>
       </aside>
     </section>
@@ -126,7 +126,7 @@ export default function ContactExperience({ page, images }: { page: ContactPageD
       </div>
       <div className={styles.regionPanel} role="tabpanel">
         <div><span className={styles.regionEyebrow}>WORKING ACROSS {activeRegion.toUpperCase()}</span><h3>Let’s talk about your next project</h3><p>{regionCopy[activeRegion]}</p><a href="mailto:hr@kodrise.com">Get in touch <span aria-hidden="true">↗</span></a></div>
-        <div className={styles.regionContact}><span className={styles.pin}>⌖</span><strong>Kodrise Technologies</strong><span>Ahmedabad, Gujarat, India</span><a href="mailto:hr@kodrise.com">hr@kodrise.com</a><a href="tel:+9193027572700">+91 9302752700</a></div>
+        <div className={styles.regionContact}><span className={styles.pin}>⌖</span><strong>Kodrise Technologies</strong><span>Indore, Madhya Pradesh, India</span><a href="mailto:hr@kodrise.com">hr@kodrise.com</a><a href="tel:+9193027572700">+91 9302752700</a></div>
       </div>
     </section>
   </main>;

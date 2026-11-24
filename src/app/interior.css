@@ -1171,7 +1171,7 @@ body { font-size: 16px; }
 .contact-floats {
   position: fixed;
   right: 22px;
-  bottom: 24px;
+  bottom: 58px;
   z-index: 70;
   display: grid;
   gap: 10px;
@@ -1221,7 +1221,7 @@ body:has([data-cookie-consent-banner="true"]) .contact-floats { bottom: 96px; z-
 .whatsapp-float:focus-visible,
 .teams-float:focus-visible { outline: 2px solid #1f1e24; outline-offset: 4px; }
 @media (max-width: 640px) {
-  .contact-floats { right: 14px; bottom: 14px; gap: 8px; }
+  .contact-floats { right: 14px; bottom: 48px; gap: 8px; }
   body:has([data-cookie-consent-banner="true"]) .contact-floats { bottom: 145px; }
   .whatsapp-float,
   .teams-float { width: 50px; height: 50px; min-height: 50px; padding: 0; justify-content: center; }
