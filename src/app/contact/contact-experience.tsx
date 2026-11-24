@@ -13,18 +13,7 @@ const contactWays = [
   { title: "Work across time zones", detail: "Our distributed team collaborates with businesses worldwide.", action: "Explore our services", href: "/shopify-services" },
 ];
 
-const regions = ["North America", "Asia", "Australia", "European Union", "Global Operations", "Middle East & Africa"];
-const regionCopy: Record<string, string> = {
-  "North America": "Our team works with North American businesses through remote project delivery and scheduled calls.",
-  Asia: "Kodrise is based in Indore, Madhya Pradesh, India, and supports projects across Asia.",
-  Australia: "We collaborate with Australian teams remotely, with meeting times planned around your working day.",
-  "European Union": "Our distributed delivery model supports European businesses from discovery through ongoing development.",
-  "Global Operations": "Kodrise works with clients across regions through online workshops, shared project tools, and regular progress reviews.",
-  "Middle East & Africa": "We support teams across the Middle East and Africa with remote product engineering and commerce services.",
-};
-
 export default function ContactExperience({ page, images }: { page: ContactPageData; images: Record<string, ContactImage> }) {
-  const [activeRegion, setActiveRegion] = useState("North America");
   const [status, setStatus] = useState("");
   const [sending, setSending] = useState(false);
 
@@ -120,13 +109,9 @@ export default function ContactExperience({ page, images }: { page: ContactPageD
     </section>
 
     <section className={styles.regions}>
-      <h2>Connect with our global team</h2>
-      <div className={styles.regionTabs} role="tablist" aria-label="Regions supported">
-        {regions.map((region) => <button key={region} type="button" role="tab" aria-selected={activeRegion === region} className={activeRegion === region ? styles.selected : ""} onClick={() => setActiveRegion(region)}>{region}</button>)}
-      </div>
-      <div className={styles.regionPanel} role="tabpanel">
-        <div><span className={styles.regionEyebrow}>WORKING ACROSS {activeRegion.toUpperCase()}</span><h3>Let’s talk about your next project</h3><p>{regionCopy[activeRegion]}</p><a href="mailto:hr@kodrise.com">Get in touch <span aria-hidden="true">↗</span></a></div>
-        <div className={styles.regionContact}><span className={styles.pin}>⌖</span><strong>Kodrise Technologies</strong><span>Indore, Madhya Pradesh, India</span><a href="mailto:hr@kodrise.com">hr@kodrise.com</a><a href="tel:+9193027572700">+91 9302752700</a></div>
+      <h2>Connect with our team</h2>
+      <div className={styles.regionPanel}>
+        <div><h3>Let’s talk about your next project</h3><p>Our team collaborates with businesses worldwide to plan, build, and grow digital products. Get in touch and we’ll find the right next step together.</p><a href="mailto:hr@kodrise.com">Get in touch <span aria-hidden="true">↗</span></a></div>
       </div>
     </section>
   </main>;
