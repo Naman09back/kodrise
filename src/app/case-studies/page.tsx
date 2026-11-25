@@ -1,3 +1,5 @@
-export {default, generateMetadata} from "../portfolio/page";
+import {redirect} from "next/navigation";
 
-export const dynamic = "force-dynamic";
+export default function CaseStudiesRedirect() {
+  redirect("/our-work");
+}
