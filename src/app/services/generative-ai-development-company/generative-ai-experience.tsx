@@ -139,7 +139,7 @@ export default function GenerativeAiExperience({page, images, heroImage}: {
           {title:"ScribeFlo", label:"AI MEDICAL SCRIBE", image:images["portfolio-scribeflo"], description:"A clinical documentation workflow that gives care teams more time for patient conversations."},
         ].map((item) => <article className={styles.caseCard} key={item.title}>
           <div className={styles.caseImage}>{item.image ? <img src={item.image.src} alt={item.image.alt || item.title} loading="lazy" /> : <div className={styles.caseFallback}>{item.title}</div>}</div>
-          <div className={styles.caseCopy}><span>{item.label}</span><h3>{item.title}</h3><p>{item.description}</p><Link href="/portfolio">View our work <b aria-hidden="true">↗</b></Link></div>
+          <div className={styles.caseCopy}><span>{item.label}</span><h3>{item.title}</h3><p>{item.description}</p><Link href="/our-work">View our work <b aria-hidden="true">↗</b></Link></div>
         </article>)}
       </div>
     </section>

@@ -21,7 +21,7 @@ const navigation: NavigationItem[] = [
   ]},
   {title: "AI Services", href: "/services", heading: "AI Services", links: [["Generative AI Development", "/services/generative-ai-development-company"], ["AI Agent Development", "/services/ai-agents-and-automation-solutions"], ["AI App Development", "/services/ai-app-development-company"], ["AI Chatbot Development", "/services/ai-chatbot-development-company"], ["Machine Learning", "/services/machine-learning"], ["NLP Development", "/services/nlp-development"], ["RAG as a Service", "/services/rag-as-a-service"], ["AI Outsourcing", "/services/outsourcing-ai-development"], ["AI Consulting", "/ai-consulting-services"]]},
   {title: "Hire Developers", href: "/hire-developers"},
-  {title: "Our Work", href: "/portfolio", links: [["Portfolio", "/portfolio"], ["Case Studies", "/case-studies"]], compact: true},
+  {title: "Our Work", href: "/our-work"},
   {title: "Resources", href: "/resources", links: [["Blogs", "/resources"], ["Press Releases", "/resources"], ["Whitepapers / eBooks", "/resources"]], compact: true},
   {title: "Careers", href: "/careers"},
 ];

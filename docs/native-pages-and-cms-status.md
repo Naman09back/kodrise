@@ -1,6 +1,6 @@
 # Native page inventory and Sanity status
 
-All 42 routes below use native Next.js page layouts. The Codiant HTML iframe renderer is no longer part of route handling. Sanity now contains one editable `sitePage` record per route, with a shared section model and an option to render a page from Sanity sections.
+The routes below use native Next.js page layouts. The Codiant HTML iframe renderer is no longer part of route handling. Most page routes have editable Sanity `sitePage` records with a shared section model and an option to render a page from Sanity sections. `/our-work` is a curated static page; `/portfolio` and `/case-studies` redirect to it.
 
 ## Home and company
 
@@ -51,7 +51,7 @@ All 42 routes below use native Next.js page layouts. The Codiant HTML iframe ren
 
 ## Other requested page families
 
-- `/portfolio` and `/case-studies` use Sanity case study records.
+- `/our-work` presents the selected case studies and assets from AP Consultancy's portfolio reference. `/portfolio` and `/case-studies` redirect to `/our-work`.
 - `/resources` and `/resources/[slug]` use Sanity resource and insight records.
 - `/careers` uses Sanity job records.
 - `/hire-developers` uses Sanity developer records.
@@ -62,7 +62,7 @@ All 42 routes below use native Next.js page layouts. The Codiant HTML iframe ren
 - Each native page route can render the sections as its page content when `Render this page from Sanity sections` is enabled and sections have been entered. Until that is enabled, the existing native layout and its content remain visible.
 - The custom dashboard can edit the page sections as JSON. The hosted Sanity Studio has structured section fields.
 - Website image URLs under `/site-assets/...` resolve to the matching Sanity `siteAsset` image where one exists, and fall back to the local file when there is no Sanity record. This makes the media library the source for mapped images without breaking pages that still need local fallbacks.
-- The homepage, About page, AI service pages, Shopify SEO page, migration images, and the new Work, Resources, Careers, and Developer listings already read some page data or records from Sanity.
+- The homepage, About page, AI service pages, Shopify SEO page, migration images, and the Resources, Careers, and Developer listings already read some page data or records from Sanity.
 
 ## Content moved into Sanity
 

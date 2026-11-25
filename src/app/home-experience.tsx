@@ -98,7 +98,7 @@ const projects = [
       "An AI-powered app to log, analyze, and balance your daily nutrition with total precision.",
     image: "portfolio-calcounts",
     category: "AI · HEALTHCARE",
-    href: "/case-studies",
+    href: "/our-work",
   },
   {
     name: "ScribeFlo",
@@ -107,7 +107,7 @@ const projects = [
       "A smarter workflow for clinicians, built to make documentation feel effortless.",
     image: "portfolio-scribeflo",
     category: "HEALTHCARE · AI",
-    href: "/case-studies",
+    href: "/our-work",
   },
   {
     name: "UCPA",
@@ -116,7 +116,7 @@ const projects = [
       "A seamless digital experience connecting travelers with new possibilities.",
     image: "portfolio-ucpa",
     category: "TRAVEL · DIGITAL",
-    href: "/case-studies",
+    href: "/our-work",
   },
 ];
 const technologies = {
@@ -501,7 +501,7 @@ export default function HomeExperience({
           </button>
         </div>{" "}
         <div className={styles.centerAction}>
-          <Link href="/portfolio">
+          <Link href="/our-work">
             View All Projects <Arrow />
           </Link>
         </div>{" "}
@@ -708,7 +708,7 @@ export default function HomeExperience({
               to navigate our next innovation.
             </p>
           </div>
-          <Link href="/portfolio">
+          <Link href="/our-work">
             Explore More <Arrow />
           </Link>
         </div>{" "}

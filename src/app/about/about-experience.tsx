@@ -136,7 +136,7 @@ export default function AboutExperience({images, page}: AboutExperienceProps) {
     </section>
 
     <section className={styles.testimonialsSection}>
-      <div className={styles.testimonialsHeading}><div><h2>What Our Clients Say</h2><p>Read the voices of trust, satisfaction, and motivation helping us to navigate our next innovation.</p></div><Link href="/portfolio">Explore More</Link></div>
+      <div className={styles.testimonialsHeading}><div><h2>What Our Clients Say</h2><p>Read the voices of trust, satisfaction, and motivation helping us to navigate our next innovation.</p></div><Link href="/our-work">Explore More</Link></div>
       <div className={styles.testimonialGrid}>{visibleTestimonials.map((item) => <article className={styles.testimonialCard} key={item.name}><p>{item.quote}</p><div className={styles.testimonialPerson}><span><strong>{item.name}</strong><small>{item.role}</small></span></div></article>)}</div>
       <div className={styles.sliderControls}><button type="button" aria-label="Previous client reviews" onClick={() => setTestimonialStart((testimonialStart + testimonials.length - 1) % testimonials.length)}>←</button><span>{[0, 1, 2, 3].map((point) => <i key={point} className={Math.floor(testimonialStart / 1.5) % 4 === point ? styles.currentDot : ""} />)}</span><button type="button" aria-label="Next client reviews" onClick={() => setTestimonialStart((testimonialStart + 1) % testimonials.length)}>→</button></div>
     </section>
