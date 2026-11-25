@@ -1,7 +1,7 @@
 "use client";
 
 import {useState} from "react";
-import Image from "next/image";
+import Image from "../shopify-assets";
 import Link from "next/link";
 import styles from "../marketing/shopify-marketing.module.css";
 
@@ -59,7 +59,7 @@ export default function AgenticCommercePage() {
   const [openFaq,setOpenFaq]=useState<number|null>(0);
   return <main className={styles.page} id="main">
     <section className={styles.hero} aria-labelledby="agentic-commerce-title">
-      <Image className={styles.heroImage} src="/site-assets/services-ai.webp" alt="Abstract AI-inspired visual for digital commerce" fill sizes="100vw" priority />
+      <Image className={styles.heroImage} src="/site-assets/services-ai.webp" alt="Abstract AI-inspired visual for digital commerce" fill sizes="100vw" preload />
       <div className={styles.heroInner}><div className={styles.heroCopy}>
         <span className={styles.eyebrow}>AI & AGENTIC COMMERCE</span>
         <h1 id="agentic-commerce-title">Prepare Your Store for AI Shopping<span>Make Your Commerce Data Ready</span></h1>

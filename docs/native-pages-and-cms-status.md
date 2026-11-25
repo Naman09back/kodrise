@@ -54,7 +54,7 @@ All 42 routes below use native Next.js page layouts. The Codiant HTML iframe ren
 - `/portfolio` and `/case-studies` use Sanity case study records.
 - `/resources` and `/resources/[slug]` use Sanity resource and insight records.
 - `/careers` uses Sanity job records.
-- `/devresources` uses Sanity developer records.
+- `/hire-developers` uses Sanity developer records.
 
 ## What is editable now
 

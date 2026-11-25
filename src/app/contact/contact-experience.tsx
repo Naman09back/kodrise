@@ -4,7 +4,6 @@ import { useState, type FormEvent } from "react";
 import styles from "./contact-page.module.css";
 
 type ContactPageData = { heroTitle?: string; heroDescription?: string } | null;
-type ContactImage = { src: string; alt: string };
 
 const contactWays = [
   { title: "Start a project", detail: "Share your goals and we will shape a clear next step.", action: "Send a project enquiry", href: "mailto:hr@kodrise.com" },
@@ -23,7 +22,7 @@ const regionCopy: Record<string, string> = {
   "Middle East & Africa": "We support teams across the Middle East and Africa with remote product engineering and commerce services.",
 };
 
-export default function ContactExperience({ page, images }: { page: ContactPageData; images: Record<string, ContactImage> }) {
+export default function ContactExperience({ page }: { page: ContactPageData }) {
   const [activeRegion, setActiveRegion] = useState("North America");
   const [status, setStatus] = useState("");
   const [sending, setSending] = useState(false);
@@ -105,7 +104,7 @@ export default function ContactExperience({ page, images }: { page: ContactPageD
 
     <section className={styles.trusted}>
       <div className={styles.sectionHeading}><h2>Trusted by teams building what’s next</h2><p>We partner with ambitious businesses to design, build, and grow digital products.</p></div>
-      <div className={styles.logoRow}>{Object.entries(images).map(([slot, image]) => <div className={styles.logo} key={slot}><img src={image.src} alt={image.alt} loading="lazy" /></div>)}</div>
+      <div className={styles.logoRow}><div className={styles.logo}>Shopify &amp; commerce</div><div className={styles.logo}>AI &amp; automation</div><div className={styles.logo}>Web &amp; mobile products</div><div className={styles.logo}>Dedicated engineering</div></div>
     </section>
 
     <section className={styles.facts}>

@@ -617,8 +617,7 @@
     background 0.2s,
     border 0.2s;
 }
-.techTabs button:hover,
-.techTabs button[aria-selected="true"] {
+.techTabs button:hover {
   border-color: #ed3f43;
   background: #ed3f43;
   color: #fff;
@@ -1172,8 +1171,7 @@
 }
 .industryControls > button { pointer-events: auto; }
 .industryControls > div { display: none; }
-.awards { box-sizing:border-box; height:710px; padding-top:14px; padding-bottom:58px; }
-.awardsImage { max-height:470px; }
+.awards { box-sizing:border-box; min-height:0; height:auto; padding-top:44px; padding-bottom:52px; }
 .testimonials { box-sizing:border-box; height:790px; padding-top:60px; padding-bottom:50px; }
 .testimonials .kicker { display:none; }
 .testimonials .sectionHeading h2 { letter-spacing:-.02em; }

@@ -1,7 +1,7 @@
 "use client";
 
 import {useState} from "react";
-import Image from "next/image";
+import Image from "../shopify-assets";
 import Link from "next/link";
 import styles from "../marketing/shopify-marketing.module.css";
 
@@ -70,7 +70,7 @@ export default function ShopifyOngoingSupportPage() {
   const [openFaq,setOpenFaq]=useState<number|null>(0);
   return <main className={styles.page} id="main">
     <section className={styles.hero} aria-labelledby="ongoing-support-title">
-      <Image className={styles.heroImage} src="/site-assets/shopify-marketing/hero-marketing-b.webp" alt="Commerce team planning ongoing storefront improvements" fill sizes="100vw" priority />
+      <Image className={styles.heroImage} src="/site-assets/shopify-marketing/hero-marketing-b.webp" alt="Commerce team planning ongoing storefront improvements" fill sizes="100vw" preload />
       <div className={styles.heroInner}><div className={styles.heroCopy}>
         <span className={styles.eyebrow}>ONGOING SHOPIFY SUPPORT</span>
         <h1 id="ongoing-support-title">Your Store Keeps Evolving<span>Keep Building With the Right Team</span></h1>

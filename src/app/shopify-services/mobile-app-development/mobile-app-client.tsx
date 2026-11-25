@@ -1,7 +1,7 @@
 "use client";
 
 import {useState} from "react";
-import Image from "next/image";
+import Image from "../shopify-assets";
 import Link from "next/link";
 import styles from "../marketing/shopify-marketing.module.css";
 
@@ -67,7 +67,7 @@ export default function ShopifyMobileAppPage() {
   const [openFaq,setOpenFaq]=useState<number|null>(0);
   return <main className={styles.page} id="main">
     <section className={styles.hero} aria-labelledby="mobile-app-title">
-      <Image className={styles.heroImage} src="/site-assets/services-mobile.webp" alt="Customer browsing a mobile commerce experience" fill sizes="100vw" priority />
+      <Image className={styles.heroImage} src="/site-assets/services-mobile.webp" alt="Customer browsing a mobile commerce experience" fill sizes="100vw" preload />
       <div className={styles.heroInner}><div className={styles.heroCopy}>
         <span className={styles.eyebrow}>SHOPIFY MOBILE APP DEVELOPMENT</span>
         <h1 id="mobile-app-title">A Better Mobile Journey<span>From First Tap to Repeat Order</span></h1>

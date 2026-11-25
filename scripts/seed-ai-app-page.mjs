@@ -20,29 +20,12 @@ const client = createClient({
   useCdn: false,
 });
 
-const assets = [
-  ["ai-app-banner", "AI App Development page hero", "AI-powered mobile app development", "https://d3pxwdeb4y32a1.cloudfront.net/wp-content/uploads/2023/07/ai-powered-mobile-app-banner-bg-5fee73752ea487e464e6d547c7697f15.webp"],
-  ["ai-app-discovery", "AI app discovery workshop", "Product discovery for AI application development", "https://d3pxwdeb4y32a1.cloudfront.net/wp-content/uploads/2023/08/predictive-analytics-apps-7f7e93172c4063ef4efbe8533a58b19d.webp"],
-  ["ai-app-analytics", "AI app business analytics", "Predictive analytics application visual", "https://d3pxwdeb4y32a1.cloudfront.net/wp-content/uploads/2023/08/predictive-analytics-apps-7f7e93172c4063ef4efbe8533a58b19d.webp"],
-  ["ai-app-ux", "AI app user experience design", "Intelligent app user experience and interface", "https://d3pxwdeb4y32a1.cloudfront.net/wp-content/uploads/2023/08/virtual-assistants-and-chatbots-b3c24226420e3dc3e44214ea9249095b.webp"],
-  ["ai-app-development", "AI application engineering", "AI application engineering and integration", "https://d3pxwdeb4y32a1.cloudfront.net/wp-content/uploads/2023/08/iot-based-app-development-827b816da4b81bd040387b27f62a434c.webp"],
-  ["ai-app-testing", "AI app testing and deployment", "AI app analytics and deployment", "https://d3pxwdeb4y32a1.cloudfront.net/wp-content/uploads/2023/08/predictive-analytics-apps-7f7e93172c4063ef4efbe8533a58b19d.webp"],
-  ["ai-app-support", "AI application support", "AI application support and optimization", "https://d3pxwdeb4y32a1.cloudfront.net/wp-content/uploads/2023/08/iot-based-app-development-827b816da4b81bd040387b27f62a434c.webp"],
-  ["ai-app-industries", "AI application development across industries", "AI application solutions across top industries", "https://d3pxwdeb4y32a1.cloudfront.net/wp-content/uploads/2023/07/ai-app-solutions-across-top-industries-955ae0c84845908d3b53f191436ec1f1.webp"],
-  ["ai-app-capabilities", "AI app development capabilities", "Predictive analytics capabilities in AI apps", "https://d3pxwdeb4y32a1.cloudfront.net/wp-content/uploads/2023/08/predictive-analytics-apps-7f7e93172c4063ef4efbe8533a58b19d.webp"],
-];
-
-for (const [slot, title, alt, url] of assets) {
-  const response = await fetch(url, {headers: {"user-agent": "Kodrise website asset importer/1.0"}});
-  if (!response.ok) throw new Error(`Could not download ${slot}: HTTP ${response.status}`);
-  const filename = url.split("/").pop();
-  const contentType = response.headers.get("content-type") || "image/webp";
-  const uploaded = await client.assets.upload("image", Buffer.from(await response.arrayBuffer()), {filename, contentType});
-  const existing = await client.fetch('*[_type == "siteAsset" && slot == $slot][0]{_id}', {slot});
-  const doc = {_type: "siteAsset", slot, title, alt, image: {_type: "image", asset: {_type: "reference", _ref: uploaded._id}}};
-  if (existing?._id) await client.patch(existing._id).set(doc).commit({visibility: "sync"});
-  else await client.create(doc, {visibility: "sync"});
-  console.log(`Uploaded ${slot} to Sanity.`);
+const assetSlots = ["ai-app-banner","ai-app-discovery","ai-app-analytics","ai-app-ux","ai-app-development","ai-app-testing","ai-app-support","ai-app-industries","ai-app-capabilities"];
+for (const slot of assetSlots) {
+  const asset = await client.fetch('*[_type == "siteAsset" && slot == $slot][0]{_id, sourceLicense, licenseVerifiedAt, "assetId": image.asset._ref}', {slot});
+  if (!asset?._id || !asset.assetId || !asset.sourceLicense || !asset.licenseVerifiedAt) {
+    throw new Error(`Seed the rights-reviewed image for ${slot} through the Sanity media library before running this page seeder.`);
+  }
 }
 
 const pageKey = "/services/ai-app-development-company";

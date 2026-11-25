@@ -20,31 +20,12 @@ const client = createClient({
   useCdn: false,
 });
 
-const assets = [
-  ["nlp-banner", "NLP development page hero", "Natural language processing and language intelligence", "https://d3pxwdeb4y32a1.cloudfront.net/wp-content/uploads/2025/07/nlp-development-banner-df05dec7f743ab807bfd4a47135aa61f.webp"],
-  ["nlp-text-mining", "Text mining and classification", "Text mining and NLP data visualization", "https://d3pxwdeb4y32a1.cloudfront.net/wp-content/uploads/2025/07/text-mining-2cad2d35b1e18964537a63b986142aa0.webp"],
-  ["nlp-enterprise-search", "Intelligent enterprise search", "Enterprise search powered by natural language processing", "https://d3pxwdeb4y32a1.cloudfront.net/wp-content/uploads/2025/07/intelligent-enterprise-9fbcf4078f37f5876c72248c4437c987.webp"],
-  ["nlp-contextual-content", "Contextual content understanding", "Context and language understanding for business content", "https://d3pxwdeb4y32a1.cloudfront.net/wp-content/uploads/2025/07/contextual-content-53d17925f9fe9757a7aa18c5e41beba9.webp"],
-  ["nlp-industries", "NLP built for business", "Natural language processing across business use cases", "https://d3pxwdeb4y32a1.cloudfront.net/wp-content/uploads/2025/07/built-for-business-1abbda85c63d70c39982d3a5ec9bee26.webp"],
-  ["nlp-process", "NLP delivery process", "Language data transformed into practical business insight", "https://d3pxwdeb4y32a1.cloudfront.net/wp-content/uploads/2025/07/built-for-business-1abbda85c63d70c39982d3a5ec9bee26.webp"],
-];
-
-for (const [slot, title, alt, url] of assets) {
-  const existing = await client.fetch('*[_type == "siteAsset" && slot == $slot][0]{_id, "assetId": image.asset._ref}', {slot});
-  if (existing?._id && existing.assetId) {
-    await client.patch(existing._id).set({title, alt}).commit({visibility: "sync"});
-    console.log(`Reused ${slot} from Sanity.`);
-    continue;
+const assetSlots = ["nlp-banner","nlp-text-mining","nlp-enterprise-search","nlp-contextual-content","nlp-industries","nlp-process"];
+for (const slot of assetSlots) {
+  const asset = await client.fetch('*[_type == "siteAsset" && slot == $slot][0]{_id, sourceLicense, licenseVerifiedAt, "assetId": image.asset._ref}', {slot});
+  if (!asset?._id || !asset.assetId || !asset.sourceLicense || !asset.licenseVerifiedAt) {
+    throw new Error(`Seed the rights-reviewed image for ${slot} through the Sanity media library before running this page seeder.`);
   }
-  const response = await fetch(url, {headers: {"user-agent": "Kodrise website asset importer/1.0"}});
-  if (!response.ok) throw new Error(`Could not download ${slot}: HTTP ${response.status}`);
-  const filename = url.split("/").pop();
-  const contentType = response.headers.get("content-type") || "image/webp";
-  const uploaded = await client.assets.upload("image", Buffer.from(await response.arrayBuffer()), {filename, contentType});
-  const doc = {_type: "siteAsset", slot, title, alt, image: {_type: "image", asset: {_type: "reference", _ref: uploaded._id}}};
-  if (existing?._id) await client.patch(existing._id).set(doc).commit({visibility: "sync"});
-  else await client.create(doc, {visibility: "sync"});
-  console.log(`Uploaded ${slot} to Sanity.`);
 }
 
 const pageKey = "/services/nlp-development";

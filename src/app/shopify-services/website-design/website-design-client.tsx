@@ -1,7 +1,7 @@
 "use client";
 
 import {useState} from "react";
-import Image from "next/image";
+import Image from "../shopify-assets";
 import Link from "next/link";
 import styles from "../marketing/shopify-marketing.module.css";
 
@@ -72,7 +72,7 @@ export default function ShopifyWebsiteDesignPage() {
   const [openFaq,setOpenFaq]=useState<number|null>(0);
   return <main className={styles.page} id="main">
     <section className={styles.hero} aria-labelledby="website-design-title">
-      <Image className={styles.heroImage} src="/site-assets/shopify-marketing/hero-marketing-b.webp" alt="Ecommerce team discussing a storefront experience" fill sizes="100vw" priority />
+      <Image className={styles.heroImage} src="/site-assets/shopify-marketing/hero-marketing-b.webp" alt="Ecommerce team discussing a storefront experience" fill sizes="100vw" preload />
       <div className={styles.heroInner}><div className={styles.heroCopy}>
         <span className={styles.eyebrow}>SHOPIFY WEBSITE DESIGN</span>
         <h1 id="website-design-title">Shopify Store Design<span>Made to Grow With You</span></h1>

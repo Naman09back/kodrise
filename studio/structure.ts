@@ -1,6 +1,6 @@
 import type {StructureResolver} from 'sanity/structure'
 
-const selectedPageRoutes = `path in ["/","/shopify-development","/shopify-app-development-company","/services/shopify-website-development","/services/shopify-development","/services/recover-shopify-abandoned-checkouts","/services","/services/generative-ai-development-company","/services/ai-agents-and-automation-solutions","/services/ai-app-development-company","/services/ai-chatbot-development-company","/services/machine-learning","/services/nlp-development","/services/rag-as-a-service","/services/outsourcing-ai-development","/ai-consulting-services","/about","/portfolio","/resources/blogs","/devresources","/careers","/contact"]`
+const selectedPageRoutes = `path in ["/","/shopify-development","/shopify-app-development-company","/services/shopify-website-development","/services/shopify-development","/services/recover-shopify-abandoned-checkouts","/services","/services/generative-ai-development-company","/services/ai-agents-and-automation-solutions","/services/ai-app-development-company","/services/ai-chatbot-development-company","/services/machine-learning","/services/nlp-development","/services/rag-as-a-service","/services/outsourcing-ai-development","/ai-consulting-services","/about","/portfolio","/resources/blogs","/hire-developers","/careers","/contact"]`
 
 export const structure: StructureResolver = (S) => {
   const pageList = S.listItem()

@@ -26,7 +26,7 @@ const routes = [
   ["/shopify-services/shopify-migration", "/shopify-services/shopify-migration", "Shopify Migration", "Shopify Services"],
   ...migrationSlugs.map((slug) => [`/shopify-services/shopify-migration/${slug}`, `/shopify-services/shopify-migration/${slug}`, `${slug.replaceAll("-", " ")} to Shopify`, "Shopify Services"]),
   ["/portfolio", "portfolio", "Our Work", "Portfolio"], ["/resources", "resources", "Resources", "Resources"],
-  ["/careers", "careers", "Careers at Kodrise", "Careers"], ["/devresources", "devresources", "Hire Developers", "Hire Developers"],
+  ["/careers", "careers", "Careers at Kodrise", "Careers"], ["/hire-developers", "devresources", "Hire Developers", "Hire Developers"],
 ];
 
 const definitions = routes.map(([path, pageKey, rawTitle, family]) => {

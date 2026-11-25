@@ -1,7 +1,7 @@
 "use client";
 
 import {useState} from "react";
-import Image from "next/image";
+import Image from "../shopify-assets";
 import Link from "next/link";
 import base from "../marketing/shopify-marketing.module.css";
 import styles from "./ppc.module.css";
@@ -37,13 +37,13 @@ export default function ShopifyPpcPage() {
   const [openFaq, setOpenFaq] = useState<number | null>(0);
   return <main className={`${base.page} ${styles.page}`} id="main">
     <section className={base.hero} aria-labelledby="ppc-title">
-      <Image className={base.heroImage} src="/site-assets/shopify-ppc/hero.webp" alt="Paid media campaign planning for ecommerce growth" fill sizes="100vw" priority />
+      <Image className={base.heroImage} src="/site-assets/shopify-ppc/hero.webp" alt="Paid media campaign planning for ecommerce growth" fill sizes="100vw" preload />
       <div className={base.heroInner}><div className={base.heroCopy}>
         <span className={base.eyebrow}>SHOPIFY PPC SERVICES</span>
         <h1 id="ppc-title">Shopify PPC Services<span>That Scale ROAS</span></h1>
         <p>Make every penny count; in spend and in returns. We build paid advertising campaigns that put your brand in front of the right people and turn clicks into customers.</p>
         <Link href="/contact?service=Shopify%20PPC" className={base.textLink}>Talk to a PPC expert <span aria-hidden="true">{"\u2197"}</span></Link>
-      </div><div className={styles.partnerBadge}><Image src="/site-assets/shopify-ppc/google-partner.png" alt="Google Partner" width={150} height={54} /><span>Google Partner<br/><b>Certified</b></span></div></div>
+      </div></div>
     </section>
 
     <nav className={base.breadcrumb} aria-label="Breadcrumb"><div><Link href="/">Home</Link><span>/</span><Link href="/shopify-services">Shopify Services</Link><span>/</span><Link href="/shopify-services/marketing">Marketing</Link><span>/</span><span aria-current="page">PPC</span></div></nav>

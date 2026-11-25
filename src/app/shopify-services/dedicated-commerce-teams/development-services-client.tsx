@@ -1,7 +1,7 @@
 "use client";
 
 import {useState} from "react";
-import Image from "next/image";
+import Image from "../shopify-assets";
 import Link from "next/link";
 import styles from "../marketing/shopify-marketing.module.css";
 
@@ -48,7 +48,7 @@ export default function DevelopmentServicesPage() {
   const [openFaq,setOpenFaq]=useState<number|null>(0);
   return <main className={styles.page} id="main">
     <section className={styles.hero} aria-labelledby="development-services-title">
-      <Image className={styles.heroImage} src="/site-assets/services-banner.webp" alt="Kodrise commerce team supporting a growing online business" fill sizes="100vw" priority />
+      <Image className={styles.heroImage} src="/site-assets/services-teams.webp" alt="Kodrise commerce team supporting a growing online business" fill sizes="100vw" preload />
       <div className={styles.heroInner}><div className={styles.heroCopy}>
         <span className={styles.eyebrow}>DEDICATED COMMERCE TEAMS</span>
         <h1 id="development-services-title">More Shopify Expertise<span>For the Work Ahead</span></h1>

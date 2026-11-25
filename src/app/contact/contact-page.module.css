@@ -93,8 +93,8 @@
 .regionTabs button { min-height: 50px; padding: 0 20px; border: 0; border-bottom: 2px solid transparent; background: transparent; color: #555962; font-size: 15px; }
 .regionTabs button:hover { color: var(--contact-red); }
 .regionTabs button.selected { border-bottom-color: var(--contact-red); color: var(--contact-red); }
-.regionPanel { min-height: 375px; display: grid; grid-template-columns: 1.4fr .8fr; gap: 75px; align-items: center; padding: 48px 40px; background: #f5f5f6; }
 .regionEyebrow { color: #747781; font-size: 12px; letter-spacing: 1.3px; }
+.regionPanel { min-height: 375px; display: grid; grid-template-columns: 1.4fr .8fr; gap: 75px; align-items: center; padding: 48px 40px; background: #f5f5f6; }
 .regionPanel h3 { max-width: 620px; margin: 17px 0 12px; font-size: 34px; line-height: 1.2; font-weight: 500; letter-spacing: -.6px; }
 .regionPanel p { max-width: 650px; margin: 0; color: #636770; font-size: 17px; line-height: 1.7; }
 .regionPanel > div:first-child > a { display: inline-flex; gap: 24px; align-items: center; margin-top: 25px; padding: 14px 18px; background: var(--contact-red); color: white; font-size: 15px; }

@@ -4,15 +4,6 @@ import styles from "./migration-page.module.css";
 
 const asset = "/site-assets/shopify-migration/";
 
-const brands = [
-  ["Cosori", "logo-cosori.webp"], ["Reuzel", "logo-reuzel.webp"], ["PawSync", "logo-pawsync.webp"],
-  ["Bluebird Botanicals", "logo-bluebird-botanicals.webp"], ["Trail Grid Pro", "logo-trail-grid-pro.webp"],
-  ["Bracelayer", "logo-bracelayer.webp"], ["Quirks!", "logo-quirks.webp"], ["Vervazi", "logo-vervazi.webp"],
-  ["Capelli Sport", "logo-capelli-sport.webp"], ["Nani Swimwear", "logo-nani-swimwear.webp"],
-  ["Golfballs.com", "logo-golfballs.webp"], ["Forseti Cutlery", "logo-forseti-cutlery.webp"],
-  ["Celvara", "logo-celvara-v2.svg"], ["Oraloa", "logo-oraloa.svg"],
-];
-
 const benefits = [
   ["Built to Scale", "Handle growing product catalogs, traffic, transactions, markets, and operational complexity without having to rebuild your commerce foundation every time you grow."],
   ["Designed for Global Commerce", "Expand into new markets while managing international commerce from a centralized platform, with capabilities built for localization and global selling."],
@@ -30,19 +21,19 @@ const steps = [
 ];
 
 const migrationOptions = [
-  {name:"Adobe Commerce",slug:"adobe-commerce",description:"Move from Adobe Commerce to a more streamlined Shopify commerce infrastructure.",image:"from-adobe-a-960w.webp",logo:"adobe-a.svg"},
-  {name:"Magento",slug:"magento",description:"Migrate your Magento store while protecting the data, functionality, and SEO you've built.",image:"from-magento-a-960w.webp",logo:"magento-a.svg"},
-  {name:"BigCommerce",slug:"bigcommerce",description:"Move your BigCommerce operation to Shopify without disrupting the customer experience.",image:"from-bigcommerce-a-960w.webp",logo:"bigcommerce-a.svg"},
-  {name:"WooCommerce",slug:"woocommerce",description:"Bring your products, customers, orders, and storefront experience into Shopify.",image:"from-woocommerce-a-960w.webp",logo:"woocommerce-a.svg"},
-  {name:"Salesforce Commerce Cloud",slug:"salesforce",description:"Move from a complex enterprise commerce environment to Shopify's commerce platform.",image:"from-salesforce-a-960w.webp",logo:"salesforce-a.svg"},
-  {name:"Shopware",description:"Migrate your Shopware store, data, functionality, and integrations to Shopify.",image:"from-shopware-a-960w.webp",logo:"shopware-a.svg"},
-  {name:"PrestaShop",description:"Migrate your PrestaShop store to Shopify with a plan built around your existing business requirements.",image:"from-prestashop-a-960w.webp",logo:"prestashop-a.svg"},
-  {name:"Wix",slug:"wix",description:"Transition from Wix to a more commerce-focused platform built around your growing ecommerce operation.",image:"from-wix-a-960w.webp",logo:"wix-a.svg"},
-  {name:"Squarespace",slug:"squarespace",description:"Move your ecommerce experience from Squarespace to Shopify while preserving the elements that matter to your business.",image:"from-squarespace-a-960w.webp",logo:"squarespace-a.svg"},
+  {name:"Adobe Commerce",slug:"adobe-commerce",description:"Move from Adobe Commerce to a more streamlined Shopify commerce infrastructure.",image:"from-adobe-a-960w.webp"},
+  {name:"Magento",slug:"magento",description:"Migrate your Magento store while protecting the data, functionality, and SEO you've built.",image:"from-magento-a-960w.webp"},
+  {name:"BigCommerce",slug:"bigcommerce",description:"Move your BigCommerce operation to Shopify without disrupting the customer experience.",image:"from-bigcommerce-a-960w.webp"},
+  {name:"WooCommerce",slug:"woocommerce",description:"Bring your products, customers, orders, and storefront experience into Shopify.",image:"from-woocommerce-a-960w.webp"},
+  {name:"Salesforce Commerce Cloud",slug:"salesforce",description:"Move from a complex enterprise commerce environment to Shopify's commerce platform.",image:"from-salesforce-a-960w.webp"},
+  {name:"Shopware",description:"Migrate your Shopware store, data, functionality, and integrations to Shopify.",image:"from-shopware-a-960w.webp"},
+  {name:"PrestaShop",description:"Migrate your PrestaShop store to Shopify with a plan built around your existing business requirements.",image:"from-prestashop-a-960w.webp"},
+  {name:"Wix",slug:"wix",description:"Transition from Wix to a more commerce-focused platform built around your growing ecommerce operation.",image:"from-wix-a-960w.webp"},
+  {name:"Squarespace",slug:"squarespace",description:"Move your ecommerce experience from Squarespace to Shopify while preserving the elements that matter to your business.",image:"from-squarespace-a-960w.webp"},
   {name:"Shopline",description:"Migrate your Shopline store and commerce data to Shopify.",image:"from-shopline-a-960w.webp"},
   {name:"OpenCart",description:"Move from OpenCart to Shopify with your commerce data and workflows accounted for.",image:"from-opencart-a-960w.webp"},
   {name:"Custom Platform",description:"Move away from a proprietary or custom ecommerce platform without losing the functionality your business depends on.",image:"from-custom-a-960w.webp"},
-  {name:"Shopify to Shopify Plus",description:"Upgrade your existing Shopify store to Shopify Plus when your business needs more advanced commerce capabilities.",image:"from-shopify-plus-a-960w.webp",logo:"shopify-a.svg"},
+  {name:"Shopify to Shopify Plus",description:"Upgrade your existing Shopify store to Shopify Plus when your business needs more advanced commerce capabilities.",image:"from-shopify-plus-a-960w.webp"},
 ];
 
 const principles = [
@@ -56,19 +47,19 @@ const principles = [
 export default function ShopifyMigrationClient() {
   return <main id="main" className={styles.page}>
     <section className={styles.hero}>
-      <div className={styles.heroImage}><Image src={`${asset}migrate-move-a.webp`} alt="Two people carrying a moving box together" fill priority sizes="(max-width: 700px) 100vw, 48vw" /></div>
+      <div className={styles.heroImage}><Image src={`${asset}migrate-move-a.webp`} alt="Two people carrying a moving box together" fill preload sizes="(max-width: 700px) 100vw, 48vw" /></div>
       <div className={styles.heroShade} />
       <div className={styles.heroContent}><nav aria-label="Breadcrumb"><Link href="/">Home</Link><span>/</span><Link href="/shopify-services">Shopify Services</Link><span>/</span><span aria-current="page">Shopify Migration</span></nav><span className={styles.eyebrow}>SHOPIFY SERVICES · EVOLVE</span><h1>Shopify Migration Services</h1><p>Move your business to Shopify with a plan that protects what you've built and prepares your commerce operation for what's next.</p><Link className={styles.primaryCta} href="/contact?service=Shopify%20Migration">Talk to Our Migration Experts <span aria-hidden="true">↗</span></Link></div>
       <div className={styles.heroLabel}>A CLEAR PATH<br/>TO WHAT'S NEXT</div>
     </section>
 
-    <section className={styles.trust} aria-labelledby="trust-title"><div className={styles.sectionIntro}><span className={styles.eyebrow}>MIGRATION EXPERIENCE</span><h2 id="trust-title">Trusted by Brands That Made the Move</h2></div><div className={styles.logoWindow}><div className={styles.logoTrack}>{[0,1].map((copy)=><div className={styles.logoRow} key={copy} aria-hidden={copy===1}>{brands.map(([name,file])=><div className={styles.brandLogo} key={name}><Image src={`${asset}${file}`} alt={copy===0?name:""} fill sizes="160px" /></div>)}</div>)}</div></div></section>
+
 
     <section className={styles.benefitSection} aria-labelledby="benefits-title"><div className={styles.sectionIntro}><span className={styles.eyebrow}>WHY SHOPIFY PLUS?</span><h2 id="benefits-title">Why Are Fast-Growing and Global Brands Moving to Shopify Plus?</h2><p>Shopify Plus gives brands a commerce platform built around scale, flexibility, and faster execution with the ability to connect the systems they already use, support multiple markets and channels, and extend the platform as their requirements become more sophisticated.</p></div><div className={styles.benefitGrid}>{benefits.map(([title,copy],index)=><article className={styles.benefitCard} key={title}><span className={styles.index}>0{index+1}</span><span className={styles.spark} aria-hidden="true">✳</span><h3>{title}</h3><p>{copy}</p></article>)}</div><a className={styles.inlineLink} href="https://www.shopify.com/plus" target="_blank" rel="noreferrer">Explore Shopify Plus <span aria-hidden="true">↗</span></a></section>
 
     <section className={styles.process} aria-labelledby="process-title"><header className={styles.sectionIntro}><span className={styles.eyebrow}>OUR MIGRATION PROCESS</span><h2 id="process-title">How We Migrate You to Shopify</h2><p>We first understand how your business actually works — your customers, products, workflows, integrations, data, SEO, and operational dependencies — and then build the migration around that reality.</p></header><div className={styles.steps}>{steps.map(([title,copy,image],index)=><article className={styles.step} key={title}><div className={styles.stepImage}><Image src={`${asset}${image}`} alt={`${title} stage of a Shopify migration`} fill sizes="(max-width: 700px) 90vw, 34vw" loading="lazy"/><span>0{index+1}</span></div><div className={styles.stepCopy}><h3>{title}</h3><p>{copy}</p></div></article>)}</div></section>
 
-    <section className={styles.migrationPaths} aria-labelledby="paths-title"><header className={styles.sectionIntro}><span className={styles.eyebrow}>PLATFORM MIGRATION</span><h2 id="paths-title">Whatever You're Migrating From, We've Got a Path Forward</h2><p>Every platform has its own architecture, data structures, workflows, integrations, and limitations. That's why we don't use a one-size-fits-all migration process.</p></header><div className={styles.pathGrid}>{migrationOptions.map((option,index)=>{const href=option.slug?`/shopify-services/shopify-migration/${option.slug}`:`/contact?service=${encodeURIComponent(`${option.name} to Shopify Migration`)}`;return <Link href={href} className={styles.pathCard} key={option.name}><div className={styles.pathImage}><Image src={`${asset}${option.image}`} alt={`${option.name} ecommerce platform migration`} fill sizes="(max-width: 700px) 90vw, (max-width: 1000px) 45vw, 30vw" loading="lazy"/><span className={styles.pathNumber}>0{index+1}</span></div><div className={styles.pathBody}><div className={styles.platformMarks}>{option.logo?<Image src={`${asset}platforms/${option.logo}`} alt={option.name} width={104} height={38} />:<span>{option.name}</span>}<span className={styles.migrationArrow} aria-hidden="true">→</span><Image src={`${asset}platforms/shopify-a.svg`} alt="Shopify" width={94} height={35}/></div><h3>{option.name} <span>→ Shopify/Shopify Plus</span></h3><p>{option.description}</p><b className={styles.cardLink}>Explore migration <span aria-hidden="true">↗</span></b></div></Link>})}</div></section>
+    <section className={styles.migrationPaths} aria-labelledby="paths-title"><header className={styles.sectionIntro}><span className={styles.eyebrow}>PLATFORM MIGRATION</span><h2 id="paths-title">Whatever You're Migrating From, We've Got a Path Forward</h2><p>Every platform has its own architecture, data structures, workflows, integrations, and limitations. That's why we don't use a one-size-fits-all migration process.</p></header><div className={styles.pathGrid}>{migrationOptions.map((option,index)=>{const href=option.slug?`/shopify-services/shopify-migration/${option.slug}`:`/contact?service=${encodeURIComponent(`${option.name} to Shopify Migration`)}`;return <Link href={href} className={styles.pathCard} key={option.name}><div className={styles.pathImage}><Image src={`${asset}${option.image}`} alt={`${option.name} ecommerce platform migration`} fill sizes="(max-width: 700px) 90vw, (max-width: 1000px) 45vw, 30vw" loading="lazy"/><span className={styles.pathNumber}>0{index+1}</span></div><div className={styles.pathBody}><div className={styles.platformMarks}><span>{option.name}</span><span className={styles.migrationArrow} aria-hidden="true">→</span><span>Shopify</span></div><h3>{option.name} <span>→ Shopify/Shopify Plus</span></h3><p>{option.description}</p><b className={styles.cardLink}>Explore migration <span aria-hidden="true">↗</span></b></div></Link>})}</div></section>
 
     <section className={styles.principles} aria-labelledby="principles-title"><header className={styles.sectionIntro}><span className={styles.eyebrow}>MIGRATE WITH THE FUTURE IN MIND</span><h2 id="principles-title">We Don't Just Migrate Your Store. We Keep Your Future in Mind.</h2><p>We look beyond what's currently on your store to understand why it works the way it does, what your business actually needs, and where you're headed next.</p></header><div className={styles.principleGrid}>{principles.map(([title,copy],index)=><article className={styles.principle} key={title}><span>0{index+1}</span><div><h3>{title}</h3><p>{copy}</p></div></article>)}</div></section>
 

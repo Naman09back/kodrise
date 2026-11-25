@@ -1,7 +1,7 @@
 "use client";
 
 import {useState} from "react";
-import Image from "next/image";
+import Image from "../shopify-assets";
 import Link from "next/link";
 import base from "../marketing/shopify-marketing.module.css";
 import styles from "./content-marketing.module.css";
@@ -36,13 +36,13 @@ export default function ContentMarketingPage() {
 
   return <main className={`${base.page} ${styles.page}`} id="main">
     <section className={base.hero} aria-labelledby="content-title">
-      <Image className={base.heroImage} src="/site-assets/shopify-content-marketing/hero.webp" alt="Content marketing team planning an ecommerce campaign" fill sizes="100vw" priority />
+      <Image className={base.heroImage} src="/site-assets/shopify-content-marketing/hero.webp" alt="Content marketing team planning an ecommerce campaign" fill sizes="100vw" preload />
       <div className={base.heroInner}><div className={base.heroCopy}>
         <span className={base.eyebrow}>SHOPIFY CONTENT MARKETING</span>
         <h1 id="content-title">Ecommerce Content Marketing Services<span>for DTC Brands</span></h1>
         <p>All our content is written by humans and proofread by humans, to be read by humans. We seek originality through interviews and research, creatively applying your tone of voice.</p>
         <Link href="/contact?service=Shopify%20Content%20Marketing" className={base.textLink}>Get in touch with our humans <span aria-hidden="true">{"\u2197"}</span></Link>
-      </div><div className={styles.partnerBadge}><Image src="/site-assets/shopify-content-marketing/google-partner.png" alt="Google Partner Certified" width={150} height={54} /><span>Google Partner<br/><b>Certified</b></span></div></div>
+      </div></div>
     </section>
 
     <nav className={base.breadcrumb} aria-label="Breadcrumb"><div><Link href="/">Home</Link><span>/</span><Link href="/shopify-services">Shopify Services</Link><span>/</span><Link href="/shopify-services/marketing">Marketing</Link><span>/</span><span aria-current="page">Content Marketing</span></div></nav>

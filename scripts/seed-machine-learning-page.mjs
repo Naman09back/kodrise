@@ -20,26 +20,12 @@ const client = createClient({
   useCdn: false,
 });
 
-const assets = [
-  ["machine-learning-banner", "Machine Learning page hero", "Machine learning development and data intelligence", "https://d3pxwdeb4y32a1.cloudfront.net/wp-content/uploads/2025/03/banner-ccbc890990b876ae799218f64407e390.webp"],
-  ["ml-aws", "Machine learning on AWS", "Amazon Web Services cloud platform", "https://d3pxwdeb4y32a1.cloudfront.net/wp-content/uploads/2025/03/amazon-web-services-0627b1e4656f796ae0ab4e0610b48781.webp"],
-  ["ml-google-cloud", "Machine learning on Google Cloud", "Google Cloud Platform", "https://d3pxwdeb4y32a1.cloudfront.net/wp-content/uploads/2025/03/google-cloud-884c4beddd8c98bb3b016bdfcc1bcdf8.webp"],
-  ["ml-azure", "Machine learning on Microsoft Azure", "Microsoft Azure cloud platform", "https://d3pxwdeb4y32a1.cloudfront.net/wp-content/uploads/2025/03/microsoft-azure-adc9333d783fcfb3482a36f90dd92f00.webp"],
-  ["machine-learning-industries", "Machine learning business advantages", "Business benefits of machine learning", "https://d3pxwdeb4y32a1.cloudfront.net/wp-content/uploads/2025/03/key-advantages-cbccac5da96955c87ce64033d54c35c4.webp"],
-  ["machine-learning-process", "Machine learning process and model operations", "Machine learning model delivery and optimization", "https://d3pxwdeb4y32a1.cloudfront.net/wp-content/uploads/2025/03/key-advantages-cbccac5da96955c87ce64033d54c35c4.webp"],
-];
-
-for (const [slot, title, alt, url] of assets) {
-  const response = await fetch(url, {headers: {"user-agent": "Kodrise website asset importer/1.0"}});
-  if (!response.ok) throw new Error(`Could not download ${slot}: HTTP ${response.status}`);
-  const filename = url.split("/").pop();
-  const contentType = response.headers.get("content-type") || "image/webp";
-  const uploaded = await client.assets.upload("image", Buffer.from(await response.arrayBuffer()), {filename, contentType});
-  const existing = await client.fetch('*[_type == "siteAsset" && slot == $slot][0]{_id}', {slot});
-  const doc = {_type: "siteAsset", slot, title, alt, image: {_type: "image", asset: {_type: "reference", _ref: uploaded._id}}};
-  if (existing?._id) await client.patch(existing._id).set(doc).commit({visibility: "sync"});
-  else await client.create(doc, {visibility: "sync"});
-  console.log(`Uploaded ${slot} to Sanity.`);
+const assetSlots = ["machine-learning-banner","ml-aws","ml-google-cloud","ml-azure","machine-learning-industries","machine-learning-process"];
+for (const slot of assetSlots) {
+  const asset = await client.fetch('*[_type == "siteAsset" && slot == $slot][0]{_id, sourceLicense, licenseVerifiedAt, "assetId": image.asset._ref}', {slot});
+  if (!asset?._id || !asset.assetId || !asset.sourceLicense || !asset.licenseVerifiedAt) {
+    throw new Error(`Seed the rights-reviewed image for ${slot} through the Sanity media library before running this page seeder.`);
+  }
 }
 
 const pageKey = "/services/machine-learning";

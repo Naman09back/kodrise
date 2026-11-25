@@ -7,7 +7,7 @@ import CmsNativePageGate from "../../cms-native-page-gate";
 
 const PAGE_KEY = "/shopify-services/seo";
 const ASSETS_QUERY = `*[_type == "siteAsset" && slot in [
-  "shopify-seo-hero", "shopify-seo-google-partner", "shopify-seo-team", "shopify-seo-claude-partner"
+  "shopify-seo-hero", "shopify-seo-team"
 ]]{slot, title, alt, image {asset->{_id, url}, crop, hotspot}}`;
 type SeoAsset = {slot: string; title?: string; alt?: string; image?: unknown};
 export const dynamic = "force-dynamic";

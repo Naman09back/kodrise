@@ -1,7 +1,7 @@
 "use client";
 
 import {useState} from "react";
-import Image from "next/image";
+import Image from "../shopify-assets";
 import Link from "next/link";
 import base from "../marketing/shopify-marketing.module.css";
 import styles from "./social-media-marketing.module.css";
@@ -36,13 +36,13 @@ export default function SocialMediaMarketingPage() {
 
   return <main className={`${base.page} ${styles.page}`} id="main">
     <section className={base.hero} aria-labelledby="social-title">
-      <Image className={base.heroImage} src="/site-assets/shopify-social-marketing/hero.webp" alt="Social media marketing team creating a campaign for an ecommerce brand" fill sizes="100vw" priority />
+      <Image className={base.heroImage} src="/site-assets/shopify-social-marketing/hero.webp" alt="Social media marketing team creating a campaign for an ecommerce brand" fill sizes="100vw" preload />
       <div className={base.heroInner}><div className={base.heroCopy}>
         <span className={base.eyebrow}>SHOPIFY SOCIAL MEDIA MARKETING</span>
         <h1 id="social-title">Shopify Social Media Marketing<span>That Builds Demand</span></h1>
         <p>Everything social media, tailored for your brand. Our social media expertise covers everything; paid and organic. With strategies tailored for each platform and form of social media marketing, we are SMM experts you can trust with your ecommerce store.</p>
         <Link href="/contact?service=Shopify%20Social%20Media%20Marketing" className={base.textLink}>Let's Get Started <span aria-hidden="true">{"\u2197"}</span></Link>
-      </div><div className={styles.partnerBadge}><Image src="/site-assets/shopify-social-marketing/google-partner.png" alt="Google Partner Certified" width={150} height={54} /><span>Google Partner<br/><b>Certified</b></span></div></div>
+      </div></div>
     </section>
 
     <nav className={base.breadcrumb} aria-label="Breadcrumb"><div><Link href="/">Home</Link><span>/</span><Link href="/shopify-services">Shopify Services</Link><span>/</span><Link href="/shopify-services/marketing">Marketing</Link><span>/</span><span aria-current="page">Social Media Marketing</span></div></nav>

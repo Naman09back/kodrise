@@ -1,7 +1,7 @@
 "use client";
 
 import {useState} from "react";
-import Image from "next/image";
+import Image from "../shopify-assets";
 import Link from "next/link";
 import base from "../marketing/shopify-marketing.module.css";
 import styles from "./email-marketing.module.css";
@@ -34,7 +34,7 @@ export default function EmailMarketingPage() {
 
   return <main className={`${base.page} ${styles.page}`} id="main">
     <section className={base.hero} aria-labelledby="email-title">
-      <Image className={base.heroImage} src="/site-assets/shopify-email-marketing/hero.webp" alt="Email marketing campaign being planned for an ecommerce brand" fill sizes="100vw" priority />
+      <Image className={base.heroImage} src="/site-assets/shopify-email-marketing/hero.webp" alt="Email marketing campaign being planned for an ecommerce brand" fill sizes="100vw" preload />
       <div className={base.heroInner}><div className={base.heroCopy}>
         <span className={base.eyebrow}>SHOPIFY EMAIL MARKETING</span>
         <h1 id="email-title">Shopify Email Marketing Services<span>That Convert</span></h1>

@@ -2,14 +2,14 @@ import type { Metadata } from "next";
 import HomeExperience from "./home-experience";
 import { getSitePageMetadata } from "@/sanity/lib/pages";
 import { defineQuery } from "next-sanity";
-import { sanityClient } from "@/sanity/lib/client";
+import { sanityWriteClient } from "@/sanity/lib/client";
 import { urlForImage } from "@/sanity/lib/image";
 import CmsNativePageGate from "./cms-native-page-gate";
 import type {SitePageContent} from "@/sanity/lib/pages";
 
 const HOME_QUERY = defineQuery(`{
   "page": *[_type == "sitePage" && pageKey == "home"][0]{title,heroTitle,heroAccent,heroDescription,heroImage{asset->{url},alt},announcement,primaryCta,primaryCtaUrl,secondaryCta,secondaryCtaUrl,useSanitySections,sections[]{layout,eyebrow,heading,body,image{asset->{url},alt},items[]{title,description,href,image{asset->{url},alt}} ,buttonLabel,buttonUrl}},
-  "assets": *[_type == "siteAsset" && slot in ["services-ai","services-mobile","services-web","services-teams","services-devops","services-custom","services-banner","portfolio-calcounts","portfolio-scribeflo","portfolio-ucpa","portfolio1","portfolio2","portfolio3","awards","about-testimonial-distri-logo","about-testimonial-gezabel-perroti","about-testimonial-autism-logo","about-testimonial-catherine-kleins","about-testimonial-labayh-logo","about-testimonial-basim-albeladi","homepage-home-insights-legacy-modernization","homepage-home-insights-ai-app-maintenance","homepage-home-insights-ai-voice-agents","homepage-industry-healthcare","homepage-industry-ecommerce","homepage-industry-transport","homepage-industry-real-estate","homepage-industry-education","homepage-industry-travel","homepage-industry-media","homepage-industry-on-demand"]]{slot,title,alt,image{asset->{_id,url},crop,hotspot}},
+  "assets": *[_type == "siteAsset" && slot in ["homepage-service-ai","homepage-service-mobile","homepage-service-web","homepage-service-teams","homepage-service-devops","homepage-service-custom","homepage-service-transformation","homepage-service-product","homepage-service-ux","services-ai","services-mobile","services-web","services-teams","services-devops","services-custom","services-banner","portfolio-calcounts","portfolio-scribeflo","portfolio-ucpa","portfolio1","portfolio2","portfolio3","homepage-home-insights-legacy-modernization","homepage-home-insights-ai-app-maintenance","homepage-home-insights-ai-voice-agents","homepage-industry-healthcare","homepage-industry-ecommerce","homepage-industry-transport","homepage-industry-real-estate","homepage-industry-education","homepage-industry-travel","homepage-industry-media","homepage-industry-on-demand"]]{slot,title,alt,image{asset->{_id,url},crop,hotspot}},
   "insights": *[_type == "insight" && isPublished != false && isFeatured != false] | order(publishedAt desc,_createdAt desc)[0...3]{title,category,excerpt,url,slug,image{asset->{_id,url},alt,crop,hotspot}},
   "industries": *[_type == "industry" && isFeatured != false] | order(title asc)[0...8]{title,description,slug,image{asset->{_id,url},alt,crop,hotspot}},
   "faqs": *[_type == "faq" && isPublished != false] | order(order asc,_createdAt asc)[0...8]{question,answer}
@@ -65,7 +65,7 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function HomePage() {
-  const data = await sanityClient
+  const data = await sanityWriteClient
     .fetch<HomeData>(HOME_QUERY)
     .catch(() => ({}) as HomeData);
   const images = Object.fromEntries(
@@ -74,7 +74,11 @@ export default async function HomePage() {
       .map((asset) => [
         asset.slot,
         {
-          src: urlForImage(asset.image).width(1400).auto("format").url(),
+          src: urlForImage(asset.image)
+            .width(asset.slot.startsWith("homepage-service-") ? 768 : 1400)
+            .quality(78)
+            .auto("format")
+            .url(),
           alt: asset.alt || asset.title || "",
         },
       ]),
