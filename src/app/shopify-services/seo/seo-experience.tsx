@@ -65,7 +65,6 @@ export default function ShopifySeoExperience({page, images}: {page: SeoPageConte
           <p>{page?.heroDescription || fallback.hero.description}</p>
           <Link href={page?.primaryCtaUrl || fallback.hero.ctaUrl} className={styles.primaryButton}>{page?.primaryCta || fallback.hero.cta}<span aria-hidden="true">{"\u2197"}</span></Link>
         </div>
-        {images["shopify-seo-google-partner"] && <div className={styles.seoBadge}><img src={images["shopify-seo-google-partner"].src} alt={images["shopify-seo-google-partner"].alt}/><span>{page?.shopifySeoTrustLabel || fallback.intro.trustLabel}</span></div>}
       </div>
     </section>
 
@@ -84,7 +83,7 @@ export default function ShopifySeoExperience({page, images}: {page: SeoPageConte
     </section>
 
     <section className={styles.seoIntro}>
-      <div className={styles.seoIntroCopy}><span className={styles.kicker}>ORGANIC SEARCH GROWTH</span><h2>{page?.shopifySeoIntroHeading || fallback.intro.heading}</h2><p>{page?.shopifySeoIntroCopy || fallback.intro.copy}</p><Link href="/contact?service=shopify-seo" className={styles.seoTextLink}>Book a Strategy Call <span aria-hidden="true">{"\u2197"}</span></Link>{images["shopify-seo-claude-partner"] && <img className={styles.claudeBadge} src={images["shopify-seo-claude-partner"].src} alt={images["shopify-seo-claude-partner"].alt} loading="lazy"/>}</div>
+      <div className={styles.seoIntroCopy}><span className={styles.kicker}>ORGANIC SEARCH GROWTH</span><h2>{page?.shopifySeoIntroHeading || fallback.intro.heading}</h2><p>{page?.shopifySeoIntroCopy || fallback.intro.copy}</p><Link href="/contact?service=shopify-seo" className={styles.seoTextLink}>Book a Strategy Call <span aria-hidden="true">{"\u2197"}</span></Link></div>
       {images["shopify-seo-team"] && <div className={styles.seoTeamImage}><img src={images["shopify-seo-team"].src} alt={images["shopify-seo-team"].alt} loading="lazy"/></div>}
     </section>
 

@@ -4,7 +4,6 @@ import { useState, type FormEvent } from "react";
 import styles from "./contact-page.module.css";
 
 type ContactPageData = { heroTitle?: string; heroDescription?: string } | null;
-type ContactImage = { src: string; alt: string };
 
 const contactWays = [
   { title: "Start a project", detail: "Share your goals and we will shape a clear next step.", action: "Send a project enquiry", href: "mailto:hr@kodrise.com" },
@@ -13,7 +12,18 @@ const contactWays = [
   { title: "Work across time zones", detail: "Our distributed team collaborates with businesses worldwide.", action: "Explore our services", href: "/shopify-services" },
 ];
 
-export default function ContactExperience({ page, images }: { page: ContactPageData; images: Record<string, ContactImage> }) {
+const regions = ["North America", "Asia", "Australia", "European Union", "Global Operations", "Middle East & Africa"];
+const regionCopy: Record<string, string> = {
+  "North America": "Our team works with North American businesses through remote project delivery and scheduled calls.",
+  Asia: "Kodrise is based in Indore, Madhya Pradesh, India, and supports projects across Asia.",
+  Australia: "We collaborate with Australian teams remotely, with meeting times planned around your working day.",
+  "European Union": "Our distributed delivery model supports European businesses from discovery through ongoing development.",
+  "Global Operations": "Kodrise works with clients across regions through online workshops, shared project tools, and regular progress reviews.",
+  "Middle East & Africa": "We support teams across the Middle East and Africa with remote product engineering and commerce services.",
+};
+
+export default function ContactExperience({ page }: { page: ContactPageData }) {
+  const [activeRegion, setActiveRegion] = useState("North America");
   const [status, setStatus] = useState("");
   const [sending, setSending] = useState(false);
 
@@ -94,7 +104,7 @@ export default function ContactExperience({ page, images }: { page: ContactPageD
 
     <section className={styles.trusted}>
       <div className={styles.sectionHeading}><h2>Trusted by teams building what’s next</h2><p>We partner with ambitious businesses to design, build, and grow digital products.</p></div>
-      <div className={styles.logoRow}>{Object.entries(images).map(([slot, image]) => <div className={styles.logo} key={slot}><img src={image.src} alt={image.alt} loading="lazy" /></div>)}</div>
+      <div className={styles.logoRow}><div className={styles.logo}>Shopify &amp; commerce</div><div className={styles.logo}>AI &amp; automation</div><div className={styles.logo}>Web &amp; mobile products</div><div className={styles.logo}>Dedicated engineering</div></div>
     </section>
 
     <section className={styles.facts}>
@@ -109,9 +119,13 @@ export default function ContactExperience({ page, images }: { page: ContactPageD
     </section>
 
     <section className={styles.regions}>
-      <h2>Connect with our team</h2>
-      <div className={styles.regionPanel}>
-        <div><h3>Let’s talk about your next project</h3><p>Our team collaborates with businesses worldwide to plan, build, and grow digital products. Get in touch and we’ll find the right next step together.</p><a href="mailto:hr@kodrise.com">Get in touch <span aria-hidden="true">↗</span></a></div>
+      <h2>Connect with our global team</h2>
+      <div className={styles.regionTabs} role="tablist" aria-label="Regions supported">
+        {regions.map((region) => <button key={region} type="button" role="tab" aria-selected={activeRegion === region} className={activeRegion === region ? styles.selected : ""} onClick={() => setActiveRegion(region)}>{region}</button>)}
+      </div>
+      <div className={styles.regionPanel} role="tabpanel">
+        <div><span className={styles.regionEyebrow}>WORKING ACROSS {activeRegion.toUpperCase()}</span><h3>Let’s talk about your next project</h3><p>{regionCopy[activeRegion]}</p><a href="mailto:hr@kodrise.com">Get in touch <span aria-hidden="true">↗</span></a></div>
+        <div className={styles.regionContact}><span className={styles.pin}>⌖</span><strong>Kodrise Technologies</strong><span>Indore, Madhya Pradesh, India</span><a href="mailto:hr@kodrise.com">hr@kodrise.com</a><a href="tel:+9193027572700">+91 9302752700</a></div>
       </div>
     </section>
   </main>;

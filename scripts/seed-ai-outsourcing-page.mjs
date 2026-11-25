@@ -20,31 +20,12 @@ const client = createClient({
   useCdn: false,
 });
 
-const assets = [
-  ["outsourcing-banner", "AI Outsourcing page hero", "AI development team collaborating on intelligent products", "https://d3pxwdeb4y32a1.cloudfront.net/wp-content/uploads/2025/05/ai-outsourcing-banner-906da64ff57345a601bcf8807ad4e62d.webp"],
-  ["outsourcing-trend", "AI outsourcing delivery", "AI experts planning an outsourced AI development engagement", "https://d3pxwdeb4y32a1.cloudfront.net/wp-content/uploads/2025/05/ai-outsourcing-0ef7d71cc52d9ddee489697b720d3106.webp"],
-  ["outsourcing-prompts", "Prompt engineering expertise", "Prompt engineering and generative AI development", "https://d3pxwdeb4y32a1.cloudfront.net/wp-content/uploads/2025/05/prompt-engineering-surge-c999d5b6b8bab8662faae7fafe463f04.webp"],
-  ["outsourcing-genai", "Generative AI in production", "Generative AI systems deployed in business workflows", "https://d3pxwdeb4y32a1.cloudfront.net/wp-content/uploads/2025/05/genai-production-2cb7b2952964c4a2501a2a7afd6f0b48.webp"],
-  ["outsourcing-industries", "AI outsourcing outcomes", "AI teams helping organizations deliver production AI", "https://d3pxwdeb4y32a1.cloudfront.net/wp-content/uploads/2025/05/redefine-ai-outsourcing-110eed2c630aab0f3fa87d6473926732.webp"],
-  ["outsourcing-process", "AI outsourcing process", "AI strategy, development, quality assurance, and deployment", "https://d3pxwdeb4y32a1.cloudfront.net/wp-content/uploads/2025/05/ai-outsourcing-0ef7d71cc52d9ddee489697b720d3106.webp"],
-];
-
-for (const [slot, title, alt, url] of assets) {
-  const existing = await client.fetch('*[_type == "siteAsset" && slot == $slot][0]{_id, "assetId": image.asset._ref}', {slot});
-  if (existing?._id && existing.assetId) {
-    await client.patch(existing._id).set({title, alt}).commit({visibility: "sync"});
-    console.log(`Reused ${slot} from Sanity.`);
-    continue;
+const assetSlots = ["outsourcing-banner","outsourcing-trend","outsourcing-prompts","outsourcing-genai","outsourcing-industries","outsourcing-process"];
+for (const slot of assetSlots) {
+  const asset = await client.fetch('*[_type == "siteAsset" && slot == $slot][0]{_id, sourceLicense, licenseVerifiedAt, "assetId": image.asset._ref}', {slot});
+  if (!asset?._id || !asset.assetId || !asset.sourceLicense || !asset.licenseVerifiedAt) {
+    throw new Error(`Seed the rights-reviewed image for ${slot} through the Sanity media library before running this page seeder.`);
   }
-  const response = await fetch(url, {headers: {"user-agent": "Kodrise website asset importer/1.0"}});
-  if (!response.ok) throw new Error(`Could not download ${slot}: HTTP ${response.status}`);
-  const filename = url.split("/").pop();
-  const contentType = response.headers.get("content-type") || "image/webp";
-  const uploaded = await client.assets.upload("image", Buffer.from(await response.arrayBuffer()), {filename, contentType});
-  const doc = {_type: "siteAsset", slot, title, alt, image: {_type: "image", asset: {_type: "reference", _ref: uploaded._id}}};
-  if (existing?._id) await client.patch(existing._id).set(doc).commit({visibility: "sync"});
-  else await client.create(doc, {visibility: "sync"});
-  console.log(`Uploaded ${slot} to Sanity.`);
 }
 
 const pageKey = "/services/outsourcing-ai-development";

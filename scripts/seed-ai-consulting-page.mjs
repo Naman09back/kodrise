@@ -20,31 +20,12 @@ const client = createClient({
   useCdn: false,
 });
 
-const assets = [
-  ["consulting-banner", "AI Consulting page hero", "AI consulting strategy for business transformation", "https://d3pxwdeb4y32a1.cloudfront.net/wp-content/uploads/2025/05/ai-outsourcing-banner-906da64ff57345a601bcf8807ad4e62d.webp"],
-  ["consulting-strategy", "AI consulting and business impact", "AI strategy creating real business impact", "https://d3pxwdeb4y32a1.cloudfront.net/wp-content/uploads/2025/07/what-makes-ebd83293e15f358a34de4f3e805d8469.webp"],
-  ["consulting-private-ai", "Private AI and secure implementation", "Secure AI systems built around business requirements", "https://d3pxwdeb4y32a1.cloudfront.net/wp-content/uploads/2025/05/ai-outsourcing-banner-906da64ff57345a601bcf8807ad4e62d.webp"],
-  ["consulting-automation", "AI driven workflow case study", "AI powered recruitment workflow and automation", "https://d3pxwdeb4y32a1.cloudfront.net/wp-content/uploads/2025/07/custom-retriever-pipelines-485647024b3598cebfa72f5b68546662.webp"],
-  ["consulting-industries", "AI expertise across business operations", "AI consulting for business growth and transformation", "https://d3pxwdeb4y32a1.cloudfront.net/wp-content/uploads/2025/07/what-makes-ebd83293e15f358a34de4f3e805d8469.webp"],
-  ["consulting-process", "AI consulting workflow", "AI strategy from opportunity discovery to implementation", "https://d3pxwdeb4y32a1.cloudfront.net/wp-content/uploads/2025/07/custom-retriever-pipelines-485647024b3598cebfa72f5b68546662.webp"],
-];
-
-for (const [slot, title, alt, url] of assets) {
-  const existing = await client.fetch('*[_type == "siteAsset" && slot == $slot][0]{_id, "assetId": image.asset._ref}', {slot});
-  if (existing?._id && existing.assetId) {
-    await client.patch(existing._id).set({title, alt}).commit({visibility: "sync"});
-    console.log(`Reused ${slot} from Sanity.`);
-    continue;
+const assetSlots = ["consulting-banner","consulting-strategy","consulting-private-ai","consulting-automation","consulting-industries","consulting-process"];
+for (const slot of assetSlots) {
+  const asset = await client.fetch('*[_type == "siteAsset" && slot == $slot][0]{_id, sourceLicense, licenseVerifiedAt, "assetId": image.asset._ref}', {slot});
+  if (!asset?._id || !asset.assetId || !asset.sourceLicense || !asset.licenseVerifiedAt) {
+    throw new Error(`Seed the rights-reviewed image for ${slot} through the Sanity media library before running this page seeder.`);
   }
-  const response = await fetch(url, {headers: {"user-agent": "Kodrise website asset importer/1.0"}});
-  if (!response.ok) throw new Error(`Could not download ${slot}: HTTP ${response.status}`);
-  const filename = url.split("/").pop();
-  const contentType = response.headers.get("content-type") || "image/webp";
-  const uploaded = await client.assets.upload("image", Buffer.from(await response.arrayBuffer()), {filename, contentType});
-  const doc = {_type: "siteAsset", slot, title, alt, image: {_type: "image", asset: {_type: "reference", _ref: uploaded._id}}};
-  if (existing?._id) await client.patch(existing._id).set(doc).commit({visibility: "sync"});
-  else await client.create(doc, {visibility: "sync"});
-  console.log(`Uploaded ${slot} to Sanity.`);
 }
 
 const pageKey = "/ai-consulting-services";

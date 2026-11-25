@@ -8,7 +8,7 @@ const nativePagePaths = [
   "/", "/about", "/contact", "/overview", "/process-methodology", "/services", "/ai-consulting-services",
   "/services/generative-ai-development-company", "/services/ai-agents-and-automation-solutions", "/services/ai-app-development-company",
   "/services/ai-chatbot-development-company", "/services/machine-learning", "/services/nlp-development", "/services/rag-as-a-service",
-  "/services/outsourcing-ai-development", "/shopify-services", "/portfolio", "/resources", "/careers", "/devresources", "/shopify-services/website-design", "/shopify-services/website-development",
+  "/services/outsourcing-ai-development", "/shopify-services", "/portfolio", "/resources", "/careers", "/hire-developers", "/shopify-services/website-design", "/shopify-services/website-development",
   "/shopify-services/b2b-ecommerce-solutions", "/shopify-services/headless-commerce", "/shopify-services/mobile-app-development",
   "/shopify-services/custom-ecommerce-solutions", "/shopify-services/marketing", "/shopify-services/seo", "/shopify-services/ppc",
   "/shopify-services/content-marketing", "/shopify-services/social-media-marketing", "/shopify-services/email-marketing",
@@ -70,7 +70,7 @@ const adminQuery = `{
     seoTitleTemplate, seoDescriptionTemplate, canonicalBase, defaultSchemaType, targetKeywords, competitorDomains, competitorProvider, keywordProvider, backlinkProvider, backlinkSource, analyticsProperty, performanceProvider
   },
   "assets": *[_type == "siteAsset"] | order(slot asc) {
-    _id, _type, slot, title, alt, sourcePath,
+    _id, _type, slot, title, alt, sourcePath, sourceUrl, sourceCreator, sourceLicense, licenseVerifiedAt,
     image {asset->{_id, url, metadata {dimensions {width, height}}}, alt, hotspot, crop}
   }
 }`;

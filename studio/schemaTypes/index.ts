@@ -179,6 +179,10 @@ const siteAsset = defineType({name: 'siteAsset', title: 'Website images', type: 
   defineField({name: 'title', type: 'string', validation: (rule) => rule.required()}),
   defineField({name: 'alt', title: 'Alternative text', type: 'string', validation: (rule) => rule.required()}),
   defineField({name: 'sourcePath', title: 'Website image path', description: 'Connect this Sanity image to an existing /site-assets/... image location so it can be replaced from the media library.', type: 'string'}),
+  defineField({name: 'sourceUrl', title: 'Original image source URL', type: 'url'}),
+  defineField({name: 'sourceCreator', title: 'Image creator', type: 'string'}),
+  defineField({name: 'sourceLicense', title: 'License or rights basis', description: 'For example: Pexels License, CC BY 4.0, commissioned, or owned by Kodrise.', type: 'string'}),
+  defineField({name: 'licenseVerifiedAt', title: 'Rights checked on', type: 'date'}),
   defineField({name: 'image', title: 'Image', type: 'image', options: {hotspot: true}, validation: (rule) => rule.required()}),
 ]})
 

@@ -16,15 +16,13 @@ const client = createClient({projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_I
 const content = JSON.parse(fs.readFileSync(path.join(process.cwd(), "content/shopify-seo-page.json"), "utf8"));
 const pageKey = "/shopify-services/seo";
 const assets = [
-  ["shopify-seo-hero", "Shopify SEO page hero", "Shopify SEO specialist researching organic search performance", "https://www.itgeeks.com/images/hero-mkt-seo-a.webp"],
-  ["shopify-seo-google-partner", "Google Partner badge", "Certified Google Partner", "https://www.itgeeks.com/images/award-google-partner.png"],
-  ["shopify-seo-team", "SEO and marketing team", "The SEO team reviewing a Shopify growth strategy", "https://www.itgeeks.com/images/about-team-b-480w.webp"],
-  ["shopify-seo-claude-partner", "Claude Partner Network badge", "Claude Partner Network Certified Services Partner", "https://www.itgeeks.com/images/claude-partner-certified.svg"],
+  ["shopify-seo-hero", "Online commerce planning", "A person planning an online shopping experience on a laptop", "https://images.pexels.com/photos/29502371/pexels-photo-29502371.jpeg?cs=srgb&dl=pexels-julio-lopez-817581-2157566789-29502371.jpg&fm=jpg", "https://www.pexels.com/photo/digital-shopping-on-laptop-and-smartphone-29502371/", "Julio Lopez"],
+  ["shopify-seo-team", "Digital marketing work", "Hands working on a laptop during a digital marketing task", "https://images.pexels.com/photos/5474295/pexels-photo-5474295.jpeg?cs=srgb&dl=pexels-cottonbro-5474295.jpg&fm=jpg", "https://www.pexels.com/photo/hands-on-a-laptop-keyboard-5474295/", "cottonbro studio"],
 ];
-for (const [slot, title, alt, url] of assets) {
+for (const [slot, title, alt, url, sourceUrl, sourceCreator] of assets) {
   const existing = await client.fetch('*[_type == "siteAsset" && slot == $slot][0]{_id, "assetId":image.asset._ref}', {slot});
   if (existing?._id && existing.assetId) {
-    await client.patch(existing._id).set({title, alt}).commit({visibility: "sync"});
+    await client.patch(existing._id).set({title, alt, sourceUrl, sourceCreator, sourceLicense: "Pexels License (free commercial use; attribution optional)", licenseVerifiedAt: "2026-11-24"}).commit({visibility: "sync"});
     console.log(`Reused ${slot} from Sanity.`);
     continue;
   }
@@ -35,7 +33,7 @@ for (const [slot, title, alt, url] of assets) {
   const bytes = isSvg ? await sharp(source).png().toBuffer() : source;
   const filename = isSvg ? `${slot}.png` : url.split("/").pop();
   const uploaded = await client.assets.upload("image", bytes, {filename, contentType: isSvg ? "image/png" : response.headers.get("content-type") || "image/webp"});
-  const doc = {_type: "siteAsset", slot, title, alt, sourcePath: url, image: {_type: "image", asset: {_type: "reference", _ref: uploaded._id}}};
+  const doc = {_type: "siteAsset", slot, title, alt, sourcePath: `/site-assets/licensed/${slot}.jpg`, sourceUrl, sourceCreator, sourceLicense: "Pexels License (free commercial use; attribution optional)", licenseVerifiedAt: "2026-11-24", image: {_type: "image", asset: {_type: "reference", _ref: uploaded._id}}};
   if (existing?._id) await client.patch(existing._id).set(doc).commit({visibility: "sync"});
   else await client.create(doc, {visibility: "sync"});
   console.log(`Uploaded ${slot} to Sanity.`);

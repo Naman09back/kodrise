@@ -32,61 +32,61 @@ const serviceCards = [
   [
     "AI Development Solutions",
     "Drive automation through data and intelligence.",
-    "services-ai",
+    "homepage-service-ai",
     "/services/generative-ai-development-company",
   ],
   [
     "Mobile App Development",
     "We build mobile apps with immersive user experiences.",
-    "services-mobile",
+    "homepage-service-mobile",
     "/services/mobile-app-development",
   ],
   [
     "Web Development",
     "We design, develop and maintain websites and web apps.",
-    "services-web",
+    "homepage-service-web",
     "/services/web-development",
   ],
   [
     "Hire Dedicated Developers",
     "Hire full-time dedicated software developers.",
-    "services-teams",
-    "/devresources",
+    "homepage-service-teams",
+    "/hire-developers",
   ],
   [
     "DevOps Azure AWS & GCP",
     "Streamline delivery using leading cloud platforms.",
-    "services-devops",
+    "homepage-service-devops",
     "/services/devops-and-cloud",
   ],
   [
     "Custom Software Development",
     "Your development partner from conception to creation.",
-    "services-custom",
+    "homepage-service-custom",
     "/services/custom-software-development",
   ],
   [
     "Digital Transformation",
     "Migrate and modernize your legacy applications.",
-    "services-banner",
+    "homepage-service-transformation",
     "/services",
   ],
   [
     "Digital Product Engineering",
     "Build future-ready products around your customers.",
-    "services-ai",
+    "homepage-service-product",
     "/services",
   ],
   [
     "UI/UX Development",
     "Design, strategy, and technology in one experience.",
-    "services-web",
+    "homepage-service-ux",
     "/services",
   ],
   [
     "eCommerce Development",
     "Create commerce experiences that scale with your business.",
-    "portfolio-calcounts",
+    "homepage-industry-ecommerce",
     "/shopify-services",
   ],
 ] as const;
@@ -184,24 +184,18 @@ const clientQuotes = [
       "Kodrise delivered precisely what we needed, a top-notch website with seamless film recollection. Their expertise exceeded our expectations, and we couldn’t be more satisfied with the final result.",
     name: "Gezabel Perroti",
     role: "Co-Founder, DISTRI7",
-    logo: "about-testimonial-distri-logo",
-    person: "about-testimonial-gezabel-perroti",
   },
   {
     quote:
       "They have successfully handled several major projects for us. Their dedication and expertise are phenomenal. We highly recommend the team.",
     name: "Catherine Kleins",
     role: "Co-Founder, Autism West Midlands",
-    logo: "about-testimonial-autism-logo",
-    person: "about-testimonial-catherine-kleins",
   },
   {
     quote:
       "Kodrise successfully delivered our complex software project. Their expertise and communication made the collaboration a success.",
     name: "Basim Albeladi",
     role: "CEO, Labayh",
-    logo: "about-testimonial-labayh-logo",
-    person: "about-testimonial-basim-albeladi",
   },
 ];
 const fallbackFaqs: Faq[] = [
@@ -703,14 +697,6 @@ export default function HomeExperience({
             recognitions that reflect our commitment to excellence.
           </p>
         </div>{" "}
-        {images.awards && (
-          <img
-            className={styles.awardsImage}
-            src={images.awards.src}
-            alt={images.awards.alt || "Kodrise awards and recognitions"}
-            loading="lazy"
-          />
-        )}{" "}
       </section>{" "}
       <section className={styles.testimonials}>
         {" "}
@@ -728,21 +714,10 @@ export default function HomeExperience({
         </div>{" "}
         <div className={styles.quoteGrid}>
           {visibleTestimonials.map((review) => {
-            const logo = images[review.logo];
-            const person = images[review.person];
             return (
               <article key={review.name} className={styles.quoteCard}>
-                {logo && (
-                  <img
-                    className={styles.quoteLogo}
-                    src={logo.src}
-                    alt={logo.alt || review.name}
-                    loading="lazy"
-                  />
-                )}
                 <p>“{review.quote}”</p>
                 <div className={styles.quotePerson}>
-                  {person && <img src={person.src} alt="" loading="lazy" />}
                   <div>
                     <strong>{review.name}</strong>
                     <span>{review.role}</span>

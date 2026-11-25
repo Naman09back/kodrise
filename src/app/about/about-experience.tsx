@@ -8,13 +8,6 @@ import styles from "./about-page.module.css";
 type AboutImage = {src: string; alt: string};
 type AboutExperienceProps = {images: Record<string, AboutImage>; page: SitePageContent | null};
 
-const imageFallbacks: Record<string, string> = {
-  "about-hero": "https://d3pxwdeb4y32a1.cloudfront.net/wp-content/uploads/2023/06/about-us-banner.webp",
-  "about-stats-background": "https://cdn.sanity.io/images/5vojr174/production/9641283f605af6bff488960c70026615d57b1e0f-1482x516.jpg",
-  "about-partner-photo": "https://d3pxwdeb4y32a1.cloudfront.net/wp-content/uploads/2023/06/innovative-solutions.webp",
-  "about-careers-photo": "https://d3pxwdeb4y32a1.cloudfront.net/wp-content/uploads/2023/07/enthusiastic.webp",
-};
-
 const features = [
   ["Established In 2006", "We are a leading software company, proudly serving our clients since our establishment in 2006.", "▦"],
   ["Location", "Headquartered in the USA with offices in the UK, Australia, UAE and India.", "⌖"],
@@ -82,8 +75,8 @@ const testimonials = [
   {quote: "Kodrise streamlined our courier operations with a custom web system that improved efficiency and conversions. Their project management, attention to detail, and commitment to quality truly exceeded expectations.", name: "Martin Young", role: "Director, Same Day Dispatch Services Ltd", logo: "same-day-dispatch-logo", person: "martin-young"},
 ];
 
-function getAboutImage(images: Record<string, AboutImage>, slot: string, fallback?: string): AboutImage | undefined {
-  return images[slot] || (fallback ? {src: fallback, alt: slot.replaceAll("-", " ")} : undefined);
+function getAboutImage(images: Record<string, AboutImage>, slot: string): AboutImage | undefined {
+  return images[slot];
 }
 
 export default function AboutExperience({images, page}: AboutExperienceProps) {
@@ -92,10 +85,10 @@ export default function AboutExperience({images, page}: AboutExperienceProps) {
   const [activeBranch, setActiveBranch] = useState("Asia");
   const [testimonialStart, setTestimonialStart] = useState(0);
   const awardTrack = useRef<HTMLDivElement>(null);
-  const heroImage = getAboutImage(images, "about-hero", imageFallbacks["about-hero"]);
-  const statsBackground = getAboutImage(images, "about-stats-background", imageFallbacks["about-stats-background"]);
-  const partnerImage = getAboutImage(images, "about-partner-photo", imageFallbacks["about-partner-photo"]);
-  const careersImage = getAboutImage(images, "about-careers-photo", imageFallbacks["about-careers-photo"]);
+  const heroImage = getAboutImage(images, "about-hero");
+  const statsBackground = getAboutImage(images, "about-stats-background");
+  const partnerImage = getAboutImage(images, "about-partner-photo");
+  const careersImage = getAboutImage(images, "about-careers-photo");
   const visibleTestimonials = Array.from({length: 3}, (_, index) => testimonials[(testimonialStart + index) % testimonials.length]);
 
   return <main id="main" className={styles.page}>
@@ -134,17 +127,17 @@ export default function AboutExperience({images, page}: AboutExperienceProps) {
     <section className={styles.branchesSection}>
       <h2>Other World wide Branches</h2>
       <div className={styles.branchTabs} role="tablist" aria-label="Office regions">{branchTabs.map((tab) => <button key={tab} role="tab" aria-selected={activeBranch === tab} onClick={() => setActiveBranch(tab)}>{tab}</button>)}</div>
-      <div className={styles.branchGrid}>{branches[activeBranch].map((branch) => {const icon = getAboutImage(images, `about-branch-${branch.image}`);return <article className={styles.branchCard} key={branch.name}>{icon && <img src={icon.src} alt="" loading="lazy" />}<h3>{branch.name}</h3><p>{branch.address}</p>{branch.phone && <a href={`tel:${branch.phone.replaceAll(/[^+\d]/g, "")}`}>{branch.phone}</a>}</article>;})}</div>
+      <div className={styles.branchGrid}>{branches[activeBranch].map((branch) => <article className={styles.branchCard} key={branch.name}><h3>{branch.name}</h3><p>{branch.address}</p>{branch.phone && <a href={`tel:${branch.phone.replaceAll(/[^+\d]/g, "")}`}>{branch.phone}</a>}</article>)}</div>
     </section>
 
     <section className={styles.awardsSection}>
       <div className={styles.sectionTitle}><h2>Industry Recognized</h2><p>For 10+ years on the market, we’ve been awarded by industry-leading rankings and associations.</p></div>
-      <div className={styles.awardFrame}><button type="button" aria-label="Previous awards" onClick={() => awardTrack.current?.scrollBy({left: -260, behavior: "smooth"})}>←</button><div className={styles.awardTrack} ref={awardTrack}>{awards.map(([label, slug]) => {const awardImage = getAboutImage(images, `about-award-${slug}`);return <article className={styles.awardCard} key={slug}>{awardImage ? <img src={awardImage.src} alt={awardImage.alt} loading="lazy" /> : <span className={styles.awardPlaceholder} aria-hidden="true">★</span>}<h3>{label}</h3></article>;})}</div><button type="button" aria-label="Next awards" onClick={() => awardTrack.current?.scrollBy({left: 260, behavior: "smooth"})}>→</button></div>
+      <div className={styles.awardFrame}><button type="button" aria-label="Previous awards" onClick={() => awardTrack.current?.scrollBy({left: -260, behavior: "smooth"})}>←</button><div className={styles.awardTrack} ref={awardTrack}>{awards.map(([label, slug]) => <article className={styles.awardCard} key={slug}><span className={styles.awardPlaceholder} aria-hidden="true">★</span><h3>{label}</h3></article>)}</div><button type="button" aria-label="Next awards" onClick={() => awardTrack.current?.scrollBy({left: 260, behavior: "smooth"})}>→</button></div>
     </section>
 
     <section className={styles.testimonialsSection}>
       <div className={styles.testimonialsHeading}><div><h2>What Our Clients Say</h2><p>Read the voices of trust, satisfaction, and motivation helping us to navigate our next innovation.</p></div><Link href="/portfolio">Explore More</Link></div>
-      <div className={styles.testimonialGrid}>{visibleTestimonials.map((item) => {const logo = getAboutImage(images, `about-testimonial-${item.logo}`);const person = getAboutImage(images, `about-testimonial-${item.person}`);return <article className={styles.testimonialCard} key={item.name}>{logo && <img className={styles.clientLogo} src={logo.src} alt={logo.alt} loading="lazy" />}<p>{item.quote}</p><div className={styles.testimonialPerson}>{person && <img src={person.src} alt="" loading="lazy" />}<span><strong>{item.name}</strong><small>{item.role}</small></span></div></article>;})}</div>
+      <div className={styles.testimonialGrid}>{visibleTestimonials.map((item) => <article className={styles.testimonialCard} key={item.name}><p>{item.quote}</p><div className={styles.testimonialPerson}><span><strong>{item.name}</strong><small>{item.role}</small></span></div></article>)}</div>
       <div className={styles.sliderControls}><button type="button" aria-label="Previous client reviews" onClick={() => setTestimonialStart((testimonialStart + testimonials.length - 1) % testimonials.length)}>←</button><span>{[0, 1, 2, 3].map((point) => <i key={point} className={Math.floor(testimonialStart / 1.5) % 4 === point ? styles.currentDot : ""} />)}</span><button type="button" aria-label="Next client reviews" onClick={() => setTestimonialStart((testimonialStart + 1) % testimonials.length)}>→</button></div>
     </section>
 

@@ -9,7 +9,7 @@ import CmsNativePageGate from "../cms-native-page-gate";
 type AboutImage = {slot: string; title?: string; alt?: string; image?: unknown};
 
 const ABOUT_IMAGES_QUERY = defineQuery(`
-  *[_type == "siteAsset" && slot match "about-*"] | order(slot asc){
+  *[_type == "siteAsset" && slot in ["about-hero", "about-stats-background", "about-partner-photo", "about-careers-photo"]]{
     slot, title, alt, image {asset->{_id, url}, crop, hotspot}
   }
 `);

@@ -17,7 +17,7 @@ const allowedFields: Record<string, string[]> = {
   jobApplication: ["status"],
   testimonial: ["name", "role", "company", "quote", "rating", "status", "featured"],
   siteSettings: ["siteName", "tagline", "contactEmail", "phone", "address", "linkedin", "x", "instagram", "seoTitleTemplate", "seoDescriptionTemplate", "canonicalBase", "defaultSchemaType", "targetKeywords", "competitorDomains", "competitorProvider", "keywordProvider", "backlinkProvider", "backlinkSource", "analyticsProperty", "performanceProvider"],
-  siteAsset: ["slot", "title", "alt", "sourcePath", "image"],
+  siteAsset: ["slot", "title", "alt", "sourcePath", "sourceUrl", "sourceCreator", "sourceLicense", "licenseVerifiedAt", "image"],
 };
 
 export async function POST(request: NextRequest) {
@@ -28,6 +28,11 @@ export async function POST(request: NextRequest) {
   const body = await request.json();
   const fields = allowedFields[body._type] || [];
   const patch = Object.fromEntries(Object.entries(body.patch || {}).filter(([key]) => fields.includes(key)));
+  if (body._type === "siteAsset") {
+    for (const key of ["sourceUrl", "sourceCreator", "sourceLicense", "licenseVerifiedAt"]) {
+      if (patch[key] === "") delete patch[key];
+    }
+  }
   if (!body._id || !fields.length) return NextResponse.json({error: "Invalid content update."}, {status: 400});
   if (["caseStudy", "insight"].includes(body._type) && typeof patch.slug === "string") patch.slug = {_type: "slug", current: patch.slug.trim()};
   const client = createClient({projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || "5vojr174", dataset: process.env.NEXT_PUBLIC_SANITY_DATASET || "production", apiVersion: "2026-02-01", token, useCdn: false});

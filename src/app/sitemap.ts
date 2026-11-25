@@ -17,7 +17,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     // Keep the core sitemap available while the CMS is unavailable.
   }
   const migrationUrls = ["/shopify-services/shopify-migration", ...["adobe-commerce", "bigcommerce", "woocommerce", "salesforce", "magento", "squarespace", "wix"].map((slug) => `/shopify-services/shopify-migration/${slug}`)];
-  const coreUrls: MetadataRoute.Sitemap = ["", "/services", "/ai-consulting-services", "/about", "/overview", "/process-methodology", "/contact", "/portfolio", "/case-studies", "/resources", "/careers", "/devresources", ...[
+  const coreUrls: MetadataRoute.Sitemap = ["", "/services", "/ai-consulting-services", "/about", "/overview", "/process-methodology", "/contact", "/portfolio", "/case-studies", "/resources", "/careers", "/hire-developers", ...[
     "website-design", "website-development", "b2b-ecommerce-solutions", "headless-commerce", "mobile-app-development", "custom-ecommerce-solutions", "ai-agentic-commerce", "ongoing-support", "marketing", "seo", "ppc", "content-marketing", "social-media-marketing", "email-marketing", "dedicated-commerce-teams",
   ].map((slug) => `/shopify-services/${slug}`), ...migrationUrls].map((path) => ({url: `${siteUrl}${path}`, lastModified: now}));
   return [...coreUrls, ...serviceUrls];

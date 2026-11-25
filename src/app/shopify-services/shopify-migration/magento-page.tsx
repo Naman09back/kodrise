@@ -73,7 +73,7 @@ export default function MagentoMigrationPage() {
 
   return <main className={`${styles.page} ${theme.theme}`} id="main">
     <section className={cn("hero")}>
-      <div className={cn("heroArt")}><Image src={`${asset}hero-mig-magento-a-960w.webp`} alt="Magento to Shopify migration planning" fill priority sizes="(max-width: 700px) 100vw, 58vw" /></div><div className={cn("heroShade")} />
+      <div className={cn("heroArt")}><Image src={`${asset}hero-mig-magento-a-960w.webp`} alt="Magento to Shopify migration planning" fill preload sizes="(max-width: 700px) 100vw, 58vw" /></div><div className={cn("heroShade")} />
       <div className={cn("heroCopy")}><span className={cn("eyebrow")}>SHOPIFY MIGRATION · MAGENTO</span><h1>Magento to <span>Shopify Migration</span></h1><p>Helping brands build what's next on Shopify. Plan a move around your store architecture, business logic, integrations, and customer journeys.</p><Link className={cn("cta")} href={contact}>Talk to Our Migration Experts <span aria-hidden="true">↗</span></Link></div>
     </section>
     <nav className={cn("breadcrumb")} aria-label="Breadcrumb"><div><Link href="/">Home</Link><span>/</span><Link href="/shopify-services">Shopify</Link><span>/</span><Link href="/shopify-services/shopify-migration">Migration</Link><span>/</span><span aria-current="page">Magento</span></div></nav>

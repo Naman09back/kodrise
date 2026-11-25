@@ -1,7 +1,7 @@
 "use client";
 
 import {useState} from "react";
-import Image from "next/image";
+import Image from "../shopify-assets";
 import Link from "next/link";
 import styles from "../marketing/shopify-marketing.module.css";
 
@@ -78,7 +78,7 @@ export default function CustomEcommercePage() {
   const [openFaq,setOpenFaq]=useState<number|null>(0);
   return <main className={styles.page} id="main">
     <section className={styles.hero} aria-labelledby="custom-ecommerce-title">
-      <Image className={styles.heroImage} src="/site-assets/services-custom.webp" alt="Engineer developing a custom digital solution" fill sizes="100vw" priority />
+      <Image className={styles.heroImage} src="/site-assets/services-custom.webp" alt="Engineer developing a custom digital solution" fill sizes="100vw" preload />
       <div className={styles.heroInner}><div className={styles.heroCopy}>
         <span className={styles.eyebrow}>CUSTOM ECOMMERCE SOLUTIONS</span>
         <h1 id="custom-ecommerce-title">Build What Your Business Needs<span>Connect the Commerce Stack</span></h1>
